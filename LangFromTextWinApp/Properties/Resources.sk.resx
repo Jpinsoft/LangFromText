@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="T001" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="T002" xml:space="preserve">
+    <value>Zrušiť</value>
+  </data>
+  <data name="T003" xml:space="preserve">
+    <value>Veta</value>
+  </data>
+  <data name="T005" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="T006" xml:space="preserve">
+    <value>Upozornenie</value>
+  </data>
+  <data name="T007" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="T008" xml:space="preserve">
+    <value>Otázka</value>
+  </data>
+  <data name="T009" xml:space="preserve">
+    <value>LangFromText je desktopová open-source aplikácia pre tréning jazykov založená na vašej vlastnej databáze textov.
+Začnite naplnením databázy textov, potom budete môcť naplno využívať funkcie aplikácie.</value>
+  </data>
+  <data name="T010" xml:space="preserve">
+    <value>Výborne, vaša databáza obsahuje {0} slov, čo je dostatočný počet.</value>
+  </data>
+  <data name="T012" xml:space="preserve">
+    <value>Výborne, vaša databáza je naplnená z {0} rôznych zdrojov. Hodnota indexu rozmanitosti je {1}</value>
+  </data>
+  <data name="T013" xml:space="preserve">
+    <value>Na 1000 slov pripadá iba {0} textových zdrojov. Skúste zindexovať ďalšie zdroje (web-y, lokálne súbory).</value>
+  </data>
+  <data name="T014" xml:space="preserve">
+    <value>Štart naplnenia databázy</value>
+  </data>
+  <data name="T018" xml:space="preserve">
+    <value>Vaša databáza je naplnená a tak môžete využívať aplikáciu naplno.</value>
+  </data>
+  <data name="T019" xml:space="preserve">
+    <value>Chcete naozaj zmazať údaje zo zdroja textov '{0}'?</value>
+  </data>
+  <data name="T020" xml:space="preserve">
+    <value>Súbor sa nenašiel</value>
+  </data>
+  <data name="T021" xml:space="preserve">
+    <value>Celkové skóre: {0}</value>
+  </data>
+  <data name="T022" xml:space="preserve">
+    <value>Súbor databázy je zrejme poškodený, preto bude vytvorený nový prázdny súbor databázy. Pre zmenu súboru databázy použite sekciu Nastavenia.</value>
+  </data>
+  <data name="T023" xml:space="preserve">
+    <value>Úroveň skenovania</value>
+  </data>
+  <data name="T024" xml:space="preserve">
+    <value>Iba URL adresy, ktoré obsahujú</value>
+  </data>
+  <data name="T025" xml:space="preserve">
+    <value>Iba URL adresy, ktoré neobsahujú</value>
+  </data>
+  <data name="T026" xml:space="preserve">
+    <value>Databáza</value>
+  </data>
+  <data name="T027" xml:space="preserve">
+    <value>Adresár databázy</value>
+  </data>
+  <data name="T028" xml:space="preserve">
+    <value>Vytvoriť databázu</value>
+  </data>
+  <data name="T029" xml:space="preserve">
+    <value>Fráza</value>
+  </data>
+  <data name="T030" xml:space="preserve">
+    <value>Zdroje textov</value>
+  </data>
+  <data name="T031" xml:space="preserve">
+    <value>SKRYŤ</value>
+  </data>
+  <data name="T032" xml:space="preserve">
+    <value>Web Indexer</value>
+  </data>
+  <data name="T033" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="T034" xml:space="preserve">
+    <value>Textové zdroje</value>
+  </data>
+  <data name="T035" xml:space="preserve">
+    <value>Slová</value>
+  </data>
+  <data name="T036" xml:space="preserve">
+    <value>Hľadať (Enter)</value>
+  </data>
+  <data name="T037" xml:space="preserve">
+    <value>Výskyty</value>
+  </data>
+  <data name="T038" xml:space="preserve">
+    <value>Zdroje</value>
+  </data>
+  <data name="T039" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="T040" xml:space="preserve">
+    <value>Slovo</value>
+  </data>
+  <data name="T041" xml:space="preserve">
+    <value>Získať texty z disku</value>
+  </data>
+  <data name="T042" xml:space="preserve">
+    <value>Zobraziť vety</value>
+  </data>
+  <data name="T043" xml:space="preserve">
+    <value>Kontrola fráz</value>
+  </data>
+  <data name="T044" xml:space="preserve">
+    <value>Vyhodnoť (Enter)</value>
+  </data>
+  <data name="T045" xml:space="preserve">
+    <value>Zhoda</value>
+  </data>
+  <data name="T046" xml:space="preserve">
+    <value>Vzor frázy</value>
+  </data>
+  <data name="T047" xml:space="preserve">
+    <value>Aktuálna databáza</value>
+  </data>
+  <data name="T048" xml:space="preserve">
+    <value>Zmeniť DB</value>
+  </data>
+  <data name="T049" xml:space="preserve">
+    <value>Vytvoriť databázu</value>
+  </data>
+  <data name="T050" xml:space="preserve">
+    <value>Automatický tréning jazyka</value>
+  </data>
+  <data name="T051" xml:space="preserve">
+    <value>Nastavenia</value>
+  </data>
+  <data name="T052" xml:space="preserve">
+    <value>Vitajte!</value>
+  </data>
+  <data name="T053" xml:space="preserve">
+    <value>Vaša databáza neobsahuje žiadne údaje.</value>
+  </data>
+  <data name="T054" xml:space="preserve">
+    <value>Automatický tréning jazyka je zapnutý. Vypnete ho v sekcii </value>
+  </data>
+  <data name="T055" xml:space="preserve">
+    <value>Automatický tréning jazyka je vypnutý. Zapnete ho v sekcii </value>
+  </data>
+  <data name="T056" xml:space="preserve">
+    <value>Detail zdroja textov</value>
+  </data>
+  <data name="T057" xml:space="preserve">
+    <value>Max limit</value>
+  </data>
+  <data name="T058" xml:space="preserve">
+    <value>Získať texty z webu</value>
+  </data>
+  <data name="T059" xml:space="preserve">
+    <value>Ruším operáciu...</value>
+  </data>
+  <data name="T060" xml:space="preserve">
+    <value>Zrušiť indexáciu</value>
+  </data>
+  <data name="T061" xml:space="preserve">
+    <value>Podľa operačného systému</value>
+  </data>
+  <data name="T062" xml:space="preserve">
+    <value>Slovenský</value>
+  </data>
+  <data name="T063" xml:space="preserve">
+    <value>Anglický</value>
+  </data>
+  <data name="T064" xml:space="preserve">
+    <value>Téma rozhrania</value>
+  </data>
+  <data name="T065" xml:space="preserve">
+    <value>Jazyk</value>
+  </data>
+  <data name="T066" xml:space="preserve">
+    <value>Chcete naozaj zmazať {0} položiek?</value>
+  </data>
+  <data name="T067" xml:space="preserve">
+    <value>Pracujem... Čakajte prosím</value>
+  </data>
+  <data name="T068" xml:space="preserve">
+    <value>Načítavam databázu... Čakajte prosím</value>
+  </data>
+  <data name="T069" xml:space="preserve">
+    <value>Súbor '{0}' bol úspešne zindexovaný.</value>
+  </data>
+  <data name="T070" xml:space="preserve">
+    <value>Začať</value>
+  </data>
+  <data name="T071" xml:space="preserve">
+    <value>Teraz nie</value>
+  </data>
+  <data name="T072" xml:space="preserve">
+    <value>Je čas na krátky jazykový tréning...</value>
+  </data>
+  <data name="T073" xml:space="preserve">
+    <value>Úvod</value>
+  </data>
+  <data name="T074" xml:space="preserve">
+    <value>Jazyko-hry</value>
+  </data>
+  <data name="T075" xml:space="preserve">
+    <value>Auto-start</value>
+  </data>
+  <data name="T076" xml:space="preserve">
+    <value>Spustiť aplikáciu automaticky po prihlásení do systému</value>
+  </data>
+  <data name="T077" xml:space="preserve">
+    <value>O aplikácii</value>
+  </data>
+  <data name="T078" xml:space="preserve">
+    <value>Desktopová open-source aplikácia pre tréning jazykov založená na vašej vlastnej databáze textov.
+LangFromText je publikovaný pod licenciou GPLv3 (GNU GENERAL PUBLIC LICENSE)
+https://github.com/Jpinsoft/LangFromText
+
+
+LangFromText bol vytvorený aj vďaka týmto vynikajúcim knižniciam:
+-------------------
+
+Font-Awesome-WPF/UWP
+Copyright (c) 2014-2016 charri
+The MIT License (MIT)
+https://github.com/charri/Font-Awesome-WPF/
+
+Json.NET
+Copyright (c) 2007 James Newton-King
+The MIT License (MIT)
+https://www.newtonsoft.com/json 
+
+Html Agility Pack (HAP)
+Copyright (c) ZZZ Free Projects 2014-2017
+The MIT License (MIT)
+https://html-agility-pack.net/
+https://github.com/zzzprojects/html-agility-pack</value>
+  </data>
+  <data name="T079" xml:space="preserve">
+    <value>Zlyhala inicializácia aplikácie a bude ukončená. </value>
+  </data>
+  <data name="T080" xml:space="preserve">
+    <value>LangFromText - Lang-trainer</value>
+  </data>
+  <data name="T081" xml:space="preserve">
+    <value>VYPNUTÝ: Spúšťať každých {0} minút</value>
+  </data>
+  <data name="T082" xml:space="preserve">
+    <value>Spúšťať každých {0} minút</value>
+  </data>
+  <data name="T083" xml:space="preserve">
+    <value>Zmena sa prejaví až po reštarte aplikácie.</value>
+  </data>
+  <data name="T200" xml:space="preserve">
+    <value>Dopĺňanie Slov/Viet</value>
+  </data>
+  <data name="T201" xml:space="preserve">
+    <value>Nájdi správnu vetu</value>
+  </data>
+  <data name="T202" xml:space="preserve">
+    <value>Označte správne slová</value>
+  </data>
+  <data name="T203" xml:space="preserve">
+    <value>Trénovanie slovnej zásoby</value>
+  </data>
+</root>

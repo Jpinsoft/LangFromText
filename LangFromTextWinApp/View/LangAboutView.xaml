@@ -1,0 +1,71 @@
+﻿<UserControl
+    x:Class="LangFromTextWinApp.View.LangAboutView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LangFromTextWinApp.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontSize="14"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button
+            x:Name="BtnAppHomaPage"
+            Grid.Row="0"
+            Grid.Column="0"
+            Click="BtnAppHomaPage_Click"
+            Cursor="Hand"
+            Style="{StaticResource ButtonLink}"
+            ToolTip="{Binding ProductURL}">
+            <StackPanel>
+                <Image
+                    Width="48"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/MainLT.png" />
+            </StackPanel>
+        </Button>
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="5">
+            <Label Content="{Binding ProductName, Mode=OneWay}" />
+            <Label Content="{Binding Version, Mode=OneWay}" />
+            <Label Content="{Binding Copyright, Mode=OneWay}" />
+        </StackPanel>
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Padding="5"
+            IsReadOnly="True"
+            Text="{Binding ConverterParameter=T078, Converter={StaticResource ResourceConverter}, Mode=OneWay}"
+            TextWrapping="Wrap" />
+
+        <!--<Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5,0,0,0"
+            VerticalAlignment="Center"
+            DockPanel.Dock="Left"
+            Foreground="LightBlue">
+            <Hyperlink x:Name="HyperlinkLicense" Click="HyperlinkLicense_Click">
+                <Run Text="{Binding T040, Mode=OneWay}" />
+            </Hyperlink>
+        </Label>-->
+
+    </Grid>
+</UserControl>

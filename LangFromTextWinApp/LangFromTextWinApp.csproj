@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9EA263FC-006E-4477-9D69-B60A3231D82A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LangFromTextWinApp</RootNamespace>
+    <AssemblyName>LangFromTextWinApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MainLT.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LangFromTextWinApp.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.WPF">
+      <HintPath>..\Files\FontAwesome.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Files\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\ProgressContentOverlayControl.xaml.cs">
+      <DependentUpon>ProgressContentOverlayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScorePanelUserControl.xaml.cs">
+      <DependentUpon>ScorePanelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BoolToVisibleConverter.cs" />
+    <Compile Include="Converters\ContainsItemsBoolConverter.cs" />
+    <Compile Include="Converters\IntervalDescriptionConverter.cs" />
+    <Compile Include="Converters\IsErrorToBrushConverter.cs" />
+    <Compile Include="Converters\RatingToBrushConverter.cs" />
+    <Compile Include="Converters\ResourceConverter.cs" />
+    <Compile Include="Converters\StateIconToForeground.cs" />
+    <Compile Include="Converters\TextSourceTypeToFontIconConverter.cs" />
+    <Compile Include="Helpers\AnimSuccesFail.cs" />
+    <Compile Include="Helpers\AnimTools.cs" />
+    <Compile Include="Helpers\FEConstants.cs" />
+    <Compile Include="Helpers\FEContext.cs" />
+    <Compile Include="Helpers\LTTimer.cs" />
+    <Compile Include="Helpers\MenuNavigator.cs" />
+    <Compile Include="Helpers\MessageBoxWPF.xaml.cs">
+      <DependentUpon>MessageBoxWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\NamedPipeTools.cs" />
+    <Compile Include="Helpers\WPFHelpers.cs" />
+    <Compile Include="LTModules\EnterChar\EnterCharModule.xaml.cs">
+      <DependentUpon>EnterCharModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LTModules\ILTModuleView.cs" />
+    <Compile Include="LTModules\SelectPhrase\SelectPhraseModule.xaml.cs">
+      <DependentUpon>SelectPhraseModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LTModules\SelectWord\SelectWordModule.xaml.cs">
+      <DependentUpon>SelectWordModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LTModules\TranslateWord\TranslateWordModule.xaml.cs">
+      <DependentUpon>TranslateWordModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LTModules\TranslateWord\TWordModuleResult.cs" />
+    <Compile Include="NotifWindow.xaml.cs">
+      <DependentUpon>NotifWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ViewModel\LangAboutViewModel.cs" />
+    <Compile Include="ViewModel\LangDataViewModel.cs" />
+    <Compile Include="ViewModel\LangPhraseCheckViewModel.cs" />
+    <Compile Include="ViewModel\LangSettingsViewModel.cs" />
+    <Compile Include="ViewModel\LangStartPageViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Popup\PhraseWordDetailViewModel.cs" />
+    <Compile Include="ViewModel\Popup\IndexWebViewModel.cs" />
+    <Compile Include="ViewModel\Popup\TextSourceDetailViewModel.cs" />
+    <Compile Include="ViewModel\SearchResultsViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\LangAboutView.xaml.cs">
+      <DependentUpon>LangAboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LangDataView.xaml.cs">
+      <DependentUpon>LangDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LangPhraseCheckView.xaml.cs">
+      <DependentUpon>LangPhraseCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LangSettingsView.xaml.cs">
+      <DependentUpon>LangSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LangStartPageView.xaml.cs">
+      <DependentUpon>LangStartPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Popup\IndexWebWindow.xaml.cs">
+      <DependentUpon>IndexWebWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Popup\NewDatabaseWindow.xaml.cs">
+      <DependentUpon>NewDatabaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Popup\PhraseWordDetailUserControl.xaml.cs">
+      <DependentUpon>PhraseWordDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Popup\ScoreWindow.xaml.cs">
+      <DependentUpon>ScoreWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Popup\TextSourceDetailUC.xaml.cs">
+      <DependentUpon>TextSourceDetailUC.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\ProgressContentOverlayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScorePanelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\MessageBoxWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LTModules\EnterChar\EnterCharModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LTModules\SelectPhrase\SelectPhraseModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LTModules\SelectWord\SelectWordModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LTModules\TranslateWord\TranslateWordModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="NotifWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LightGreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LightBlue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\LightRed.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LangAboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LangDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LangPhraseCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LangSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LangStartPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popup\IndexWebWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popup\NewDatabaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popup\PhraseWordDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popup\ScoreWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Popup\TextSourceDetailUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.sk.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LangFromText\LangFromText.csproj">
+      <Project>{3df8dff7-125b-4cf6-b5d8-9c066079ccb6}</Project>
+      <Name>LangFromText</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MainLT.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="MainLT.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

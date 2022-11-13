@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LangFromText", "LangFromText\LangFromText.csproj", "{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LangFromTextWinApp", "LangFromTextWinApp\LangFromTextWinApp.csproj", "{9EA263FC-006E-4477-9D69-B60A3231D82A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{36A3A689-9854-4856-8A54-5DA7D825EC02}"
+	ProjectSection(SolutionItems) = preProject
+		Files\FontAwesome.WPF.dll = Files\FontAwesome.WPF.dll
+		Files\FontAwesome.WPF.lic = Files\FontAwesome.WPF.lic
+		Files\FontAwesome.WPF.xml = Files\FontAwesome.WPF.xml
+		Files\HtmlAgilityPack.dll = Files\HtmlAgilityPack.dll
+		Files\HtmlAgilityPack.lic = Files\HtmlAgilityPack.lic
+		Files\HtmlAgilityPack.xml = Files\HtmlAgilityPack.xml
+		Files\Newtonsoft.Json.dll = Files\Newtonsoft.Json.dll
+		Files\Newtonsoft.Json.lic = Files\Newtonsoft.Json.lic
+		Files\Newtonsoft.Json.xml = Files\Newtonsoft.Json.xml
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "LangFromTextSetup", "LangFromTextSetup\LangFromTextSetup.vdproj", "{5CAD0089-72FB-4884-BD2C-5B6EEFBB3599}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{467C4A6C-F9AE-43EB-9756-C3B9A7825443}"
+	ProjectSection(SolutionItems) = preProject
+		License.txt = License.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Debug|x86.Build.0 = Debug|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Release|x86.ActiveCfg = Release|Any CPU
+		{3DF8DFF7-125B-4CF6-B5D8-9C066079CCB6}.Release|x86.Build.0 = Release|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Debug|x86.Build.0 = Debug|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Release|x86.ActiveCfg = Release|Any CPU
+		{9EA263FC-006E-4477-9D69-B60A3231D82A}.Release|x86.Build.0 = Release|Any CPU
+		{5CAD0089-72FB-4884-BD2C-5B6EEFBB3599}.Debug|Any CPU.ActiveCfg = Debug
+		{5CAD0089-72FB-4884-BD2C-5B6EEFBB3599}.Debug|x86.ActiveCfg = Debug
+		{5CAD0089-72FB-4884-BD2C-5B6EEFBB3599}.Release|Any CPU.ActiveCfg = Release
+		{5CAD0089-72FB-4884-BD2C-5B6EEFBB3599}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {608E7609-22C5-4C89-B7F1-06037F444898}
+	EndGlobalSection
+EndGlobal

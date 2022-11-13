@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="T001" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="T002" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="T003" xml:space="preserve">
+    <value>Sentence</value>
+  </data>
+  <data name="T005" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="T006" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="T007" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="T008" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  <data name="T009" xml:space="preserve">
+    <value>LangFromtext is an open-source desktop lang-trainer application based on your "self-made" database.
+You need more data. Please index web or text files and populate your lang-database.</value>
+  </data>
+  <data name="T010" xml:space="preserve">
+    <value>Nicely, your database contains {0} words which is enough.</value>
+  </data>
+  <data name="T012" xml:space="preserve">
+    <value>Well, your database consists of {0} text sources ({1} text source per 1000 words).</value>
+  </data>
+  <data name="T013" xml:space="preserve">
+    <value>There is {0} text sources per 1000 words. Try to index more text sources.</value>
+  </data>
+  <data name="T014" xml:space="preserve">
+    <value>Start filling the database</value>
+  </data>
+  <data name="T018" xml:space="preserve">
+    <value>Your database contains enough data and you can fully use application.</value>
+  </data>
+  <data name="T019" xml:space="preserve">
+    <value>Are you sure you want to delete text source '{0}'?</value>
+  </data>
+  <data name="T020" xml:space="preserve">
+    <value>File does not exist</value>
+  </data>
+  <data name="T021" xml:space="preserve">
+    <value>Total Score: {0}</value>
+  </data>
+  <data name="T022" xml:space="preserve">
+    <value>Database File is probably corrupted. Application will try to create new database file. Please check Settings if you want to change current database.</value>
+  </data>
+  <data name="T023" xml:space="preserve">
+    <value>Scan level</value>
+  </data>
+  <data name="T024" xml:space="preserve">
+    <value>Only url that contains</value>
+  </data>
+  <data name="T025" xml:space="preserve">
+    <value>Only url that not contains</value>
+  </data>
+  <data name="T026" xml:space="preserve">
+    <value>Database Name</value>
+  </data>
+  <data name="T027" xml:space="preserve">
+    <value>Database folder</value>
+  </data>
+  <data name="T028" xml:space="preserve">
+    <value>Create database</value>
+  </data>
+  <data name="T029" xml:space="preserve">
+    <value>PHRASE</value>
+  </data>
+  <data name="T030" xml:space="preserve">
+    <value>TEXT SOURCES</value>
+  </data>
+  <data name="T031" xml:space="preserve">
+    <value>HIDE</value>
+  </data>
+  <data name="T032" xml:space="preserve">
+    <value>Web indexer</value>
+  </data>
+  <data name="T033" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="T034" xml:space="preserve">
+    <value>TextSources</value>
+  </data>
+  <data name="T035" xml:space="preserve">
+    <value>WordsBank</value>
+  </data>
+  <data name="T036" xml:space="preserve">
+    <value>Search (Enter)</value>
+  </data>
+  <data name="T037" xml:space="preserve">
+    <value>Occurrence</value>
+  </data>
+  <data name="T038" xml:space="preserve">
+    <value>Text Sources Count</value>
+  </data>
+  <data name="T039" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="T040" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="T041" xml:space="preserve">
+    <value>Get text source from disk</value>
+  </data>
+  <data name="T042" xml:space="preserve">
+    <value>Show sentences</value>
+  </data>
+  <data name="T043" xml:space="preserve">
+    <value>Check Phrase</value>
+  </data>
+  <data name="T044" xml:space="preserve">
+    <value>Check phrase (Enter)</value>
+  </data>
+  <data name="T045" xml:space="preserve">
+    <value>Match</value>
+  </data>
+  <data name="T046" xml:space="preserve">
+    <value>Phrase pattern</value>
+  </data>
+  <data name="T047" xml:space="preserve">
+    <value>Current Database</value>
+  </data>
+  <data name="T048" xml:space="preserve">
+    <value>Change DB</value>
+  </data>
+  <data name="T049" xml:space="preserve">
+    <value>New Database</value>
+  </data>
+  <data name="T050" xml:space="preserve">
+    <value>Automatic lang-trainer interval</value>
+  </data>
+  <data name="T051" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="T052" xml:space="preserve">
+    <value>Welcome!</value>
+  </data>
+  <data name="T053" xml:space="preserve">
+    <value>Your database is empty.</value>
+  </data>
+  <data name="T054" xml:space="preserve">
+    <value>Automatic lang-trainer is enabled. You can turn it off in section </value>
+  </data>
+  <data name="T055" xml:space="preserve">
+    <value>Automatic lang-trainer is disabled. You can turn it on in section</value>
+  </data>
+  <data name="T056" xml:space="preserve">
+    <value>Text Source Detail</value>
+  </data>
+  <data name="T057" xml:space="preserve">
+    <value>Max limit</value>
+  </data>
+  <data name="T058" xml:space="preserve">
+    <value>Get text source from web</value>
+  </data>
+  <data name="T059" xml:space="preserve">
+    <value>Cancelling...</value>
+  </data>
+  <data name="T060" xml:space="preserve">
+    <value>Cancel scan</value>
+  </data>
+  <data name="T061" xml:space="preserve">
+    <value>Default Language</value>
+  </data>
+  <data name="T062" xml:space="preserve">
+    <value>Slovak</value>
+  </data>
+  <data name="T063" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="T064" xml:space="preserve">
+    <value>Color Theme</value>
+  </data>
+  <data name="T065" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="T066" xml:space="preserve">
+    <value>Are you sure you want to delete {0} items?</value>
+  </data>
+  <data name="T067" xml:space="preserve">
+    <value>Working... Please wait</value>
+  </data>
+  <data name="T068" xml:space="preserve">
+    <value>Loading database... Please wait</value>
+  </data>
+  <data name="T069" xml:space="preserve">
+    <value>'{0}' successfully indexed.</value>
+  </data>
+  <data name="T070" xml:space="preserve">
+    <value>Let's go</value>
+  </data>
+  <data name="T071" xml:space="preserve">
+    <value>Maybe later</value>
+  </data>
+  <data name="T072" xml:space="preserve">
+    <value>It's time for a quick lang-training...</value>
+  </data>
+  <data name="T073" xml:space="preserve">
+    <value>Start page</value>
+  </data>
+  <data name="T074" xml:space="preserve">
+    <value>Lang-games</value>
+  </data>
+  <data name="T075" xml:space="preserve">
+    <value>Auto-start</value>
+  </data>
+  <data name="T076" xml:space="preserve">
+    <value>Automatically launch app after the user login</value>
+  </data>
+  <data name="T077" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="T078" xml:space="preserve">
+    <value>An open-source desktop lang-trainer application based on your self-made database.
+LangFromText is released under the GPLv3 (GNU GENERAL PUBLIC LICENSE)
+https://github.com/Jpinsoft/LangFromText
+
+
+LangFromText was made possible thanks to these excellent libraries:
+-------------------
+
+Font-Awesome-WPF/UWP
+Copyright (c) 2014-2016 charri
+The MIT License (MIT)
+https://github.com/charri/Font-Awesome-WPF/
+
+Json.NET
+Copyright (c) 2007 James Newton-King
+The MIT License (MIT)
+https://www.newtonsoft.com/json 
+
+Html Agility Pack (HAP)
+Copyright (c) ZZZ Free Projects 2014-2017
+The MIT License (MIT)
+https://html-agility-pack.net/
+https://github.com/zzzprojects/html-agility-pack</value>
+  </data>
+  <data name="T079" xml:space="preserve">
+    <value>Unable to initialize application. App will Close. </value>
+  </data>
+  <data name="T080" xml:space="preserve">
+    <value>LangFromText - Lang-trainer</value>
+  </data>
+  <data name="T081" xml:space="preserve">
+    <value>DISABLED: Start every {0} minutes</value>
+  </data>
+  <data name="T082" xml:space="preserve">
+    <value>Start every {0} minutes</value>
+  </data>
+  <data name="T083" xml:space="preserve">
+    <value>Please restart application to apply changes.</value>
+  </data>
+  <data name="T200" xml:space="preserve">
+    <value>Complete word</value>
+  </data>
+  <data name="T201" xml:space="preserve">
+    <value>Select the correct phrase</value>
+  </data>
+  <data name="T202" xml:space="preserve">
+    <value>Select the correct word</value>
+  </data>
+  <data name="T203" xml:space="preserve">
+    <value>Vocabulary training</value>
+  </data>
+</root>

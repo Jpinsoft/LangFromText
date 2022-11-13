@@ -1,0 +1,102 @@
+﻿<Window
+    x:Class="LangFromTextWinApp.View.Popup.NewDatabaseWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{Binding ConverterParameter=T028, Converter={StaticResource ResourceConverter}}"
+    Width="640"
+    Height="260"
+    FontSize="14"
+    PreviewKeyDown="Window_PreviewKeyDown"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    Topmost="True"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            Content="{Binding ConverterParameter=T026, Converter={StaticResource ResourceConverter}}" />
+
+
+        <TextBox
+            x:Name="TxbDatabaseName"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Padding="5,0,5,0"
+            VerticalAlignment="Center"
+            TextAlignment="Left"
+            TextWrapping="Wrap" />
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            VerticalAlignment="Center"
+            Content="{Binding ConverterParameter=T027, Converter={StaticResource ResourceConverter}}" />
+
+        <TextBox
+            x:Name="TxbDBFolder"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="10"
+            Padding="5,0,5,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            IsReadOnly="True"
+            TextAlignment="Left"
+            TextWrapping="Wrap" />
+
+        <Button
+            x:Name="BtnSetDataFolder"
+            Grid.Row="2"
+            Grid.Column="2"
+            Width="50"
+            Height="30"
+            Margin="10"
+            HorizontalAlignment="Right"
+            Click="BtnSetDataFolder_Click">
+            <StackPanel Orientation="Horizontal">
+                <fontawesome:ImageAwesome Margin="7" Icon="FolderOpen" />
+            </StackPanel>
+        </Button>
+
+        <WrapPanel
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Button
+                x:Name="BtnOk"
+                Width="100"
+                Height="30"
+                Margin="5,0"
+                Click="BtnOk_Click"
+                Content="{Binding ConverterParameter=T001, Converter={StaticResource ResourceConverter}}"
+                IsDefault="True" />
+            <Button
+                x:Name="BtnCancel"
+                Width="100"
+                Height="30"
+                Margin="5,0"
+                Click="BtnCancel_Click"
+                Content="{Binding ConverterParameter=T002, Converter={StaticResource ResourceConverter}}" />
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,137 @@
+﻿<UserControl
+    x:Class="LangFromTextWinApp.View.Popup.TextSourceDetailUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LangFromTextWinApp.View.Popup"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="600"
+    Background="#EE808080"
+    Focusable="True"
+    FontSize="14"
+    mc:Ignorable="d">
+    <Grid Margin="20,10,20,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Label
+                Margin="2,4"
+                HorizontalContentAlignment="Left"
+                BorderBrush="White"
+                BorderThickness="0,0,0,1"
+                Content="{Binding ConverterParameter=T056, Converter={StaticResource ResourceConverter}}"
+                FontWeight="SemiBold"
+                Foreground="White" />
+            <TextBlock Grid.Row="0" Margin="8,4,0,8">
+                <Hyperlink
+                    CommandParameter="LangDataView"
+                    FontWeight="SemiBold"
+                    Foreground="White"
+                    NavigateUri="{Binding TextSource.Address, StringFormat={}{0}}"
+                    RequestNavigate="Hyperlink_RequestNavigate">
+                    <Run Text="{Binding TextSource.Address, StringFormat={}{0}}" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,8,4,0"
+            HorizontalAlignment="Right"
+            FontWeight="SemiBold"
+            Foreground="White"
+            Text="{Binding TextSource.Sentences.Count, StringFormat={}{0} sentences}" />
+
+        <!--<ListView
+            x:Name="lvSources"
+            Grid.Row="1"
+            Background="AntiqueWhite"
+            ItemsSource="{Binding TextSource.Sentences}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontWeight="Bold"
+                            Text="{Binding PocetVyskytov, StringFormat=Vyskyty: {0:d}}"
+                            TextWrapping="Wrap" />
+
+
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Tag="{Binding}"
+                            Text="{Binding TextResult}"
+                            TextWrapping="Wrap" />
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        <DataGrid
+            x:Name="dataGridPhrases"
+            Grid.Row="1"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            DockPanel.Dock="Bottom"
+            FontSize="16"
+            HorizontalGridLinesBrush="LightGray"
+            IsReadOnly="True"
+            ItemsSource="{Binding SentencesDistinct}"
+            RowHeaderWidth="0"
+            SelectionUnit="FullRow"
+            VerticalGridLinesBrush="LightGray">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="80" Binding="{Binding PocetVyskytov}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Mode=OneWay, ConverterParameter=T037, Converter={StaticResource ResourceConverter}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding TextResult}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Mode=OneWay, ConverterParameter=T003, Converter={StaticResource ResourceConverter}}" />
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button
+            x:Name="BtnHide"
+            Grid.Row="2"
+            Height="30"
+            Margin="1,5"
+            Click="BtnHide_Click"
+            Content="{Binding ConverterParameter=T031, Converter={StaticResource ResourceConverter}}"
+            IsCancel="True" />
+    </Grid>
+</UserControl>

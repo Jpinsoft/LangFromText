@@ -1,0 +1,190 @@
+﻿<UserControl
+    x:Class="LangFromTextWinApp.View.LangPhraseCheckView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:LangFromTextWinApp.Converters"
+    xmlns:PopupControls="clr-namespace:LangFromTextWinApp.View.Popup"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:LangFromTextWinApp.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontSize="14"
+    Loaded="UserControl_Loaded"
+    PreviewKeyDown="UserControl_PreviewKeyDown"
+    mc:Ignorable="d">
+
+    <UserControl.CommandBindings>
+        <CommandBinding
+            x:Name="CopyCommandBinding"
+            Command="ApplicationCommands.Copy"
+            Executed="CopyCommandBinding_Executed" />
+    </UserControl.CommandBindings>
+
+    <UserControl.Resources>
+        <Converters:RatingToBrushConverter x:Key="RatingToBrushConverter" />
+    </UserControl.Resources>
+    <DockPanel x:Name="PanelMain" Margin="5">
+        <Popup
+            x:Name="PopUpPhraseDetail"
+            AllowsTransparency="True"
+            Focusable="True"
+            Placement="Center"
+            PlacementTarget="{Binding ElementName=PanelMain}"
+            PopupAnimation="Fade">
+            <PopupControls:PhraseWordDetailUserControl x:Name="UserControlPhraseDetail" />
+        </Popup>
+        <Label
+            Margin="0,0,0,20"
+            BorderThickness="0,0,0,5"
+            Content="{Binding ConverterParameter=T043, Converter={StaticResource ResourceConverter}}"
+            DockPanel.Dock="Top"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#FF072C2C">
+            <Label.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                    <GradientStop Offset="0" Color="#FFD7ECEC" />
+                    <GradientStop Offset="1" Color="#FF4E9595" />
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+        <DockPanel DockPanel.Dock="Top">
+            <Button
+                x:Name="BtnCheckPhrase"
+                Click="BtnCheckPhrase_Click"
+                DockPanel.Dock="Right"
+                IsEnabled="{Binding CanCheckPhrase}">
+                <StackPanel Orientation="Horizontal">
+                    <fontawesome:ImageAwesome
+                        Width="16"
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        Icon="CheckSquare" />
+                    <TextBlock Margin="0,0,7,0" VerticalAlignment="Center"><Run Text="{Binding ConverterParameter=T044, Converter={StaticResource ResourceConverter}, Mode=OneWay}" /></TextBlock>
+                </StackPanel>
+            </Button>
+            <TextBox
+                x:Name="TxbCheckPhrase"
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"
+                FontSize="22"
+                KeyDown="TxbCheckPhrase_KeyDown"
+                Text="{Binding PhraseText, UpdateSourceTrigger=PropertyChanged}" />
+        </DockPanel>
+        <Grid Margin="0,10,0,10" DockPanel.Dock="Top">
+            <ProgressBar
+                x:Name="pbRating"
+                Height="28"
+                DockPanel.Dock="Top"
+                Foreground="{Binding RatingPercent, Converter={StaticResource RatingToBrushConverter}}"
+                Style="{DynamicResource ProgressBarStyle1}"
+                Value="{Binding RatingPercent}" />
+            <StackPanel
+                Height="16"
+                HorizontalAlignment="Center"
+                Background="#AAF3F3F3"
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="5,0,0,2"
+                    VerticalAlignment="Center"
+                    Text="{Binding Rating, StringFormat={}Score {0:f2}}" />
+                <TextBlock
+                    Margin="5,0,5,2"
+                    VerticalAlignment="Center"
+                    Text="{Binding ElementName=pbRating, Path=Value, StringFormat={}({0:f2}%)}" />
+            </StackPanel>
+        </Grid>
+        <StackPanel
+            HorizontalAlignment="Right"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <Button
+                x:Name="BtnCopyClipboard"
+                Margin="0,3,0,0"
+                Padding="7,3"
+                Click="BtnCopyClipboard_Click"
+                FontWeight="Bold"
+                IsEnabled="{Binding SearchResults, Converter={StaticResource ContainsItemsBoolConverter}}">
+                <StackPanel Orientation="Horizontal" ToolTip="Copy to clipboard">
+                    <fontawesome:ImageAwesome
+                        Width="16"
+                        Margin="0,5,5,5"
+                        Icon="Copy" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Text="{Binding ResultsCount, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0} results}" />
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+        <ListView
+            x:Name="lvPhrases"
+            FontFamily="Consolas"
+            ItemsSource="{Binding SearchResults}"
+            SizeChanged="lvPhrases_SizeChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn>
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ConverterParameter=T045, Converter={StaticResource ResourceConverter}}" />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel
+                                    x:Name="DockPanelRow"
+                                    MinHeight="40"
+                                    VerticalAlignment="Center">
+                                    <Separator
+                                        Width="{Binding ActualWidth, ElementName=lvPhrases}"
+                                        Height="40"
+                                        DockPanel.Dock="Top"
+                                        Visibility="{Binding SeparatorVisibility}" />
+                                    <Separator
+                                        Width="{Binding ActualWidth, ElementName=lvPhrases}"
+                                        Height="40"
+                                        DockPanel.Dock="Bottom"
+                                        Visibility="{Binding SeparatorVisibility}" />
+                                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                                        <TextBlock TextWrapping="WrapWithOverflow">
+                                            <Run Text="{Binding Text1Short, StringFormat='\{0\}', Mode=OneWay}" />
+                                            <Run
+                                                Cursor="Hand"
+                                                FontWeight="Bold"
+                                                MouseDown="Run_MouseDown"
+                                                Tag="{Binding}"
+                                                Text="{Binding Text2}"
+                                                TextDecorations="Underline" />
+                                            <Run Text="{Binding Text3Short, StringFormat='\{0\}', Mode=OneWay}" />
+                                        </TextBlock>
+                                    </StackPanel>
+
+                                </DockPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="150">
+                        <GridViewColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ConverterParameter=T046, Converter={StaticResource ResourceConverter}}" />
+                            </DataTemplate>
+                        </GridViewColumn.HeaderTemplate>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding PPattern.TextResult}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Rating}" Header="Rating" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+    </DockPanel>
+</UserControl>

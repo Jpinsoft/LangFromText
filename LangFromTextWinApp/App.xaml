@@ -1,0 +1,30 @@
+﻿<Application
+    x:Class="LangFromTextWinApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:LangFromTextWinApp.Converters"
+    xmlns:local="clr-namespace:LangFromTextWinApp"
+    DispatcherUnhandledException="Application_DispatcherUnhandledException"
+    Startup="Application_Startup"
+    StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--  CONVERTERS  -->
+            <Converters:TextSourceTypeToFontIconConverter x:Key="TextSourceTypeToFontIconConverter" />
+            <Converters:BoolToVisibleConverter x:Key="BoolToVisibleConverter" />
+            <Converters:StateIconToForeground x:Key="StateIconToForeground" />
+            <Converters:IntervalDescriptionConverter x:Key="IntervalDescriptionConverter" />
+            <Converters:ResourceConverter x:Key="ResourceConverter" />
+            <Converters:ContainsItemsBoolConverter x:Key="ContainsItemsBoolConverter" />
+            <Converters:IsErrorToBrushConverter x:Key="IsErrorToBrushConverter" />
+
+            <!--  THEME  -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LightBlue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

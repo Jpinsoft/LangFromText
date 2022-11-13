@@ -1,0 +1,204 @@
+﻿<UserControl
+    x:Class="LangFromTextWinApp.View.LangSettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Converters="clr-namespace:LangFromTextWinApp.Converters"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:LangFromTextWinApp.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500"
+    d:DesignWidth="800"
+    FontSize="14"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="5">
+        <Label
+            Grid.Row="0"
+            Margin="0,5"
+            BorderThickness="0,0,0,5"
+            Content="{Binding ConverterParameter=T051, Converter={StaticResource ResourceConverter}, Mode=OneWay}"
+            FontSize="20"
+            FontWeight="Bold"
+            Foreground="#FF072C2C">
+            <Label.BorderBrush>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                    <GradientStop Offset="0" Color="#FFD7ECEC" />
+                    <GradientStop Offset="1" Color="#FF4E9595" />
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
+        <GroupBox Height="Auto" Margin="0,5">
+            <GroupBox.Header>
+                <Run Text="{Binding ConverterParameter=T047, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </GroupBox.Header>
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="5,20,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <fontawesome:ImageAwesome
+                    Grid.RowSpan="3"
+                    Grid.Column="0"
+                    Height="Auto"
+                    Margin="0,0,15,0"
+                    Foreground="#FF5F8188"
+                    Icon="Database" />
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontWeight="Bold"
+                    Text="{Binding SelectedDatabase.DataSource, StringFormat=Folder: \{0\}}"
+                    TextWrapping="Wrap" />
+
+
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontWeight="Bold"
+                    Text="{Binding SelectedDatabase.DBName}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontWeight="Normal"
+                    Text="{Binding SelectedDatabase.SizeMB, StringFormat=\{0:F2\} MB}" />
+
+                <Button
+                    x:Name="BtnLoadDatabase"
+                    Grid.RowSpan="3"
+                    Grid.Column="3"
+                    Padding="5"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="BtnLoadDatabase_Click"
+                    Cursor="Hand"
+                    Tag="{Binding}"
+                    ToolTip="Load another database">
+                    <StackPanel Orientation="Vertical">
+                        <fontawesome:ImageAwesome Height="25" Icon="ArrowCircleRight" />
+                        <TextBlock><Run Text="{Binding ConverterParameter=T048, Converter={StaticResource ResourceConverter}, Mode=OneWay}" /></TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button
+                    x:Name="BtnNewDatabase"
+                    Grid.RowSpan="3"
+                    Grid.Column="2"
+                    Margin="0,0,5,0"
+                    Padding="5"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Click="BtnNewDatabase_Click"
+                    Cursor="Hand"
+                    Tag="{Binding}">
+                    <StackPanel Orientation="Vertical">
+                        <fontawesome:ImageAwesome
+                            Height="20"
+                            Margin="2"
+                            Icon="Plus" />
+                        <TextBlock><Run Text="{Binding ConverterParameter=T049, Converter={StaticResource ResourceConverter}, Mode=OneWay}" /></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox
+            Height="Auto"
+            Margin="0,5"
+            IsEnabled="{Binding IsTimerSettingEnabled}">
+            <GroupBox.Header>
+                <Run Text="{Binding ConverterParameter=T050, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </GroupBox.Header>
+            <StackPanel
+                Margin="0,10,10,10"
+                HorizontalAlignment="Stretch"
+                Orientation="Horizontal">
+
+                <Slider
+                    x:Name="SliderLevel"
+                    Width="200"
+                    Margin="10,3,10,0"
+                    IsSnapToTickEnabled="True"
+                    Maximum="120"
+                    Minimum="0"
+                    TickFrequency="10"
+                    TickPlacement="None"
+                    Value="{Binding ActivationInterval}" />
+
+                <Label
+                    Margin="10,0"
+                    VerticalAlignment="Center"
+                    Content="{Binding Value, ElementName=SliderLevel, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntervalDescriptionConverter}}"
+                    FontWeight="SemiBold" />
+
+            </StackPanel>
+
+        </GroupBox>
+
+        <GroupBox Height="Auto" Margin="0,5">
+            <GroupBox.Header>
+                <Run Text="{Binding ConverterParameter=T064, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </GroupBox.Header>
+            <ComboBox
+                x:Name="CbThemes"
+                Margin="10"
+                SelectedItem="{Binding SelectedTheme, NotifyOnValidationError=True}">
+                <System:String>LightBlue</System:String>
+                <System:String>LightGreen</System:String>
+                <System:String>LightRed</System:String>
+            </ComboBox>
+        </GroupBox>
+
+        <GroupBox Height="Auto" Margin="0,5">
+            <GroupBox.Header>
+                <Run Text="{Binding ConverterParameter=T065, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </GroupBox.Header>
+            <StackPanel>
+                <ComboBox
+                    x:Name="CbLang"
+                    Margin="10,10,10,0"
+                    DisplayMemberPath="Item1"
+                    ItemsSource="{Binding Languages}"
+                    SelectedItem="{Binding SelectedLanguage}" />
+                <TextBlock
+                    Margin="15,5"
+                    FontStyle="Italic"
+                    Foreground="Gray"
+                    Text="{Binding ConverterParameter=T083, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Height="Auto" Margin="0,5">
+            <GroupBox.Header>
+                <Run Text="{Binding ConverterParameter=T075, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox
+                    x:Name="ChbAutoStart"
+                    Margin="10"
+                    IsChecked="{Binding AutoStart}">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <TextBlock VerticalAlignment="Center" Text="{Binding ConverterParameter=T076, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+            </StackPanel>
+        </GroupBox>
+
+    </StackPanel>
+</UserControl>

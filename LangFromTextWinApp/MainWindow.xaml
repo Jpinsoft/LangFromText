@@ -1,0 +1,165 @@
+﻿<Window
+    x:Class="LangFromTextWinApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:LangFromTextWinApp"
+    xmlns:localHelpers="clr-namespace:LangFromTextWinApp.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settings="clr-namespace:LangFromTextWinApp.Properties"
+    Title="{x:Static localHelpers:FEConstants.PRODUCT_NAME}"
+    Width="{Binding WinSizeWidth, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
+    Height="{Binding WinSizeHeight, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
+    MinWidth="640"
+    MinHeight="480"
+    Background="{DynamicResource ContentBackground}"
+    Closing="Window_Closing"
+    FontSize="14"
+    Left="{Binding WinPosLeft, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
+    Loaded="Window_Loaded"
+    Top="{Binding WinPosTop, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
+    mc:Ignorable="d">
+    <DockPanel>
+        <Menu
+            x:Name="MenuMainVertical"
+            Width="170"
+            Padding="2,10"
+            DockPanel.Dock="Left">
+
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <!--  Start Page  -->
+            <MenuItem
+                x:Name="MenuItemStartPage"
+                Padding="10"
+                Click="MenuItemStandard_Click"
+                DockPanel.Dock="Top"
+                Tag="LangStartPageView">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="30" Icon="Pagelines" />
+                        <Label Content="{Binding ConverterParameter=T073, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <!--  Data  -->
+            <MenuItem
+                x:Name="MenuItemData"
+                Padding="10"
+                Click="MenuItemStandard_Click"
+                DockPanel.Dock="Top"
+                Tag="LangDataView">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="30" Icon="Database" />
+                        <Label Content="{Binding ConverterParameter=T033, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <!--  Check Phrase  -->
+            <MenuItem
+                x:Name="MenuItemPhrase"
+                Padding="10"
+                Click="MenuItemStandard_Click"
+                DockPanel.Dock="Top"
+                IsEnabled="{Binding IsCheckPhraseEnabled}"
+                Tag="LangPhraseCheckView">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="30" Icon="Adjust" />
+                        <Label Content="{Binding ConverterParameter=T043, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+
+            <!--  Lang Trainer  -->
+            <MenuItem
+                x:Name="MenuItemLangTraining"
+                Padding="10"
+                DockPanel.Dock="Top"
+                IsEnabled="{Binding IsLTModuleEnabled}">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="30" Icon="PlayCircle" />
+                        <Label Content="{Binding ConverterParameter=T074, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+                <MenuItem x:Name="SelectWordModule" Click="SelectWordModule_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <fontawesome:ImageAwesome
+                                Width="32"
+                                Margin="10"
+                                Icon="Book" />
+                            <Label Content="{Binding ConverterParameter=T202, Converter={StaticResource ResourceConverter}}" Style="{StaticResource MenuLabelStyle}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+
+                </MenuItem>
+                <MenuItem x:Name="EnterCharModule" Click="EnterCharModule_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <fontawesome:ImageAwesome
+                                Width="32"
+                                Margin="10"
+                                Icon="Language" />
+                            <Label Content="{Binding ConverterParameter=T200, Converter={StaticResource ResourceConverter}}" Style="{StaticResource MenuLabelStyle}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem x:Name="SelectPhraseModule" Click="SelectPhraseModule_Click">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <fontawesome:ImageAwesome
+                                Height="32"
+                                Margin="10"
+                                Icon="Trophy" />
+                            <Label Content="{Binding ConverterParameter=T201, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+            </MenuItem>
+            <!--  About  -->
+            <MenuItem
+                x:Name="MenuItemAbout"
+                Padding="10"
+                Click="MenuItemStandard_Click"
+                DockPanel.Dock="Bottom"
+                Tag="LangAboutView">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="26" Icon="InfoCircle" />
+                        <Label Content="{Binding ConverterParameter=T077, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <!--  Settings  -->
+            <MenuItem
+                x:Name="MenuItemSettings"
+                Padding="10"
+                Click="MenuItemStandard_Click"
+                DockPanel.Dock="Bottom"
+                Tag="LangSettingsView">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <fontawesome:ImageAwesome Height="26" Icon="Cogs" />
+                        <Label Content="{Binding ConverterParameter=T051, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem IsEnabled="False" />
+        </Menu>
+        <!--<ScrollViewer x:Name="MainContent" VerticalScrollBarVisibility="Auto" />-->
+        <ContentControl
+            x:Name="MainContent"
+            Margin="10"
+            HorizontalAlignment="Stretch" />
+    </DockPanel>
+</Window>

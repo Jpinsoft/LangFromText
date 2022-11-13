@@ -1,0 +1,135 @@
+﻿<UserControl
+    x:Class="LangFromTextWinApp.View.Popup.PhraseWordDetailUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
+    xmlns:local="clr-namespace:LangFromTextWinApp.View.Popup"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Width="800"
+    Height="400"
+    Background="#EE808080"
+    Focusable="True"
+    FontSize="14"
+    mc:Ignorable="d">
+    <Grid Margin="20,10,20,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Margin="2,4"
+            HorizontalContentAlignment="Left"
+            BorderBrush="White"
+            BorderThickness="0,0,0,1"
+            Content="{Binding ConverterParameter=T029, Converter={StaticResource ResourceConverter}}"
+            FontWeight="SemiBold"
+            Foreground="White" />
+        <WrapPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="2,5"
+            VerticalAlignment="Stretch"
+            Background="AliceBlue">
+
+            <TextBlock Padding="5" TextWrapping="WrapWithOverflow">
+                <Run Text="{Binding SearchResults.Text1, StringFormat='\{0\} '}" />
+                <Run
+                    FontStyle="Italic"
+                    FontWeight="Bold"
+                    Text="{Binding SearchResults.Text2}" />
+                <Run Text="{Binding SearchResults.Text3, StringFormat=' \{0\}'}" />
+            </TextBlock>
+        </WrapPanel>
+
+        <Label
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Margin="2,4"
+            HorizontalContentAlignment="Left"
+            BorderBrush="White"
+            BorderThickness="0,0,0,1"
+            Content="{Binding ConverterParameter=T030, Converter={StaticResource ResourceConverter}}"
+            FontWeight="SemiBold"
+            Foreground="White" />
+        <ListView
+            x:Name="lvSources"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Background="AntiqueWhite"
+            ItemsSource="{Binding TextSources}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+
+                        <fontawesome:ImageAwesome
+                            Grid.RowSpan="3"
+                            Grid.Column="0"
+                            Height="60"
+                            Margin="0,0,15,0"
+                            Foreground="#FF5F8188"
+                            Icon="{Binding TextSourceType, Converter={StaticResource TextSourceTypeToFontIconConverter}}" />
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontWeight="Bold"
+                            Text="{Binding Created, StringFormat=Created: {0:d}}"
+                            TextWrapping="Wrap" />
+
+
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Cursor="Hand"
+                            FontWeight="Bold"
+                            MouseDown="TextBlock_MouseDown"
+                            Tag="{Binding}"
+                            Text="{Binding Address}"
+                            TextDecorations="Underline"
+                            TextWrapping="Wrap" />
+
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontWeight="Normal"
+                            Text="{Binding Phrases.Count, StringFormat={}{0} Sentences}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button
+            x:Name="BtnHide"
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            Height="30"
+            Margin="1,5"
+            Click="BtnHide_Click"
+            Content="{Binding ConverterParameter=T031, Converter={StaticResource ResourceConverter}}"
+            IsCancel="True" />
+    </Grid>
+</UserControl>
