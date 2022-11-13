@@ -27,11 +27,20 @@ You can easily generate and use any lang text-database from web local text files
 
 <div align="center">
 
-<img alt="screenshot01" src="https://github.com/Jpinsoft/LangFromText/blob/master/Files/Screen1.png">
+#### Start page
+<picture>
+- <img alt="screenshot01" width="480" src="https://user-images.githubusercontent.com/28184960/201521134-4bfb614f-4255-4e02-b11f-ccf30ef65625.jpg">
+</picture>
 
-<img alt="screenshot01" src="https://github.com/Jpinsoft/LangFromText/blob/master/Files/Screen2.png">
+#### Check phrase module
+<picture>
+<img alt="screenshot01" width="480" src="https://user-images.githubusercontent.com/28184960/201521137-931211aa-ee78-4e44-94e7-c79c64bd9eba.jpg">
+</picture>
 
-<img alt="screenshot01" src="https://github.com/Jpinsoft/LangFromText/blob/master/Files/Screen3.png">
+#### Lang-game: Enter char/complete word module
+<picture>
+<img alt="screenshot01" width="480" src="https://user-images.githubusercontent.com/28184960/201521139-9d583acc-7120-478e-870b-a5bb15788d3e.jpg">
+</picture>
 
 </div>
 
