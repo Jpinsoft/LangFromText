@@ -2,9 +2,9 @@
 
 LangFromText is an open-source desktop application allowing you to train and improve foreign language skills.
 This app is based on your self-made text database created from any web or text content.
-You can easily generate and use any lang text-database from web local text files.
+You can easily generate and use any lang text-database from web or local text files.
 
- #How to get started with LangFromText: 
+ #### How to get started with LangFromText: 
 
 	1. Download and install LangFromText app 	
 	2. Create and index text-database in your foreign language using web or file indexer
@@ -51,7 +51,7 @@ If you find LangFromText useful and would like to improve this app, you are welc
 The GitHub Issue tracker is preferred channel for bug reports and improvement requests or <a href="mailto:support@jpinsoft.net?subject=LangFromText report">send me e-mail</a>.
 
 Want to help with translation?
-You can add new or improve existing<a href="https://github.com/Jpinsoft">localization resources file (.resx)</a>. 
+You can add new or improve existing <a href="https://github.com/Jpinsoft/LangFromText/tree/master/LangFromTextWinApp/Properties">localization resources file (.resx)</a>. 
 Once you have completed the translation file, please <a href="mailto:support@jpinsoft.net?subject=LangFromText translation">e-mail it to me</a>. 
 
 Thank you for your interest in contributing to LangFromText! 
