@@ -21,6 +21,9 @@
     1. moznost : skusit iba zaciatky viet, alebo iba konce viet
     2. Iba pri vacsej narocnosti frazy aj zo stredu vety
 
+- Web indexer - Enter URL placeholder
+- TryIcon, Lang trainer moznost
+- Zobrazenie infa o pocte slov aj ked je menej ako 500
 
 -----------------------------------------------------
 
