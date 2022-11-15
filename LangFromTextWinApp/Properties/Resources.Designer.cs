@@ -124,8 +124,8 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to LangFromtext is an open-source desktop lang-trainer application based on your &quot;self-made&quot; database.
-        ///You need more data. Please index web or text files and populate your lang-database..
+        ///   Looks up a localized string similar to LangFromtext is a desktop lang-trainer application based on your &quot;self-made&quot; database.
+        ///You need more data. Please index web or text files and populate your text database..
         /// </summary>
         internal static string T009 {
             get {
@@ -485,7 +485,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your database is empty..
+        ///   Looks up a localized string similar to Your database contains {0} words, you need at least {1} words..
         /// </summary>
         internal static string T053 {
             get {

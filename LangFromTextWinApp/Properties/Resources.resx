@@ -139,8 +139,8 @@
     <value>Question</value>
   </data>
   <data name="T009" xml:space="preserve">
-    <value>LangFromtext is an open-source desktop lang-trainer application based on your "self-made" database.
-You need more data. Please index web or text files and populate your lang-database.</value>
+    <value>LangFromtext is a desktop lang-trainer application based on your "self-made" database.
+You need more data. Please index web or text files and populate your text database.</value>
   </data>
   <data name="T010" xml:space="preserve">
     <value>Nicely, your database contains {0} words which is enough.</value>
@@ -260,7 +260,7 @@ You need more data. Please index web or text files and populate your lang-databa
     <value>Welcome!</value>
   </data>
   <data name="T053" xml:space="preserve">
-    <value>Your database is empty.</value>
+    <value>Your database contains {0} words, you need at least {1} words.</value>
   </data>
   <data name="T054" xml:space="preserve">
     <value>Automatic lang-trainer is enabled. You can turn it off in section </value>

@@ -32,7 +32,7 @@ namespace LangFromTextWinApp.ViewModel
                 // WordsCountText = string.Format(Resources.T011, WordsCount);
                 // WordsCountIcon = FontAwesomeIcon.Warning;
                 IsDataModelEmpty = true;
-
+                IsDataModelEmptyText = string.Format(Resources.T053, WordsCount, LangFromTextManager.CN_MIN_WORDS_COUNT);
                 TitleText = Resources.T009;
                 //MainIconColor = Brushes.DarkRed;
             }
@@ -77,6 +77,8 @@ namespace LangFromTextWinApp.ViewModel
         public int LangModulesTotalScore { get; set; }
 
         public bool IsDataModelEmpty { get; set; }
+
+        public string IsDataModelEmptyText { get; set; }
 
         public bool IsDataModelFilled { get; set; }
     }

@@ -235,11 +235,12 @@
                 <TextBlock
                     HorizontalAlignment="Center"
                     DockPanel.Dock="Top"
-                    FontSize="16"
+                    FontSize="17"
                     FontStyle="Italic"
-                    Foreground="DarkGray"
+                    FontWeight="SemiBold"
+                    Foreground="#FF656565"
                     Visibility="{Binding IsDataModelEmpty, Converter={StaticResource BoolToVisibleConverter}}">
-                    <Run Text="{Binding ConverterParameter=T053, Converter={StaticResource ResourceConverter}, Mode=OneWay}" />
+                    <Run Text="{Binding IsDataModelEmptyText}" />
                 </TextBlock>
 
                 <WindowsFormsHost

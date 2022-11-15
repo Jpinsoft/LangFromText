@@ -139,8 +139,8 @@
     <value>Otázka</value>
   </data>
   <data name="T009" xml:space="preserve">
-    <value>LangFromText je desktopová open-source aplikácia pre tréning jazykov založená na vašej vlastnej databáze textov.
-Začnite naplnením databázy textov, potom budete môcť naplno využívať funkcie aplikácie.</value>
+    <value>LangFromText je aplikácia určená pre tréning jazykov založená na vašej vlastnej databáze textov.
+Začnite naplnením databázy textov, aby ste mohli naplno využívať funkcie aplikácie.</value>
   </data>
   <data name="T010" xml:space="preserve">
     <value>Výborne, vaša databáza obsahuje {0} slov, čo je dostatočný počet.</value>
@@ -260,7 +260,7 @@ Začnite naplnením databázy textov, potom budete môcť naplno využívať fun
     <value>Vitajte!</value>
   </data>
   <data name="T053" xml:space="preserve">
-    <value>Vaša databáza neobsahuje žiadne údaje.</value>
+    <value>Vaša databáza obsahuje {0} slov. Potrebujete minimálne {1} slov.</value>
   </data>
   <data name="T054" xml:space="preserve">
     <value>Automatický tréning jazyka je zapnutý. Vypnete ho v sekcii </value>
