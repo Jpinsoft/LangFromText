@@ -55,6 +55,26 @@ namespace LangFromTextWinApp.ViewModel.Popup
             set { SetProperty(ref errorURLCount, value); }
         }
 
+        private bool canIndex = false;
+
+        public bool CanIndex
+        {
+            get { return canIndex; }
+            set { SetProperty(ref canIndex, value); }
+        }
+
+        private string targetURL = Resources.T084;
+
+        public string TargetURL
+        {
+            get { return targetURL; }
+            set
+            {
+                SetProperty(ref targetURL, value);
+                CanIndex = (string.IsNullOrEmpty(value) || !Uri.IsWellFormedUriString(value, UriKind.Absolute)) ? false : true;
+            }
+        }
+
         private int maxLimit;
 
         public IndexWebViewModel()
@@ -97,11 +117,11 @@ namespace LangFromTextWinApp.ViewModel.Popup
             LoadHistory();
         }
 
-        public async Task IndexWeb(string url, int maxLevel, int maxLimit, string onlyURLContains, string onlyURLNotContains)
+        public async Task IndexWeb(int maxLevel, int maxLimit, string onlyURLContains, string onlyURLNotContains)
         {
             if (!IsWorking)
             {
-                if (string.IsNullOrEmpty(url))
+                if (string.IsNullOrEmpty(TargetURL))
                     return;
 
                 SuccessURLCount = 0;
@@ -115,7 +135,7 @@ namespace LangFromTextWinApp.ViewModel.Popup
                 langAdapter.AdapterSettings = new HtmlLangAdapterSettings { HtmlScanLevel = maxLevel, AllowedURLContains = onlyURLContains, AllowedURLNotContains = onlyURLNotContains };
 
                 List<TextSourceCBO> textSources = new List<TextSourceCBO>();
-                string selectedUrl = url;
+                string selectedUrl = TargetURL;
                 Stopwatch sw = Stopwatch.StartNew();
 
                 try

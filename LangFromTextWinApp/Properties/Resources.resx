@@ -374,6 +374,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T083" xml:space="preserve">
     <value>Please restart application to apply changes.</value>
   </data>
+  <data name="T084" xml:space="preserve">
+    <value>----- Please enter a valid URL address -----</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Complete word</value>
   </data>

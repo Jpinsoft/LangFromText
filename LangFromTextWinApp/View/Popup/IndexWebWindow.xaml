@@ -30,7 +30,8 @@
                 Width="230"
                 Margin="0,7,10,7"
                 Click="BtnIndexWeb_Click"
-                DockPanel.Dock="Right">
+                DockPanel.Dock="Right"
+                IsEnabled="{Binding CanIndex}">
                 <StackPanel Orientation="Horizontal">
                     <fontawesome:ImageAwesome
                         Height="20"
@@ -48,7 +49,8 @@
                 Margin="7"
                 FontSize="16"
                 IsEditable="True"
-                ItemsSource="{Binding ScanHistory}">
+                ItemsSource="{Binding ScanHistory}"
+                Text="{Binding TargetURL}">
                 <ComboBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />

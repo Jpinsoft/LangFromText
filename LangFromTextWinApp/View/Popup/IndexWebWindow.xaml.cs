@@ -48,7 +48,7 @@ namespace LangFromTextWinApp.View.Popup
 
         private async void BtnIndexWeb_Click(object sender, RoutedEventArgs e)
         {
-            await ViewModel.IndexWeb(CbTargetURL.Text, (int)SliderLevel.Value, (int)SliderMaxLimit.Value, TxbOnlyURLContains.Text, TxbOnlyURLNotContains.Text);
+            await ViewModel.IndexWeb((int)SliderLevel.Value, (int)SliderMaxLimit.Value, TxbOnlyURLContains.Text, TxbOnlyURLNotContains.Text);
         }
 
         private void BtnRemoveFromHistory_Click(object sender, RoutedEventArgs e)

@@ -374,6 +374,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T083" xml:space="preserve">
     <value>Zmena sa prejaví až po reštarte aplikácie.</value>
   </data>
+  <data name="T084" xml:space="preserve">
+    <value>----- Prosím zadajte URL adresu -----</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Dopĺňanie Slov/Viet</value>
   </data>

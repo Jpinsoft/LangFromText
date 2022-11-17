@@ -780,6 +780,15 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ----- Please enter a valid URL address -----.
+        /// </summary>
+        internal static string T084 {
+            get {
+                return ResourceManager.GetString("T084", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete word.
         /// </summary>
         internal static string T200 {
