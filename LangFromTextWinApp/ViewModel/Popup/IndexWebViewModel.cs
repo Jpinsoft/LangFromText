@@ -77,6 +77,8 @@ namespace LangFromTextWinApp.ViewModel.Popup
 
         private int maxLimit;
 
+        public Action OnRefreshView { get; set; }
+
         public IndexWebViewModel()
         {
 
@@ -157,6 +159,8 @@ namespace LangFromTextWinApp.ViewModel.Popup
                                     ScanOutput.Insert(0, new Tuple<string, string, bool>(string.Empty, "--- " + ex.Message, true));
                                 });
                             }
+
+                            OnRefreshView?.Invoke();
                         }
                     });
 
@@ -203,6 +207,8 @@ namespace LangFromTextWinApp.ViewModel.Popup
                         langAdapter?.CancelOperation();
                 }
             });
+
+            OnRefreshView?.Invoke();
         }
     }
 }

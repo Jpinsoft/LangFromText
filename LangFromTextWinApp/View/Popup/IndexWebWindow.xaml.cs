@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace LangFromTextWinApp.View.Popup
 {
@@ -33,7 +34,16 @@ namespace LangFromTextWinApp.View.Popup
             this.Owner = owner;
             InitializeComponent();
 
-            this.DataContext = new IndexWebViewModel();
+            this.DataContext = new IndexWebViewModel { OnRefreshView = RefreshView };
+        }
+
+        public void RefreshView()
+        {
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                if (LbScanOutput.Items.Count > 0)
+                    LbScanOutput.ScrollIntoView(LbScanOutput.Items[0]);
+            });
         }
 
         public IndexWebWindow()
