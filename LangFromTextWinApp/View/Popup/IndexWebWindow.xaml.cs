@@ -42,7 +42,7 @@ namespace LangFromTextWinApp.View.Popup
             App.Current.Dispatcher.Invoke(() =>
             {
                 if (LbScanOutput.Items.Count > 0)
-                    LbScanOutput.ScrollIntoView(LbScanOutput.Items[0]);
+                    LbScanOutput.ScrollIntoView(LbScanOutput.Items[LbScanOutput.Items.Count - 1]);
             });
         }
 

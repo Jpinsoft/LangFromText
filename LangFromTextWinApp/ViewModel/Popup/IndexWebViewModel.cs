@@ -156,7 +156,7 @@ namespace LangFromTextWinApp.ViewModel.Popup
                             {
                                 App.Current.Dispatcher.Invoke(() =>
                                 {
-                                    ScanOutput.Insert(0, new Tuple<string, string, bool>(string.Empty, "--- " + ex.Message, true));
+                                    ScanOutput.Add(new Tuple<string, string, bool>(string.Empty, "--- " + ex.Message, true));
                                 });
                             }
 
@@ -170,7 +170,7 @@ namespace LangFromTextWinApp.ViewModel.Popup
                     // nesmie byt v Await v inom vlakne
                     FEContext.MainWin.RefreshState();
 
-                    ScanOutput.Insert(0, new Tuple<string, string, bool>(string.Empty, $"*********** OPERATION COMPLETED, Elasped time: {sw.Elapsed}", false));
+                    ScanOutput.Add(new Tuple<string, string, bool>(string.Empty, $"*********** OPERATION COMPLETED, Elasped time: {sw.Elapsed}", false));
                 }
                 finally
                 {
@@ -196,12 +196,12 @@ namespace LangFromTextWinApp.ViewModel.Popup
                 if (htmlScan.IsError)
                 {
                     ErrorURLCount++;
-                    ScanOutput.Insert(0, new Tuple<string, string, bool>(string.Empty, htmlScan.ErrorMessage, true));
+                    ScanOutput.Add(new Tuple<string, string, bool>(string.Empty, htmlScan.ErrorMessage, true));
                 }
                 else
                 {
                     SuccessURLCount++;
-                    ScanOutput.Insert(0, new Tuple<string, string, bool>((SuccessURLCount).ToString(), htmlScan.URL.ToString(), false));
+                    ScanOutput.Add(new Tuple<string, string, bool>((SuccessURLCount).ToString(), htmlScan.URL.ToString(), false));
 
                     if (SuccessURLCount >= maxLimit)
                         langAdapter?.CancelOperation();
