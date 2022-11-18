@@ -308,7 +308,7 @@ You need more data. Please index web or text files and populate your text databa
     <value>Loading database... Please wait</value>
   </data>
   <data name="T069" xml:space="preserve">
-    <value>'{0}' successfully indexed.</value>
+    <value>'{0}' files was successfully indexed.</value>
   </data>
   <data name="T070" xml:space="preserve">
     <value>Let's go</value>

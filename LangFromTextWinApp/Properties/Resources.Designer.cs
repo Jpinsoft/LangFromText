@@ -629,7 +629,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; successfully indexed..
+        ///   Looks up a localized string similar to &apos;{0}&apos; files was successfully indexed..
         /// </summary>
         internal static string T069 {
             get {

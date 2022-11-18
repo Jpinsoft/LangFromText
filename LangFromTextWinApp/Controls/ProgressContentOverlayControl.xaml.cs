@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace LangFromTextWinApp.Controls
 {
@@ -13,6 +14,15 @@ namespace LangFromTextWinApp.Controls
         public bool CancelSignal { get; set; }
 
         private ContentControl parrentContentControl;
+
+        public string Title
+        {
+            get { return LblTitle.Content.ToString(); }
+            set
+            {
+                LblTitle.Content = string.IsNullOrEmpty(value) ? Properties.Resources.T067 : value;
+            }
+        }
 
         public object ParrentContentControl
         {

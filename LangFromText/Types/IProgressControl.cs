@@ -9,8 +9,10 @@ namespace Jpinsoft.LangTainer.Types
         object ParrentContentControl { get; set; }
 
         bool CancelSignal { get; set; }
-        
+
         void ShowProgress(bool allowCancel, string title = null);
+
+        string Title { get; set; }
 
         void CloseProgress();
     }

@@ -27,13 +27,12 @@ namespace LangFromTextWinApp.View
         public LangDataViewModel ViewModel { get { return this.DataContext as LangDataViewModel; } }
         private OpenFileDialog openFileDialog = new OpenFileDialog();
 
-        ILangAdapter langAdapter = new FileLangAdapter();
-
         public LangDataView()
         {
             InitializeComponent();
 
-            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.Filter = "Text files (*.txt;*.srt)|*.txt;*.srt|All files (*.*)|*.*";
+            openFileDialog.Multiselect = true;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -47,7 +46,7 @@ namespace LangFromTextWinApp.View
         {
             if (openFileDialog.ShowDialog() == true)
             {
-                await ViewModel.IndexTextSource(new ProgressContentOverlayControl(this), langAdapter.GetTextSources(openFileDialog.FileName).First());
+                await ViewModel.IndexFiles(new ProgressContentOverlayControl(this), openFileDialog.FileNames);
             }
         }
 

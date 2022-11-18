@@ -1,5 +1,7 @@
 ﻿using Jpinsoft.LangTainer.CBO;
+using Jpinsoft.LangTainer.LangAdapters;
 using Jpinsoft.LangTainer.Types;
+using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.Properties;
 using System;
@@ -97,30 +99,39 @@ namespace LangFromTextWinApp.ViewModel
                 Words = FEContext.LangFromText.GetWordsBank(w => w.Value.Value.Contains(filterString));
         }
 
-        public async Task IndexTextSource(IProgressControl progressControl, TextSourceCBO textSourceCBO)
+        public async Task IndexFiles(IProgressControl progressControl, string[] files)
         {
+            ILangAdapter langAdapter = new FileLangAdapter();
+
             try
             {
                 progressControl.ShowProgress(false);
-                FEContext.MainWin.MenuMainVertical.IsEnabled = false;
 
-                await Task.Run(() =>
+                foreach (string file in files)
                 {
-                    FEContext.LangFromText.IndexSource(textSourceCBO);
-                    FEContext.LangFromText.SaveDatabase();
-                });
+                    progressControl.Title = file;
+
+                    FEContext.MainWin.MenuMainVertical.IsEnabled = false;
+
+                    TextSourceCBO textSourceCBO = langAdapter.GetTextSources(file).First();
+
+                    await Task.Run(() => { FEContext.LangFromText.IndexSource(textSourceCBO); });
+                }
+
+                await Task.Run(() => { FEContext.LangFromText.SaveDatabase(); });
+            }
+            finally
+            {
+                progressControl.CloseProgress();
 
                 // nesmie byt v Await v inom vlakne
                 FEContext.MainWin.RefreshState();
                 Init();
 
-                MessageBoxWPF.ShowInfoFormat(Application.Current.MainWindow, MessageBoxButton.OK, Resources.T069, textSourceCBO.Address);
-            }
-            finally
-            {
-                progressControl.CloseProgress();
                 FEContext.MainWin.MenuMainVertical.IsEnabled = true;
             }
+
+            MessageBoxWPF.ShowInfoFormat(Application.Current.MainWindow, MessageBoxButton.OK, Resources.T069, files.Length);
         }
 
         public async Task RemoveTextSource(IProgressControl progressControl, IEnumerable<TextSourceCBO> tSourceList)
