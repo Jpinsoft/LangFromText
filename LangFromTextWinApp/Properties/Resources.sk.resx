@@ -149,7 +149,7 @@ Začnite naplnením databázy textov, aby ste mohli naplno využívať funkcie a
     <value>Výborne, vaša databáza je naplnená z {0} rôznych zdrojov. Hodnota indexu rozmanitosti je {1}</value>
   </data>
   <data name="T013" xml:space="preserve">
-    <value>Na 1000 slov pripadá iba {0} textových zdrojov. Skúste zindexovať ďalšie zdroje (web-y, lokálne súbory).</value>
+    <value>Na 1000 slov pripadá iba {0} textových zdrojov. Skúste získať ďalšie textové zdroje z webu, alebo súborov.</value>
   </data>
   <data name="T014" xml:space="preserve">
     <value>Štart naplnenia databázy</value>

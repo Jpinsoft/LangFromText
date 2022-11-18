@@ -152,7 +152,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is {0} text sources per 1000 words. Try to index more text sources..
+        ///   Looks up a localized string similar to There are only {0} text sources per 1000 words. Try to get more text sources from web or files..
         /// </summary>
         internal static string T013 {
             get {
