@@ -206,7 +206,7 @@ You need more data. Please index web or text files and populate your text databa
     <value>TextSources</value>
   </data>
   <data name="T035" xml:space="preserve">
-    <value>WordsBank</value>
+    <value>Words</value>
   </data>
   <data name="T036" xml:space="preserve">
     <value>Search (Enter)</value>
@@ -215,7 +215,7 @@ You need more data. Please index web or text files and populate your text databa
     <value>Occurrence</value>
   </data>
   <data name="T038" xml:space="preserve">
-    <value>Text Sources Count</value>
+    <value>Text Sources</value>
   </data>
   <data name="T039" xml:space="preserve">
     <value>Rating</value>
@@ -224,7 +224,7 @@ You need more data. Please index web or text files and populate your text databa
     <value>Word</value>
   </data>
   <data name="T041" xml:space="preserve">
-    <value>Get text source from disk</value>
+    <value>Get text source from files</value>
   </data>
   <data name="T042" xml:space="preserve">
     <value>Show sentences</value>
@@ -308,7 +308,7 @@ You need more data. Please index web or text files and populate your text databa
     <value>Loading database... Please wait</value>
   </data>
   <data name="T069" xml:space="preserve">
-    <value>'{0}' files was successfully indexed.</value>
+    <value>File indexer: '{0}' files was successfully indexed.</value>
   </data>
   <data name="T070" xml:space="preserve">
     <value>Let's go</value>

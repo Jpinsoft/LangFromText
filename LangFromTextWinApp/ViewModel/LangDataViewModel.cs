@@ -109,7 +109,7 @@ namespace LangFromTextWinApp.ViewModel
 
                 foreach (string file in files)
                 {
-                    progressControl.Title = file;
+                    progressControl.Title = $"File Indexing: {file}";
 
                     FEContext.MainWin.MenuMainVertical.IsEnabled = false;
 

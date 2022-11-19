@@ -11,7 +11,7 @@
     Title="{x:Static localHelpers:FEConstants.PRODUCT_NAME}"
     Width="{Binding WinSizeWidth, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
     Height="{Binding WinSizeHeight, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
-    MinWidth="640"
+    MinWidth="720"
     MinHeight="480"
     Background="{DynamicResource ContentBackground}"
     Closing="Window_Closing"

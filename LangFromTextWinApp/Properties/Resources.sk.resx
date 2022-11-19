@@ -224,7 +224,7 @@ Začnite naplnením databázy textov, aby ste mohli naplno využívať funkcie a
     <value>Slovo</value>
   </data>
   <data name="T041" xml:space="preserve">
-    <value>Získať texty z disku</value>
+    <value>Získať texty zo súborov</value>
   </data>
   <data name="T042" xml:space="preserve">
     <value>Zobraziť vety</value>
@@ -308,7 +308,7 @@ Začnite naplnením databázy textov, aby ste mohli naplno využívať funkcie a
     <value>Načítavam databázu... Čakajte prosím</value>
   </data>
   <data name="T069" xml:space="preserve">
-    <value>'{0}' súborov bolo úspešne indexovaných.</value>
+    <value>File indexer: '{0}' súborov bolo úspešne indexovaných.</value>
   </data>
   <data name="T070" xml:space="preserve">
     <value>Začať</value>

@@ -323,7 +323,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WordsBank.
+        ///   Looks up a localized string similar to Words.
         /// </summary>
         internal static string T035 {
             get {
@@ -350,7 +350,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text Sources Count.
+        ///   Looks up a localized string similar to Text Sources.
         /// </summary>
         internal static string T038 {
             get {
@@ -377,7 +377,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get text source from disk.
+        ///   Looks up a localized string similar to Get text source from files.
         /// </summary>
         internal static string T041 {
             get {
@@ -629,7 +629,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &apos;{0}&apos; files was successfully indexed..
+        ///   Looks up a localized string similar to File indexer: &apos;{0}&apos; files was successfully indexed..
         /// </summary>
         internal static string T069 {
             get {

@@ -232,14 +232,14 @@
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="80" Binding="{Binding Value.PocetVyskytov}">
+                            <DataGridTextColumn Width="100" Binding="{Binding Value.PocetVyskytov}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Mode=OneWay, ConverterParameter=T037, Converter={StaticResource ResourceConverter}}" />
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="80" Binding="{Binding Value.PocetZdrojov}">
+                            <DataGridTextColumn Width="110" Binding="{Binding Value.PocetZdrojov}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Mode=OneWay, ConverterParameter=T038, Converter={StaticResource ResourceConverter}}" />
