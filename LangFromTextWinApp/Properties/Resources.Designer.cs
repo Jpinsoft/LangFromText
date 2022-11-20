@@ -789,6 +789,33 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open LangFromText.
+        /// </summary>
+        internal static string T085 {
+            get {
+                return ResourceManager.GetString("T085", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lang-trainer - random game.
+        /// </summary>
+        internal static string T086 {
+            get {
+                return ResourceManager.GetString("T086", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string T087 {
+            get {
+                return ResourceManager.GetString("T087", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete word.
         /// </summary>
         internal static string T200 {

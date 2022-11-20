@@ -73,10 +73,10 @@ namespace LangFromTextWinApp
 
             notifIcon.ContextMenu = new ContextMenu(new System.Windows.Forms.MenuItem[]
             {
-                new System.Windows.Forms.MenuItem("Open LangFromText", NotifyContextMenuOpen_Click),
-                new System.Windows.Forms.MenuItem("Lang-trainer", NotifyContextMenuShowRandomQuestion_Click),
+                new System.Windows.Forms.MenuItem(Properties.Resources.T085, NotifyContextMenuOpen_Click),
+                new System.Windows.Forms.MenuItem(Properties.Resources.T086, NotifyContextMenuShowRandomQuestion_Click),
                 new System.Windows.Forms.MenuItem("-"),
-                new System.Windows.Forms.MenuItem("Exit", NotifyContextMenuClose_Click)
+                new System.Windows.Forms.MenuItem(Properties.Resources.T087, NotifyContextMenuClose_Click)
             });
 
             notifIcon.DoubleClick += NotifyContextMenuOpen_Click;
@@ -125,7 +125,7 @@ namespace LangFromTextWinApp
             {
                 if (!FEContext.IsAutorun)
                     MessageBoxWPF.ShowError(FEContext.MainWin, MessageBoxButton.OK, Properties.Resources.T079 + ex.Message);
-                
+
                 // TODO else EventLog
 
                 this.Close();

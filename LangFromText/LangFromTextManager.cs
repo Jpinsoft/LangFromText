@@ -28,6 +28,7 @@ namespace Jpinsoft.LangTainer
         public const double CN_MAX_RATING = 1_000_000;
         public const int CN_MIN_WORDS_COUNT = 500;
         public const float CN_MIN_TEXTSOURCES_INDEX = 2;
+        private const string CN_ERRR_MSG_1 = "Not enought words in Database, you need more data. Please index web or text files and populate database.";
 
         public int WordsCount
         {
@@ -342,7 +343,7 @@ namespace Jpinsoft.LangTainer
             res = res.Take(maxCount).ToList();
 
             if (res.Count == 0)
-                throw new Exception("Not enought words in Database. Please index more text sources.");
+                throw new InfoException(CN_ERRR_MSG_1);
 
             return res;
         }
@@ -357,7 +358,7 @@ namespace Jpinsoft.LangTainer
             res = res.Take(maxCount).ToList();
 
             if (res.Count == 0)
-                throw new Exception("Not enought words in Database. Please index more text sources.");
+                throw new InfoException(CN_ERRR_MSG_1);
 
             return res;
         }

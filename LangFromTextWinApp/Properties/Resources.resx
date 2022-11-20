@@ -377,6 +377,15 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T084" xml:space="preserve">
     <value>----- Please enter a valid URL address -----</value>
   </data>
+  <data name="T085" xml:space="preserve">
+    <value>Open LangFromText</value>
+  </data>
+  <data name="T086" xml:space="preserve">
+    <value>Lang-trainer - random game</value>
+  </data>
+  <data name="T087" xml:space="preserve">
+    <value>Exit</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Complete word</value>
   </data>
