@@ -295,6 +295,7 @@
     <Content Include="MainLT.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="InstaLT.jpg" />
     <Resource Include="MainLT.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
