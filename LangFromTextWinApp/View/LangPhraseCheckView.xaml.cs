@@ -61,7 +61,7 @@ namespace LangFromTextWinApp.View
         {
             ListView listView = sender as ListView;
             GridView gridView = listView.View as GridView;
-            double actualWidth = listView.ActualWidth - gridView.Columns[1].ActualWidth - 80;
+            double actualWidth = listView.ActualWidth - gridView.Columns[1].ActualWidth - gridView.Columns[2].ActualWidth - 35;
 
             if (actualWidth > 40)
                 gridView.Columns[0].Width = actualWidth;

@@ -181,7 +181,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Rating}" Header="Rating" />
+                    <GridViewColumn
+                        Width="80"
+                        DisplayMemberBinding="{Binding Rating}"
+                        Header="Rating" />
                 </GridView>
             </ListView.View>
 
