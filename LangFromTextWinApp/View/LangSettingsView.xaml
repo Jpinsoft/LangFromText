@@ -131,12 +131,12 @@
 
                 <Slider
                     x:Name="SliderLevel"
-                    Width="200"
+                    Width="260"
                     Margin="10,3,10,0"
                     IsSnapToTickEnabled="True"
-                    Maximum="120"
+                    Maximum="240"
                     Minimum="0"
-                    TickFrequency="10"
+                    TickFrequency="15"
                     TickPlacement="None"
                     Value="{Binding ActivationInterval}" />
 
