@@ -386,6 +386,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T087" xml:space="preserve">
     <value>Koniec</value>
   </data>
+  <data name="T088" xml:space="preserve">
+    <value>URL šablóna - otvorenie prekladača</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Dopĺňanie Slov/Viet</value>
   </data>

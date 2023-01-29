@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Jpinsoft.LangTainer.Utils;
+using LangFromTextWinApp.Properties;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -103,6 +106,23 @@ namespace LangFromTextWinApp.Helpers
             {
                 if (throwExOnError)
                     throw new Exception($"Unable to set Theme - {themeName}");
+            }
+        }
+
+        public static void OpenTranslator(string word)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(Settings.Default.URLTemplateOpenTranslator) || !Settings.Default.URLTemplateOpenTranslator.Contains(FEConstants.PLACEHOLDER_WORD))
+                    throw new UriFormatException($"{Resources.T088} is not correct. PLease chceck Settings.");
+
+                string openURL = Properties.Settings.Default.URLTemplateOpenTranslator.Replace(FEConstants.PLACEHOLDER_WORD, word);
+
+                Process.Start(openURL);
+            }
+            catch (Exception ex)
+            {
+                MessageBoxWPF.ShowError(Application.Current.MainWindow, MessageBoxButton.OK, ExceptionUtils.AddInnerMessages(ex));
             }
         }
     }

@@ -45,5 +45,10 @@ namespace LangFromTextWinApp.View
         {
             ViewModel.LoadDatabase(new ProgressContentOverlayControl(this));
         }
+
+        private void BtnTranslatorLinkReset_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.TranslatorLinkReset();
+        }
     }
 }

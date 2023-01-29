@@ -113,6 +113,12 @@
                                 x:Name="TxbCorrectAnsw"
                                 VerticalAlignment="Center"
                                 Text="AAA" />
+                            <Button
+                                x:Name="BtnOpenTranslator"
+                                Margin="10,5"
+                                Click="BtnOpenTranslator_Click"
+                                Content="Open translator"
+                                Cursor="Hand" />
                         </StackPanel>
                     </Label.Content>
                 </Label>

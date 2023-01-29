@@ -35,5 +35,8 @@
     <Setting Name="AutoStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="URLTemplateOpenTranslator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://translate.google.com/?sl=auto&amp;tl=en&amp;text=[WORD]</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

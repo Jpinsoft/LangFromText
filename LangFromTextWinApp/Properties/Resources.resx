@@ -386,6 +386,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T087" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="T088" xml:space="preserve">
+    <value>URL template - open translator</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Complete word</value>
   </data>

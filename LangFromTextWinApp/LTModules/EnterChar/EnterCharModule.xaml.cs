@@ -206,6 +206,9 @@ namespace LangFromTextWinApp.LTModules.EnterChar
             }
         }
 
-
+        private void BtnOpenTranslator_Click(object sender, RoutedEventArgs e)
+        {
+            WPFHelpers.OpenTranslator(targetWord.Value);
+        }
     }
 }

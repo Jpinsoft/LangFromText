@@ -101,6 +101,18 @@ namespace LangFromTextWinApp.ViewModel
             set { SetProperty(ref isTimerSettingEnabled, value); }
         }
 
+        private string translatorLink;
+
+        public string TranslatorLink
+        {
+            get { return translatorLink; }
+            set
+            {
+                SetProperty(ref translatorLink, value);
+
+                Settings.Default.URLTemplateOpenTranslator = value;
+            }
+        }
 
         public LangSettingsViewModel()
         {
@@ -123,6 +135,7 @@ namespace LangFromTextWinApp.ViewModel
             SelectedTheme = Settings.Default.CurrentTheme;
             SelectedLanguage = Languages.FirstOrDefault(l => l.Item2 == Settings.Default.AppLanguage);
             AutoStart = Settings.Default.AutoStart;
+            TranslatorLink = Settings.Default.URLTemplateOpenTranslator;
         }
 
         public async void LoadDatabase(IProgressControl progressControl)
@@ -206,6 +219,11 @@ namespace LangFromTextWinApp.ViewModel
 
                 Settings.Default.AutoStart = AutoStart;
             }
+        }
+
+        public void TranslatorLinkReset()
+        {
+            TranslatorLink = "https://translate.google.com/?sl=auto&tl=en&text=" + FEConstants.PLACEHOLDER_WORD;
         }
     }
 }

@@ -21,5 +21,7 @@ namespace LangFromTextWinApp.Helpers
         public const string RESKEY_Pallete3 = "Pallete3";
         public const string RESKEY_Pallete4 = "Pallete4";
         public const string RESKEY_Pallete5 = "Pallete5";
+
+        public const string PLACEHOLDER_WORD = "[WORD]";
     }
 }

@@ -152,5 +152,17 @@ namespace LangFromTextWinApp.Properties {
                 this["AutoStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://translate.google.com/?sl=auto&tl=en&text=[WORD]")]
+        public string URLTemplateOpenTranslator {
+            get {
+                return ((string)(this["URLTemplateOpenTranslator"]));
+            }
+            set {
+                this["URLTemplateOpenTranslator"] = value;
+            }
+        }
     }
 }

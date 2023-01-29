@@ -816,6 +816,15 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to URL template - open translator.
+        /// </summary>
+        internal static string T088 {
+            get {
+                return ResourceManager.GetString("T088", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete word.
         /// </summary>
         internal static string T200 {
