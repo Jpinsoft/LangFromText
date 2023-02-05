@@ -825,6 +825,15 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Translation.
+        /// </summary>
+        internal static string T089 {
+            get {
+                return ResourceManager.GetString("T089", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete word.
         /// </summary>
         internal static string T200 {

@@ -206,7 +206,7 @@ namespace LangFromTextWinApp.LTModules.EnterChar
             }
         }
 
-        private void BtnOpenTranslator_Click(object sender, RoutedEventArgs e)
+        private void TxbCorrectAnsw_MouseDown(object sender, MouseButtonEventArgs e)
         {
             WPFHelpers.OpenTranslator(targetWord.Value);
         }

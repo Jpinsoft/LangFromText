@@ -110,15 +110,28 @@
                                 Margin="10,5"
                                 Icon="ArrowUp" />
                             <TextBlock
-                                x:Name="TxbCorrectAnsw"
+                                Margin="0,0,10,0"
                                 VerticalAlignment="Center"
-                                Text="AAA" />
-                            <Button
+                                Cursor="Hand"
+                                TextDecorations="Underline"
+                                ToolTip="{Binding ConverterParameter=T089, Converter={StaticResource ResourceConverter}}">
+                                <Run
+                                    x:Name="TxbCorrectAnsw"
+                                    MouseDown="TxbCorrectAnsw_MouseDown"
+                                    Text="AAA" />
+                            </TextBlock>
+                            <!--<Button
                                 x:Name="BtnOpenTranslator"
                                 Margin="10,5"
                                 Click="BtnOpenTranslator_Click"
-                                Content="Open translator"
-                                Cursor="Hand" />
+                                Cursor="Hand">
+                                <StackPanel Orientation="Horizontal" ToolTip="Open translator">
+                                    <fontawesome:ImageAwesome
+                                        Height="20"
+                                        Margin="10,5"
+                                        Icon="Language" />
+                                </StackPanel>
+                            </Button>-->
                         </StackPanel>
                     </Label.Content>
                 </Label>
