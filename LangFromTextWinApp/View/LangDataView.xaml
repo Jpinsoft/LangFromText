@@ -202,6 +202,16 @@
                         HorizontalAlignment="Right"
                         DockPanel.Dock="Bottom"
                         Orientation="Horizontal">
+                        <Button
+                            x:Name="BtnTranslateWord"
+                            Margin="10,0"
+                            HorizontalAlignment="Left"
+                            Click="BtnTranslateWord_Click"
+                            Cursor="Hand"
+                            Visibility="{Binding IsWordSelected, Converter={StaticResource BoolToVisibleConverter}}">
+                            <!--<TextBlock Margin="2,0" Text="{Binding SelectedWord.Value, StringFormat=Translate {0}}" />-->
+                            <TextBlock Margin="3,0" Text="{Binding Mode=OneWay, ConverterParameter=T089, Converter={StaticResource ResourceConverter}}" />
+                        </Button>
                         <TextBlock
                             HorizontalAlignment="Right"
                             FontWeight="Bold"
@@ -221,6 +231,7 @@
                         IsReadOnly="True"
                         ItemsSource="{Binding Words}"
                         RowHeaderWidth="0"
+                        SelectedItem="{Binding SelectedWord}"
                         SelectionMode="Extended"
                         SelectionUnit="FullRow"
                         VerticalGridLinesBrush="LightGray">
@@ -246,6 +257,26 @@
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
+                            <!--<DataGridTemplateColumn Width="*">
+                                <DataGridTemplateColumn.Header>
+                                    <TextBlock Text="{Binding Mode=OneWay, ConverterParameter=T040, Converter={StaticResource ResourceConverter}}" />
+                                </DataGridTemplateColumn.Header>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel HorizontalAlignment="Left">
+                                            <TextBlock
+                                                Margin="2,0"
+                                                Cursor="Hand"
+                                                MouseDown="TxbWord_MouseDown"
+                                                Text="{Binding Value}"
+                                                TextDecorations="Underline"
+                                                ToolTip="{Binding Mode=OneWay, ConverterParameter=T089, Converter={StaticResource ResourceConverter}}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+
                             <DataGridTextColumn Width="*" Binding="{Binding Value}">
                                 <DataGridTextColumn.HeaderTemplate>
                                     <DataTemplate>
@@ -253,6 +284,7 @@
                                     </DataTemplate>
                                 </DataGridTextColumn.HeaderTemplate>
                             </DataGridTextColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
                 </DockPanel>

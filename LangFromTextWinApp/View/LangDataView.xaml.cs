@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace LangFromTextWinApp.View
@@ -152,6 +153,11 @@ namespace LangFromTextWinApp.View
 
                 _lastDirection = direction;
             }
+        }
+
+        private void BtnTranslateWord_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.TranslateWord();
         }
     }
 

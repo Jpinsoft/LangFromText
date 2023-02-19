@@ -4,12 +4,14 @@ using Jpinsoft.LangTainer.Types;
 using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.Properties;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace LangFromTextWinApp.ViewModel
 {
@@ -27,6 +29,20 @@ namespace LangFromTextWinApp.ViewModel
                 SetProperty(ref words, value);
             }
         }
+
+        private KeyValuePair<string, WordCBO>? selectedWord;
+
+        public KeyValuePair<string, WordCBO>? SelectedWord
+        {
+            get { return selectedWord; }
+            set
+            {
+                SetProperty(ref selectedWord, value);
+                OnPropertyChanged(nameof(IsWordSelected));
+            }
+        }
+
+        public bool IsWordSelected { get { return SelectedWord != null; } }
 
         private List<TextSourceCBO> textSources;
 
@@ -162,6 +178,12 @@ namespace LangFromTextWinApp.ViewModel
                     FEContext.MainWin.MenuMainVertical.IsEnabled = true;
                 }
             }
+        }
+
+        public void TranslateWord()
+        {
+            if (selectedWord != null)
+                WPFHelpers.OpenTranslator(SelectedWord.Value.Value.ToString());
         }
     }
 }
