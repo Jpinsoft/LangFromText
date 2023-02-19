@@ -146,6 +146,13 @@ namespace LangFromTextWinApp.LTModules.SelectWord
                 {
                     if (((bool)tBtn.Tag) == true) // iba Correct word
                     {
+                        Run runControl = new Run(tBtn.Content.ToString());
+                        tBtn.Content = runControl;
+                        tBtn.Cursor = Cursors.Hand;
+                        runControl.TextDecorations.Add(TextDecorations.Underline);
+                        runControl.MouseDown += RunControl_MouseDown;
+                        runControl.ToolTip = Properties.Resources.T089;
+
                         if (tBtn.IsChecked == true)
                         {
                             tBtn.ToBackgroundAnim(Colors.Green, 500);
@@ -177,5 +184,9 @@ namespace LangFromTextWinApp.LTModules.SelectWord
             }
         }
 
+        private void RunControl_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WPFHelpers.OpenTranslator(((Run)sender).Text);
+        }
     }
 }
