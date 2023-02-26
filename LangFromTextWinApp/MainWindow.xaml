@@ -9,8 +9,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:settings="clr-namespace:LangFromTextWinApp.Properties"
     Title="{x:Static localHelpers:FEConstants.PRODUCT_NAME}"
-    Width="{Binding WinSizeWidth, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
-    Height="{Binding WinSizeHeight, Source={x:Static settings:Settings.Default}, Mode=TwoWay}"
     MinWidth="720"
     MinHeight="480"
     Background="{DynamicResource ContentBackground}"

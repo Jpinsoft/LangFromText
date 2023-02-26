@@ -113,6 +113,9 @@ namespace LangFromTextWinApp
             this.DataContext = new MainWindowViewModel();
             FEContext.MainWin = this;
 
+            this.Width = Settings.Default.WinSizeWidth;
+            this.Height = Settings.Default.WinSizeHeight;
+
             if (FEContext.IsAutorun)
                 this.WindowState = WindowState.Minimized;
 
@@ -171,6 +174,12 @@ namespace LangFromTextWinApp
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (this.WindowState == WindowState.Normal)
+            {
+                Settings.Default.WinSizeWidth = this.Width;
+                Settings.Default.WinSizeHeight = this.Height;
+            }
+
             Settings.Default.Save();
             notifIcon?.Dispose();
             ViewModel.Dispose();
