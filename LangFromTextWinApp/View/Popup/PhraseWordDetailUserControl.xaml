@@ -45,9 +45,13 @@
             <TextBlock Padding="5" TextWrapping="WrapWithOverflow">
                 <Run Text="{Binding SearchResults.Text1, StringFormat='\{0\} '}" />
                 <Run
+                    Cursor="Hand"
                     FontStyle="Italic"
                     FontWeight="Bold"
-                    Text="{Binding SearchResults.Text2}" />
+                    MouseDown="Run_MouseDown"
+                    Text="{Binding SearchResults.Text2}"
+                    TextDecorations="Underline"
+                    ToolTip="{Binding Mode=OneWay, ConverterParameter=T089, Converter={StaticResource ResourceConverter}}" />
                 <Run Text="{Binding SearchResults.Text3, StringFormat=' \{0\}'}" />
             </TextBlock>
         </WrapPanel>

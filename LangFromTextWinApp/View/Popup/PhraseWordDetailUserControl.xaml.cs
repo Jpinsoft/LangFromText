@@ -68,5 +68,10 @@ namespace LangFromTextWinApp.View.Popup
                 Process.Start(tSource.Address);
             }
         }
+
+        private void Run_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WPFHelpers.OpenTranslator(((Run)sender).Text);
+        }
     }
 }
