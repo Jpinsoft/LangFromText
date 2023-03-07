@@ -34,6 +34,8 @@ namespace LangFromTextWinApp.LTModules.SelectWord
         bool answShowed = false;
         ISmartStorage<LangModuleDataItemCBO> storage;
 
+        private List<ToggleButton> tBtns = new List<ToggleButton>();
+
         public SelectWordModule()
         {
             InitializeComponent();
@@ -72,7 +74,8 @@ namespace LangFromTextWinApp.LTModules.SelectWord
 
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            if (this.IsInitialized)
+                InitModule();
         }
 
         #endregion
@@ -84,6 +87,7 @@ namespace LangFromTextWinApp.LTModules.SelectWord
 
             // Generate GUI
             wPanelMain.Children.Clear();
+            tBtns.Clear();
             answShowed = false;
 
             //List<WordCBO> words = MainWindow.LangFromText.GetRandomWords(10);
@@ -113,6 +117,7 @@ namespace LangFromTextWinApp.LTModules.SelectWord
 
                 ToggleButton tButton = new ToggleButton { Background = pallete2, Name = "ToggleButton" + (i + 1), Tag = isCorrectWord, Content = word, Style = Application.Current.FindResource("PhraseToggleButtonStyle") as Style };
                 wPanelMain.Children.Add(tButton);
+                tBtns.Add(tButton);
 
                 if ((i % 2) != 0)
                 {
@@ -121,10 +126,21 @@ namespace LangFromTextWinApp.LTModules.SelectWord
                 }
                 else
                     tButton.AnimTranslateX(moveDoubleAnimation.From.Value * (rnd.Next(80, 100) / 100f), moveDoubleAnimation.To.Value * (rnd.Next(50, 100) / 100f), moveDoubleAnimation.EasingFunction, moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
+
+                tButton.Checked += TButton_Checked;
             }
 
             await Task.Delay((int)moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
             wPanelMain.Children[0].Focus();
+        }
+
+        private void TButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tBtns.Count(_ => _.IsChecked == true) > (int)SliderLevel.Value)
+            {
+                ((ToggleButton)sender).IsChecked = false;
+                e.Handled = true;
+            }
         }
 
         private void CheckResult()
