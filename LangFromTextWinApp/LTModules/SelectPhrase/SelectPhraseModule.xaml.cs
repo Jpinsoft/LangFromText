@@ -33,6 +33,7 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
 
         bool answShowed = false;
         ISmartStorage<LangModuleDataItemCBO> storage;
+        private List<ToggleButton> tBtns = new List<ToggleButton>();
 
         public SelectPhraseModule()
         {
@@ -57,7 +58,8 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
 
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-
+            if (this.IsLoaded)
+                InitModule();
         }
 
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -80,6 +82,7 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
             ScorePanel.InitScorePanel(nameof(SelectPhraseModule));
             // Generate GUI
             wPanelMain.Children.Clear();
+            tBtns.Clear();
             answShowed = false;
 
             List<PhraseCBO> rndSentences = FEContext.LangFromText.GetRandomSentences(4, 10);
@@ -99,6 +102,7 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
                 tButton.Background = pallete2;
 
                 wPanelMain.Children.Add(tButton);
+                tBtns.Add(tButton);
 
                 if ((i % 2) != 0)
                 {
@@ -107,10 +111,17 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
                 }
                 else
                     tButton.AnimTranslateX(moveDoubleAnimation.From.Value * (rnd.Next(80, 100) / 100f), moveDoubleAnimation.To.Value * (rnd.Next(50, 100) / 100f), moveDoubleAnimation.EasingFunction, moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
+
+                tButton.Checked += TButton_Checked;
             }
 
             await Task.Delay((int)moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
             wPanelMain.Children[0].Focus();
+        }
+
+        private void TButton_Checked(object sender, RoutedEventArgs e)
+        {
+            tBtns.Except(new ToggleButton[] { (ToggleButton)sender }).ToList().ForEach(_ => _.IsChecked = false);
         }
 
         private ToggleButton GeneratePhraseButton(PhraseCBO origPhrase, bool makeIncorrectPhrase)
