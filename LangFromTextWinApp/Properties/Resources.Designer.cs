@@ -834,7 +834,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Complete word.
+        ///   Looks up a localized string similar to Complete the word.
         /// </summary>
         internal static string T200 {
             get {

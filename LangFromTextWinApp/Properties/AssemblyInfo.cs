@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("LangFromText")]
-[assembly: AssemblyCopyright("Copyright © 2019-2022 Jozef Bátora (Jpinsoft)")]
+[assembly: AssemblyCopyright("Copyright © 2019-2023 Jozef Bátora (Jpinsoft)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
