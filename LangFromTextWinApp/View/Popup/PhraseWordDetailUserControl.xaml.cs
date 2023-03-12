@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,7 +37,9 @@ namespace LangFromTextWinApp.View.Popup
         public void Init(Tuple<PhraseCBO, PhraseCBO> sentencePhrase, Action onHide)
         {
             List<TextSourceCBO> tSources = FEContext.LangFromText.GetTextSources(tSource => tSource.Sentences.Contains(sentencePhrase.Item1));
-            SearchResultsViewModel searchResultsViewModel = new SearchResultsViewModel(new SearchResultCBO { FoundedPhrase = sentencePhrase.Item2, Sentence = sentencePhrase.Item1 });
+
+            int foundedPhraseIndex = sentencePhrase.Item1.FindSubphraseIndex(sentencePhrase.Item2.Words.ToArray());
+            SearchResultsViewModel searchResultsViewModel = new SearchResultsViewModel(new SearchResultCBO { Index = foundedPhraseIndex, FoundedPhrase = sentencePhrase.Item2, Sentence = sentencePhrase.Item1 });
 
             this.DataContext = new PhraseWordDetailViewModel { SearchResults = searchResultsViewModel, TextSources = tSources, OnHideAction = onHide };
         }
