@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Jpinsoft.LangTainer</RootNamespace>
-    <AssemblyVersion>1.2.1.0</AssemblyVersion>
-    <FileVersion>1.2.1.0</FileVersion>
+    <AssemblyVersion>1.2.2.0</AssemblyVersion>
+    <FileVersion>1.2.2.0</FileVersion>
     <Copyright>Copyright ©  2019-2022 Jozef Bátora (Jpinsoft)</Copyright>
     <Description>https://github.com/Jpinsoft/LangFromText</Description>
     <Title>LangFromText logic</Title>
