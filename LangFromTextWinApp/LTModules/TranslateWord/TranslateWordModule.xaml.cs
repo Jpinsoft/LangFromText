@@ -44,7 +44,8 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         #endregion
 
         // TranslatDictItem translatDictItem = null;
-        AnimSuccesFail animExtender;
+        AnimSuccesFail animExtenderBtnOk;
+        AnimSuccesFail animExtenderBtnFail;
         ISmartStorage<LangModuleDataItemCBO> storage;
 
         public TranslateWordModule()
@@ -52,7 +53,8 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             InitializeComponent();
 
             FEContext.MainWin.Closing += MainWin_Closing;
-            animExtender = new AnimSuccesFail(this.MainPanel, CN_PRE_INIT_DELAY, true);
+            animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY/4, true);
+            animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY/4, true);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -113,21 +115,21 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
                 Process.Start("https://translate.google.com/?hl=sk&tab=wT#en/sk/" + targetWord.ToString());
         }
 
-        private async void BtnOk_Click(object sender, RoutedEventArgs e)
+        private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
         {
             SaveResult(true);
 
-            animExtender.AnimSuccess();
+            animExtenderBtnOk.AnimSuccess();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
 
             InitModule();
         }
 
-        private async void BtnProblem_Click(object sender, RoutedEventArgs e)
+        private async void BtnFail_Click(object sender, RoutedEventArgs e)
         {
             SaveResult(false);
 
-            animExtender.AnimFail();
+            animExtenderBtnFail.AnimFail();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
 
             InitModule();
@@ -147,5 +149,9 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             storage.SetSmartData(tWordResult, targetWord.Value.ToString());
         }
 
+        private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
     }
 }

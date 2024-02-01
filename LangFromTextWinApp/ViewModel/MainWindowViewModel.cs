@@ -8,6 +8,7 @@ using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.LTModules.EnterChar;
 using LangFromTextWinApp.LTModules.SelectPhrase;
 using LangFromTextWinApp.LTModules.SelectWord;
+using LangFromTextWinApp.LTModules.TranslateWord;
 using LangFromTextWinApp.Properties;
 using System;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ namespace LangFromTextWinApp.ViewModel
             FEContext.MainWin.RefreshState();
 
             // TODO START TIMER
-            FEContext.LTModules = new List<LTModules.ILTModuleView> { new SelectWordModule(), new EnterCharModule(), new SelectPhraseModule() };
+            FEContext.LTModules = new List<LTModules.ILTModuleView> { new SelectWordModule(), new EnterCharModule(), new SelectPhraseModule(), new TranslateWordModule() };
 
             FEContext.MNavigator.ShowStartPage();
             FEContext.LangFromTextTimer = new LTTimer();

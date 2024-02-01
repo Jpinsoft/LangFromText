@@ -172,6 +172,13 @@ namespace LangFromTextWinApp
             FEContext.MNavigator.ShowControl(FEContext.LTModules.First(j => j is SelectPhraseModule));
         }
 
+        private void TranslateWordModule_Click(object sender, RoutedEventArgs e)
+        {
+            FEContext.MNavigator.MarkSelectedMenuItem(MenuItemLangTraining);
+
+            FEContext.MNavigator.ShowControl(FEContext.LTModules.First(j => j is LTModules.TranslateWord.TranslateWordModule));
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
