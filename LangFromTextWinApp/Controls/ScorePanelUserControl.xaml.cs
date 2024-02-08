@@ -26,7 +26,7 @@ namespace LangFromTextWinApp.Controls
     public partial class ScorePanelUserControl : UserControl
     {
         private string moduleName;
-        ISmartStorage<LangModuleDataItemCBO> storage;
+        public ISmartStorage<LangModuleDataItemCBO> ScoreStorage { get; private set; }
 
         public ScorePanelUserControl()
         {
@@ -36,12 +36,12 @@ namespace LangFromTextWinApp.Controls
         public void InitScorePanel(string moduleName)
         {
             this.moduleName = moduleName;
-            storage = FEContext.ModulesRepository[moduleName];
+            ScoreStorage = FEContext.ModulesRepository[moduleName];
 
             TxbScoreToDay.Text = $"{GetScoreToday().DataObject.Score}";
 
-            List<SmartData<LangModuleDataItemCBO>> allModuleData = storage.SearchSmartData();
-            TxbScoreTotal.Text = $"{allModuleData.Sum( item => item.DataObject.Score)}";
+            List<SmartData<LangModuleDataItemCBO>> allModuleData = ScoreStorage.SearchSmartData();
+            TxbScoreTotal.Text = $"{allModuleData.Sum(item => item.DataObject.Score)}";
         }
 
         private void LinkScore_Click(object sender, RoutedEventArgs e)
@@ -56,15 +56,15 @@ namespace LangFromTextWinApp.Controls
             scoreView.ShowDialog();
         }
 
-        private SmartData<LangModuleDataItemCBO> GetScoreToday()
+        public SmartData<LangModuleDataItemCBO> GetScoreToday()
         {
             string dataKey = DateTime.Now.ToString("yyyy-MM-dd");
-            SmartData<LangModuleDataItemCBO> sData = storage.GetSmartData(dataKey);
+            SmartData<LangModuleDataItemCBO> sData = ScoreStorage.GetSmartData(dataKey);
 
             if (sData == null)
             {
-                storage.SetSmartData(new LangModuleDataItemCBO(), dataKey);
-                sData = storage.GetSmartData(dataKey);
+                ScoreStorage.SetSmartData(new LangModuleDataItemCBO(), dataKey);
+                sData = ScoreStorage.GetSmartData(dataKey);
             }
 
             if (sData.DataObject == null)
@@ -79,7 +79,7 @@ namespace LangFromTextWinApp.Controls
             scoreSmartData.DataObject.Score += score;
 
             // TODo Save score
-            storage.SetSmartData(scoreSmartData.DataObject, scoreSmartData.Key);
+            ScoreStorage.SetSmartData(scoreSmartData.DataObject, scoreSmartData.Key);
         }
     }
 }

@@ -8,8 +8,6 @@ namespace Jpinsoft.LangTainer.CBO
     {
         public int Score { get; set; }
 
-        public int SuccesCount { get; set; }
-
-        public int FailsCount { get; set; }
+        public List<string> ScoreData { get; set; } = new List<string>();
     }
 }

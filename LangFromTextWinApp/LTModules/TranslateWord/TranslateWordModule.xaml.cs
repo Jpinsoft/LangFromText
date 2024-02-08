@@ -46,15 +46,14 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         // TranslatDictItem translatDictItem = null;
         AnimSuccesFail animExtenderBtnOk;
         AnimSuccesFail animExtenderBtnFail;
-        ISmartStorage<LangModuleDataItemCBO> storage;
 
         public TranslateWordModule()
         {
             InitializeComponent();
 
             FEContext.MainWin.Closing += MainWin_Closing;
-            animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY/4, true);
-            animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY/4, true);
+            animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY / 4, true);
+            animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY / 4, true);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -64,12 +63,13 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private void MainWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            storage?.SaveChanges();
+            //storage?.SaveChanges();
         }
 
         private void InitModule()
         {
-            storage = FEContext.ModulesRepository[nameof(TranslateWordModule)];
+            //storage = FEContext.ModulesRepository[nameof(TranslateWordModule)];
+            ScorePanel.InitScorePanel(nameof(TranslateWordModule));
 
             if ((targetWord = GetFromHistory()) == null)
             {
@@ -94,15 +94,15 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private WordCBO GetFromHistory()
         {
-            List<SmartData<LangModuleDataItemCBO>> history = storage.SearchSmartData(sData => sData.LastUpdate.Date < DateTime.Now.Date && sData.DataObject.FailsCount > sData.DataObject.SuccesCount);
+            //List<SmartData<LangModuleDataItemCBO>> history = ScorePanel.ScoreStorage.SearchSmartData(sData => sData.LastUpdate.Date < DateTime.Now.Date && sData.DataObject.FailsCount > sData.DataObject.SuccesCount);
 
-            if (history?.Count > 0 && rnd.Next(100) < 70)
-            {
-                // Any random word, from max rating to min rating
-                SmartData<LangModuleDataItemCBO> sData = history[rnd.Next(history.Count)];
+            //if (history?.Count > 0 && rnd.Next(100) < 70)
+            //{
+            //    // Any random word, from max rating to min rating
+            //    SmartData<LangModuleDataItemCBO> sData = history[rnd.Next(history.Count)];
 
-                return FEContext.LangFromText.GetWordFromBank(sData.Key);
-            }
+            //    return FEContext.LangFromText.GetWordFromBank(sData.Key);
+            //}
 
             return null;
         }
@@ -117,7 +117,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
         {
-            SaveResult(true);
+            SaveScoreWord(targetWord.Value.ToString(), true);
 
             animExtenderBtnOk.AnimSuccess();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
@@ -127,7 +127,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private async void BtnFail_Click(object sender, RoutedEventArgs e)
         {
-            SaveResult(false);
+            SaveScoreWord(targetWord.Value.ToString(), false);
 
             animExtenderBtnFail.AnimFail();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
@@ -135,18 +135,35 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             InitModule();
         }
 
-        private void SaveResult(bool success)
+        private void SaveScoreWord(string word, bool success)
         {
-            SmartData<LangModuleDataItemCBO> sData = storage.GetSmartData(targetWord.Value.ToString());
-            LangModuleDataItemCBO tWordResult = sData != null ? sData.DataObject : new LangModuleDataItemCBO { };
+            SmartData<LangModuleDataItemCBO> todayScore = ScorePanel.GetScoreToday();
 
             if (success)
-                tWordResult.SuccesCount++;
-            else
-                tWordResult.FailsCount++;
+            {
+                // Increment score today
+                todayScore.DataObject.Score++;
+                ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
 
-            // TODo Save score
-            storage.SetSmartData(tWordResult, targetWord.Value.ToString());
+                // TODO doriesit reset - co ked sa vymeni DB slov z EN na FR. Potom to nebude davat zmysel
+                SmartData<LangModuleDataItemCBO> unknownWordsScoreData = ScorePanel.ScoreStorage.SearchSmartData(_ => _.DataObject.ScoreData.Contains(word)).FirstOrDefault();
+
+                if (unknownWordsScoreData != null)
+                {
+                    unknownWordsScoreData.DataObject.ScoreData.Remove(word);
+                    ScorePanel.ScoreStorage.SetSmartData(unknownWordsScoreData.DataObject, unknownWordsScoreData.Key);
+                }
+            }
+
+            if (!success)
+            {
+                // PROBLEM - ScoreData nie je typu List<string> ale jsonArray
+                if (!todayScore.DataObject.ScoreData.Contains(word))
+                    todayScore.DataObject.ScoreData.Add(word);
+
+                // TODo Save score
+                ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
+            }
         }
 
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

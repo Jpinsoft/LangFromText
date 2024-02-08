@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Jpinsoft.LangTainer.ContainerStorage;
+using System.IO;
+using Jpinsoft.LangTainer.Types;
 
 namespace Jpinsoft.LangTainer.Data
 {
@@ -29,7 +31,19 @@ namespace Jpinsoft.LangTainer.Data
                 if (st == null)
                 {
                     st = new JsonFileSmartStorage<LangModuleDataItemCBO>();
-                    st.InitStorage(storageKey, repositoryFolder);
+
+                    try
+                    {
+                        st.InitStorage(storageKey, repositoryFolder);
+                    }
+                    catch (Exception ex)
+                    {
+                        DeleteStorage(storageKey);
+                        st.InitStorage(storageKey, repositoryFolder);
+
+                        // throw new InfoException($"Unable to load '{storageKey}' module data. Module data file was reset.");
+                    }
+
                     Repository.Add(st);
                 }
 
@@ -37,5 +51,10 @@ namespace Jpinsoft.LangTainer.Data
             }
         }
 
+        private void DeleteStorage(string storageKey)
+        {
+            string storageFile = Path.Combine(repositoryFolder, storageKey + ".json");
+            File.Delete(storageFile);
+        }
     }
 }
