@@ -215,7 +215,7 @@ namespace Jpinsoft.LangTainer
         }
 
 
-        public WordCBO GetWordFromBank(string word)
+        public WordCBO GetWordFromBank(string word, bool throwOnNullResult = true)
         {
             rwLock.EnterReadLock();
 
@@ -224,7 +224,12 @@ namespace Jpinsoft.LangTainer
                 if (this.langRepository.WordsBank.ContainsKey(word))
                     return this.langRepository.WordsBank[word];
                 else
-                    throw new InfoException($"Database does not contain word '{word}'. Please check word or index database.");
+                {
+                    if (throwOnNullResult)
+                        throw new InfoException($"Database does not contain word '{word}'. Please check word or index database.");
+                    else
+                        return null;
+                }
             }
             finally { rwLock.ExitReadLock(); }
         }

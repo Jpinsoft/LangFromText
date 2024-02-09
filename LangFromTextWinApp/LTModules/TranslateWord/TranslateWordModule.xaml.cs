@@ -2,8 +2,10 @@
 using Jpinsoft.LangTainer.ContainerStorage;
 using Jpinsoft.LangTainer.ContainerStorage.Types;
 using Jpinsoft.LangTainer.Types;
+using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.Properties;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         static Random rnd = new Random();
         WordCBO targetWord = null;
         private const int CN_PRE_INIT_DELAY = 1000;
+        private const int FROM_HISTORY_PERCENT_PROBABILITY = 50;
 
         #region ILTModuleView
 
@@ -63,56 +66,50 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private void MainWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //storage?.SaveChanges();
         }
 
         private void InitModule()
         {
-            //storage = FEContext.ModulesRepository[nameof(TranslateWordModule)];
             ScorePanel.InitScorePanel(nameof(TranslateWordModule));
 
             if ((targetWord = GetFromHistory()) == null)
             {
                 // Last failed word
                 List<WordCBO> words = FEContext.LangFromText.GetWordsBank(kp => kp.Value.PocetVyskytov > 1).OrderByDescending(kp => kp.Value.PocetVyskytov).Select(kp => kp.Value).ToList();
-                int rndIndex = rnd.Next(words.Count);
-
-                targetWord = words[rndIndex];
+                targetWord = words[rnd.Next(words.Count)];
             }
 
             LblQuestion.Content = string.Format("Prelož slovo {0}", targetWord);
-
-            //translatDictItem = MainWindow.LangFromText.GetDictItem(d => d.FirstLangWords.Contains(targetWord.Value));
-
-            //if (translatDictItem == null)
-            //    TxbAnswer.Visibility = Visibility.Hidden;
-            //else
-            //    TxbAddWord.Text = string.Join(Environment.NewLine, translatDictItem.SecondLangWords);
-
-            //ScoreViewPanel.LoadData();
         }
 
         private WordCBO GetFromHistory()
         {
-            //List<SmartData<LangModuleDataItemCBO>> history = ScorePanel.ScoreStorage.SearchSmartData(sData => sData.LastUpdate.Date < DateTime.Now.Date && sData.DataObject.FailsCount > sData.DataObject.SuccesCount);
+            List<string> unknownWords = new List<string>();
+            ScorePanel.ScoreStorage.SearchSmartData(_ => _.Created.Date < DateTime.Now.Date && _.DataObject.ScoreData.Count > 0)
+                .ForEach(_ => unknownWords.AddRange(_.DataObject.ScoreData));
 
-            //if (history?.Count > 0 && rnd.Next(100) < 70)
-            //{
-            //    // Any random word, from max rating to min rating
-            //    SmartData<LangModuleDataItemCBO> sData = history[rnd.Next(history.Count)];
+            if (rnd.Next(100) < FROM_HISTORY_PERCENT_PROBABILITY && unknownWords.Count > 0)
+            {
+                // Any random word, from max rating to min rating
+                unknownWords.Shuffle(rnd);
 
-            //    return FEContext.LangFromText.GetWordFromBank(sData.Key);
-            //}
+                foreach (string w in unknownWords)
+                {
+                    WordCBO wordCBO = FEContext.LangFromText.GetWordFromBank(w, false);
+
+                    if (wordCBO != null)
+                        return wordCBO;
+                    else
+                        RemoveWordFormScoreData(w);
+                }
+            }
 
             return null;
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            if (e.Target == "AZET")
-                Process.Start("https://slovnik.aktuality.sk/preklad/anglicko-slovensky/?q=" + targetWord.ToString());
-            else
-                Process.Start("https://translate.google.com/?hl=sk&tab=wT#en/sk/" + targetWord.ToString());
+            WPFHelpers.OpenTranslator(targetWord.ToString());
         }
 
         private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
@@ -145,24 +142,28 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
                 todayScore.DataObject.Score++;
                 ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
 
-                // TODO doriesit reset - co ked sa vymeni DB slov z EN na FR. Potom to nebude davat zmysel
-                SmartData<LangModuleDataItemCBO> unknownWordsScoreData = ScorePanel.ScoreStorage.SearchSmartData(_ => _.DataObject.ScoreData.Contains(word)).FirstOrDefault();
-
-                if (unknownWordsScoreData != null)
-                {
-                    unknownWordsScoreData.DataObject.ScoreData.Remove(word);
-                    ScorePanel.ScoreStorage.SetSmartData(unknownWordsScoreData.DataObject, unknownWordsScoreData.Key);
-                }
+                RemoveWordFormScoreData(word);
             }
 
             if (!success)
             {
-                // PROBLEM - ScoreData nie je typu List<string> ale jsonArray
                 if (!todayScore.DataObject.ScoreData.Contains(word))
+                {
                     todayScore.DataObject.ScoreData.Add(word);
+                    ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
+                }
+            }
+        }
 
-                // TODo Save score
-                ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
+        private void RemoveWordFormScoreData(string word)
+        {
+            // TODO doriesit reset - co ked sa vymeni DB slov z EN na FR. Potom to nebude davat zmysel
+            SmartData<LangModuleDataItemCBO> wordsScoreData = ScorePanel.ScoreStorage.SearchSmartData(_ => _.DataObject.ScoreData.Contains(word)).FirstOrDefault();
+
+            if (wordsScoreData != null)
+            {
+                wordsScoreData.DataObject.ScoreData.Remove(word);
+                ScorePanel.ScoreStorage.SetSmartData(wordsScoreData.DataObject, wordsScoreData.Key);
             }
         }
 

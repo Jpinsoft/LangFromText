@@ -93,15 +93,7 @@
             <DockPanel HorizontalAlignment="Center">
                 <Label Margin="5">
                     <Hyperlink NavigateUri="jpinsoft.net" RequestNavigate="Hyperlink_RequestNavigate">
-                        Google Translator
-                    </Hyperlink>
-                </Label>
-                <Label Margin="5" HorizontalAlignment="Right">
-                    <Hyperlink
-                        NavigateUri="jpinsoft.net"
-                        RequestNavigate="Hyperlink_RequestNavigate"
-                        TargetName="AZET">
-                        Azet Slovnik
+                        Translate word
                     </Hyperlink>
                 </Label>
             </DockPanel>
