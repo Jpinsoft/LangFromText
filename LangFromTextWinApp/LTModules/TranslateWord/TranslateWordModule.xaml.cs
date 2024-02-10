@@ -35,6 +35,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         WordCBO targetWord = null;
         private const int CN_PRE_INIT_DELAY = 1000;
         private const int FROM_HISTORY_PERCENT_PROBABILITY = 50;
+        AnimSuccesFail animExtender;
 
         #region ILTModuleView
 
@@ -57,6 +58,8 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             FEContext.MainWin.Closing += MainWin_Closing;
             animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY / 4, true);
             animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY / 4, true);
+
+            animExtender = new AnimSuccesFail(this.LabelTargetWord, CN_PRE_INIT_DELAY, false);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -79,7 +82,9 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
                 targetWord = words[rnd.Next(words.Count)];
             }
 
-            LblQuestion.Content = string.Format("Prelož slovo {0}", targetWord);
+            LblQuestion.Content = string.Format("Prelož slovo");
+            TxbTargetWord.Text = targetWord.ToString();
+            animExtender.AnimSuccess();
         }
 
         private WordCBO GetFromHistory()
@@ -105,11 +110,6 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             }
 
             return null;
-        }
-
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            WPFHelpers.OpenTranslator(targetWord.ToString());
         }
 
         private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
@@ -170,6 +170,11 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void TxbTargetWord_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WPFHelpers.OpenTranslator(targetWord.ToString());
         }
     }
 }
