@@ -404,4 +404,10 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T203" xml:space="preserve">
     <value>Trénovanie slovnej zásoby</value>
   </data>
+  <data name="T204" xml:space="preserve">
+    <value>Nedostatok slov. Skúste získať ďalšie textové zdroje z webu, alebo súborov.</value>
+  </data>
+  <data name="T205" xml:space="preserve">
+    <value>Poznáš toto slovo?</value>
+  </data>
 </root>

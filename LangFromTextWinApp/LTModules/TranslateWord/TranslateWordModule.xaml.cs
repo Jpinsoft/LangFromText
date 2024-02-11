@@ -36,6 +36,9 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         private const int CN_PRE_INIT_DELAY = 1000;
         private const int FROM_HISTORY_PERCENT_PROBABILITY = 50;
         AnimSuccesFail animExtender;
+        // TranslatDictItem translatDictItem = null;
+        AnimSuccesFail animExtenderBtnOk;
+        AnimSuccesFail animExtenderBtnFail;
 
         #region ILTModuleView
 
@@ -46,10 +49,6 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         }
 
         #endregion
-
-        // TranslatDictItem translatDictItem = null;
-        AnimSuccesFail animExtenderBtnOk;
-        AnimSuccesFail animExtenderBtnFail;
 
         public TranslateWordModule()
         {
@@ -71,18 +70,58 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         {
         }
 
+        private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
+        {
+            SaveScoreWord(targetWord.Value.ToString(), true);
+
+            animExtenderBtnOk.AnimSuccess();
+            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
+
+            InitModule();
+        }
+
+        private async void BtnFail_Click(object sender, RoutedEventArgs e)
+        {
+            SaveScoreWord(targetWord.Value.ToString(), false);
+
+            animExtenderBtnFail.AnimFail();
+            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
+
+            InitModule();
+        }
+
+        private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.IsLoaded)
+                InitModule();
+        }
+
+        private void TxbTargetWord_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WPFHelpers.OpenTranslator(targetWord.ToString());
+        }
+
         private void InitModule()
         {
             ScorePanel.InitScorePanel(nameof(TranslateWordModule));
+            int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
+            LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 
-            if ((targetWord = GetFromHistory()) == null)
+            // Last failed word
+            List<WordCBO> words = FEContext.LangFromText.GetWordsBank(kp => kp.Value.Rating > minRating).Select(kp => kp.Value).ToList();
+
+            if (words.Count < 10)
             {
-                // Last failed word
-                List<WordCBO> words = FEContext.LangFromText.GetWordsBank(kp => kp.Value.PocetVyskytov > 1).OrderByDescending(kp => kp.Value.PocetVyskytov).Select(kp => kp.Value).ToList();
-                targetWord = words[rnd.Next(words.Count)];
+                LblQuestion.Text = Properties.Resources.T204;
+                LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Hidden;
+
+                return;
             }
 
-            LblQuestion.Content = string.Format("Prelož slovo");
+            if ((targetWord = GetFromHistory()) == null)
+                targetWord = words[rnd.Next(words.Count)];
+
+            LblQuestion.Text = Properties.Resources.T205;
             TxbTargetWord.Text = targetWord.ToString();
             animExtender.AnimSuccess();
         }
@@ -110,26 +149,6 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             }
 
             return null;
-        }
-
-        private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
-        {
-            SaveScoreWord(targetWord.Value.ToString(), true);
-
-            animExtenderBtnOk.AnimSuccess();
-            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
-
-            InitModule();
-        }
-
-        private async void BtnFail_Click(object sender, RoutedEventArgs e)
-        {
-            SaveScoreWord(targetWord.Value.ToString(), false);
-
-            animExtenderBtnFail.AnimFail();
-            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
-
-            InitModule();
         }
 
         private void SaveScoreWord(string word, bool success)
@@ -165,16 +184,6 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
                 wordsScoreData.DataObject.ScoreData.Remove(word);
                 ScorePanel.ScoreStorage.SetSmartData(wordsScoreData.DataObject, wordsScoreData.Key);
             }
-        }
-
-        private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void TxbTargetWord_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            WPFHelpers.OpenTranslator(targetWord.ToString());
         }
     }
 }

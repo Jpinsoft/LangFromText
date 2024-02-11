@@ -404,4 +404,10 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T203" xml:space="preserve">
     <value>Vocabulary training</value>
   </data>
+  <data name="T204" xml:space="preserve">
+    <value>Not enough words. Try to get more text sources from web or files.</value>
+  </data>
+  <data name="T205" xml:space="preserve">
+    <value>Do you know this word?</value>
+  </data>
 </root>

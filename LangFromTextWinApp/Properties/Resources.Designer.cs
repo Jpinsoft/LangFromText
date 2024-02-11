@@ -868,5 +868,23 @@ namespace LangFromTextWinApp.Properties {
                 return ResourceManager.GetString("T203", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not enough words. Try to get more text sources from web or files..
+        /// </summary>
+        internal static string T204 {
+            get {
+                return ResourceManager.GetString("T204", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you know this word?.
+        /// </summary>
+        internal static string T205 {
+            get {
+                return ResourceManager.GetString("T205", resourceCulture);
+            }
+        }
     }
 }

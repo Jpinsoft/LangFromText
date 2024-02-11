@@ -29,6 +29,9 @@ namespace Jpinsoft.LangTainer.CBO
 
         public int PocetZdrojov { get; set; }
 
+        /// <summary>
+        /// Pocitane ako (PocetVyskytov + (PocetZdrojov * 100))
+        /// </summary>
         public int Rating
         {
             get { return PocetVyskytov + (PocetZdrojov * 100); }
