@@ -834,6 +834,24 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to reset score data for this module?.
+        /// </summary>
+        internal static string T090 {
+            get {
+                return ResourceManager.GetString("T090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset score.
+        /// </summary>
+        internal static string T091 {
+            get {
+                return ResourceManager.GetString("T091", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete the word.
         /// </summary>
         internal static string T200 {

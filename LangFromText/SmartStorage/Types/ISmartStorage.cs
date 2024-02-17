@@ -28,16 +28,12 @@ namespace Jpinsoft.LangTainer.ContainerStorage.Types
         /// </summary>
         void SetSmartData(TStorage data, string dataKey, string contextKey = null);
 
-
-        /// <summary>
-        /// Ak najde data s danym klucom v data a uspesne vykona odstranenie vrati TRUE. Inak FALSE.
-        /// </summary>        
-        bool DeleteSmartData(SmartData<TStorage> data);
-
         /// <summary>
         /// Ak najde data s danym klucom a uspesne vykona odstranenie vrati TRUE. Inak FALSE.
         /// </summary>
         bool DeleteSmartData(string dataKey, string contextKey = null);
+
+        void ResetStorage();
 
         /// <summary>
         /// Ulozi zmeny, pokial nebol ziadne data v ulozisku zmenene, nevykona ziadnu akciu.

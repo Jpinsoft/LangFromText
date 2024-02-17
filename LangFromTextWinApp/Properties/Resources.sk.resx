@@ -392,6 +392,12 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T089" xml:space="preserve">
     <value>Zobraziť preklad</value>
   </data>
+  <data name="T090" xml:space="preserve">
+    <value>Naozaj chcete zmazať údaje o skóre pre tento modul?</value>
+  </data>
+  <data name="T091" xml:space="preserve">
+    <value>Resetovať skóre</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Doplňte slovo</value>
   </data>

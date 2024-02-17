@@ -11,14 +11,29 @@ namespace Jpinsoft.LangTainer.ContainerStorage
 {
     public class JsonFileSmartStorage<TStorage> : ISmartStorage<TStorage>
     {
-        Dictionary<string, SmartData<TStorage>> storageDictionary = new Dictionary<string, SmartData<TStorage>>();
+        private Dictionary<string, SmartData<TStorage>> storageDictionary = new Dictionary<string, SmartData<TStorage>>();
         private string storageFile;
 
         public string KeyName { get; private set; }
+
         private bool wasChanged = false;
+
+        private void CheckInit()
+        {
+            if (string.IsNullOrEmpty(KeyName) || string.IsNullOrEmpty(storageFile))
+                throw new Exception($"JsonFileSmartStorage was not initialized. You must call {nameof(InitStorage)} first.");
+        }
+
+        private string GetDictKey(string dataKey, string contextKey)
+        {
+            return $"{contextKey}-{dataKey}".ToLower();
+        }
 
         public void InitStorage(string storageKeyName, string storageFolder)
         {
+            if (string.IsNullOrEmpty(storageKeyName) || string.IsNullOrEmpty(storageFolder))
+                throw new ArgumentException($"Param '{nameof(storageKeyName)}' or '{nameof(storageFolder)}' param is empty.", nameof(storageKeyName));
+
             if (!Directory.Exists(storageFolder))
                 throw new ArgumentException($"Folder '{storageFolder}' does not exists", nameof(storageFolder));
 
@@ -46,6 +61,8 @@ namespace Jpinsoft.LangTainer.ContainerStorage
 
         public List<SmartData<TStorage>> SearchSmartData(Func<SmartData<TStorage>, bool> searchKeyPredicate = null)
         {
+            CheckInit();
+
             if (searchKeyPredicate == null)
                 return storageDictionary.Values.ToList();
 
@@ -54,6 +71,8 @@ namespace Jpinsoft.LangTainer.ContainerStorage
 
         public SmartData<TStorage> GetSmartData(string dataKey, string contextKey = null)
         {
+            CheckInit();
+
             string dictKey = GetDictKey(dataKey, contextKey);
 
             if (!storageDictionary.ContainsKey(dictKey))
@@ -65,6 +84,8 @@ namespace Jpinsoft.LangTainer.ContainerStorage
         // TODO: zabranit menenia Storage mimo tejto metody SetSmartData!! Napr. cez Proxy objekty
         public void SetSmartData(TStorage data, string dataKey, string contextKey = null)
         {
+            CheckInit();
+
             if (string.IsNullOrEmpty(dataKey) || data == null)
                 throw new ArgumentNullException($"{nameof(dataKey)},{nameof(data)}");
 
@@ -90,17 +111,10 @@ namespace Jpinsoft.LangTainer.ContainerStorage
             wasChanged = true; // Skusit aj pre jednotlive zaznamy SmartData
         }
 
-
-        public bool DeleteSmartData(SmartData<TStorage> data)
-        {
-            if (data == null)
-                throw new ArgumentNullException($"{nameof(data)}");
-
-            return DeleteSmartData(data.Key, data.ContextKey);
-        }
-
         public bool DeleteSmartData(string dataKey, string contextKey = null)
         {
+            CheckInit();
+
             if (string.IsNullOrEmpty(dataKey))
                 throw new ArgumentNullException($"{nameof(dataKey)}");
 
@@ -117,6 +131,8 @@ namespace Jpinsoft.LangTainer.ContainerStorage
 
         public bool SaveChanges()
         {
+            CheckInit();
+
             if (wasChanged)
             {
                 using (StreamWriter sw = new StreamWriter(storageFile))
@@ -135,9 +151,15 @@ namespace Jpinsoft.LangTainer.ContainerStorage
             return false;
         }
 
-        private string GetDictKey(string dataKey, string contextKey)
+        public void ResetStorage()
         {
-            return $"{contextKey}-{dataKey}".ToLower();
+            CheckInit();
+
+            try { File.Delete(storageFile); }
+            catch { }
+
+            storageDictionary.Clear();
+            wasChanged = true;
         }
     }
 }

@@ -36,11 +36,10 @@ namespace Jpinsoft.LangTainer.Data
                     {
                         st.InitStorage(storageKey, repositoryFolder);
                     }
+                    catch (ArgumentException) { throw; }
                     catch (Exception ex)
                     {
-                        DeleteStorage(storageKey);
-                        st.InitStorage(storageKey, repositoryFolder);
-
+                        st.ResetStorage();
                         // throw new InfoException($"Unable to load '{storageKey}' module data. Module data file was reset.");
                     }
 
@@ -49,12 +48,6 @@ namespace Jpinsoft.LangTainer.Data
 
                 return st;
             }
-        }
-
-        private void DeleteStorage(string storageKey)
-        {
-            string storageFile = Path.Combine(repositoryFolder, storageKey + ".json");
-            File.Delete(storageFile);
         }
     }
 }

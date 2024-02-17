@@ -21,11 +21,12 @@ namespace LangFromTextWinApp.View.Popup
     /// </summary>
     public partial class ScoreWindow : Window
     {
+        ISmartStorage<LangModuleDataItemCBO> moduleStorage;
+
         public ScoreWindow()
         {
             InitializeComponent();
         }
-
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -38,12 +39,12 @@ namespace LangFromTextWinApp.View.Popup
         {
             List<Tuple<string, DateTime, int>> data = new List<Tuple<string, DateTime, int>>();
 
-            ISmartStorage<LangModuleDataItemCBO> itemStorage = FEContext.ModulesRepository[moduleName];
-            List<SmartData<LangModuleDataItemCBO>> scoreData = itemStorage.SearchSmartData(s => true);
+            moduleStorage = FEContext.ModulesRepository[moduleName];
+            List<SmartData<LangModuleDataItemCBO>> scoreData = moduleStorage.SearchSmartData(s => true);
 
             foreach (SmartData<LangModuleDataItemCBO> dayScore in scoreData)
             {
-                data.Add(new Tuple<string, DateTime, int>(itemStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
+                data.Add(new Tuple<string, DateTime, int>(moduleStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
             }
 
             TScoreChart.DataSource = data;
@@ -64,6 +65,16 @@ namespace LangFromTextWinApp.View.Popup
             if (e.Key == Key.Escape)
             {
                 this.Close();
+            }
+        }
+
+        private void BtnResetScoreData_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBoxWPF.ShowWarning(this, MessageBoxButton.OKCancel, Properties.Resources.T090) == true)
+            {
+                moduleStorage.ResetStorage();
+                this.Close();
+                FEContext.MNavigator.ShowStartPage();
             }
         }
     }

@@ -392,6 +392,12 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T089" xml:space="preserve">
     <value>Show Translation</value>
   </data>
+  <data name="T090" xml:space="preserve">
+    <value>Are you sure you want to reset score data for this module?</value>
+  </data>
+  <data name="T091" xml:space="preserve">
+    <value>Reset score</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Complete the word</value>
   </data>
