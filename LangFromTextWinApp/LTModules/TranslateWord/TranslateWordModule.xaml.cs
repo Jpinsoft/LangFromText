@@ -103,7 +103,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private void InitModule()
         {
-            ScorePanel.InitScorePanel(nameof(TranslateWordModule));
+            ScorePanel.InitScorePanel(nameof(TranslateWordModule), (int)SliderLevel.Value);
             int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
             LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 
@@ -129,7 +129,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         private WordCBO GetFromHistory()
         {
             List<string> unknownWords = new List<string>();
-            ScorePanel.ScoreStorage.SearchSmartData(_ => _.Created.Date < DateTime.Now.Date && _.DataObject.ScoreData.Count > 0)
+            ScorePanel.LevelData.Where(_ => _.Created.Date < DateTime.Now.Date && _.DataObject.ScoreData.Count > 0).ToList()
                 .ForEach(_ => unknownWords.AddRange(_.DataObject.ScoreData));
 
             if (rnd.Next(100) < FROM_HISTORY_PERCENT_PROBABILITY && unknownWords.Count > 0)
@@ -177,7 +177,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         private void RemoveWordFormScoreData(string word)
         {
             // TODO doriesit reset - co ked sa vymeni DB slov z EN na FR. Potom to nebude davat zmysel
-            SmartData<LangModuleDataItemCBO> wordsScoreData = ScorePanel.ScoreStorage.SearchSmartData(_ => _.DataObject.ScoreData.Contains(word)).FirstOrDefault();
+            SmartData<LangModuleDataItemCBO> wordsScoreData = ScorePanel.LevelData.FirstOrDefault(_ => _.DataObject.ScoreData.Contains(word));
 
             if (wordsScoreData != null)
             {

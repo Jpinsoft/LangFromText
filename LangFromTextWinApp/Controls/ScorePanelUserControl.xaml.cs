@@ -25,23 +25,26 @@ namespace LangFromTextWinApp.Controls
     /// </summary>
     public partial class ScorePanelUserControl : UserControl
     {
-        private string moduleName;
         public ISmartStorage<LangModuleDataItemCBO> ScoreStorage { get; private set; }
+        public List<SmartData<LangModuleDataItemCBO>> LevelData { get; private set; }
+        public string KeyPrefix { get { return $"Level{Level}-"; } }
+        public int Level { get; private set; }
 
         public ScorePanelUserControl()
         {
             InitializeComponent();
         }
 
-        public void InitScorePanel(string moduleName)
+        public void InitScorePanel(string moduleName, int level)
         {
-            this.moduleName = moduleName;
+            this.Level = level;
+
             ScoreStorage = FEContext.ModulesRepository[moduleName];
 
             TxbScoreToDay.Text = $"{GetScoreToday().DataObject.Score}";
 
-            List<SmartData<LangModuleDataItemCBO>> allModuleData = ScoreStorage.SearchSmartData();
-            TxbScoreTotal.Text = $"{allModuleData.Sum(item => item.DataObject.Score)}";
+            LevelData = ScoreStorage.SearchSmartData(_ => _.Key.StartsWith(KeyPrefix));
+            TxbScoreTotal.Text = $"{LevelData.Sum(item => item.DataObject.Score)}";
         }
 
         private void LinkScore_Click(object sender, RoutedEventArgs e)
@@ -52,13 +55,13 @@ namespace LangFromTextWinApp.Controls
             scoreView.Width = scoreView.Owner.ActualWidth - scoreView.Owner.ActualWidth * 0.25f;
             scoreView.Height = scoreView.Owner.ActualHeight - scoreView.Owner.ActualHeight * 0.25f;
 
-            scoreView.LoadData(moduleName);
+            scoreView.LoadData(this);
             scoreView.ShowDialog();
         }
 
         public SmartData<LangModuleDataItemCBO> GetScoreToday()
         {
-            string dataKey = DateTime.Now.ToString("yyyy-MM-dd");
+            string dataKey = KeyPrefix + DateTime.Now.ToString("yyyy-MM-dd");
             SmartData<LangModuleDataItemCBO> sData = ScoreStorage.GetSmartData(dataKey);
 
             if (sData == null)

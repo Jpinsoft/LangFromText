@@ -1,5 +1,6 @@
 ﻿using Jpinsoft.LangTainer.CBO;
 using Jpinsoft.LangTainer.ContainerStorage.Types;
+using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace LangFromTextWinApp.View.Popup
     /// </summary>
     public partial class ScoreWindow : Window
     {
-        ISmartStorage<LangModuleDataItemCBO> moduleStorage;
+        private ScorePanelUserControl scorePanelUserControl;
 
         public ScoreWindow()
         {
@@ -35,16 +36,14 @@ namespace LangFromTextWinApp.View.Popup
             cbGraphtType.SelectedItem = SeriesChartType.StackedColumn;
         }
 
-        public void LoadData(string moduleName)
+        public void LoadData(ScorePanelUserControl scorePanelUserControl)
         {
+            this.scorePanelUserControl = scorePanelUserControl;
             List<Tuple<string, DateTime, int>> data = new List<Tuple<string, DateTime, int>>();
 
-            moduleStorage = FEContext.ModulesRepository[moduleName];
-            List<SmartData<LangModuleDataItemCBO>> scoreData = moduleStorage.SearchSmartData(s => true);
-
-            foreach (SmartData<LangModuleDataItemCBO> dayScore in scoreData)
+            foreach (SmartData<LangModuleDataItemCBO> dayScore in scorePanelUserControl.LevelData)
             {
-                data.Add(new Tuple<string, DateTime, int>(moduleStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
+                data.Add(new Tuple<string, DateTime, int>(scorePanelUserControl.ScoreStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
             }
 
             TScoreChart.DataSource = data;
@@ -52,7 +51,7 @@ namespace LangFromTextWinApp.View.Popup
             TScoreChart.Series["SeriesScoreTimeLine"].YValueMembers = "Item3";
             TScoreChart.DataBind();
 
-            LabelScore.Content = string.Format(Properties.Resources.T021, scoreData.Sum(s => s.DataObject.Score));
+            LabelScore.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));
         }
 
         private void cbGraphtType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,7 +71,7 @@ namespace LangFromTextWinApp.View.Popup
         {
             if (MessageBoxWPF.ShowWarning(this, MessageBoxButton.OKCancel, Properties.Resources.T090) == true)
             {
-                moduleStorage.ResetStorage();
+                scorePanelUserControl.ScoreStorage.ResetStorage();
                 this.Close();
                 FEContext.MNavigator.ShowStartPage();
             }
