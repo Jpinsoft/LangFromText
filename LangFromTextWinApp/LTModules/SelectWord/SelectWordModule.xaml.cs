@@ -3,6 +3,7 @@ using Jpinsoft.LangTainer.ContainerStorage.Types;
 using Jpinsoft.LangTainer.Types;
 using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
+using LangFromTextWinApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace LangFromTextWinApp.LTModules.SelectWord
         public SelectWordModule()
         {
             InitializeComponent();
+
+            SliderLevel.Value = Properties.Settings.Default.SelectWordModuleLevel;
         }
 
         #region ILTModuleView
@@ -75,7 +78,10 @@ namespace LangFromTextWinApp.LTModules.SelectWord
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (this.IsInitialized)
+            {
                 InitModule();
+                Settings.Default.SelectWordModuleLevel = (int)SliderLevel.Value;
+            }
         }
 
         #endregion

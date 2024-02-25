@@ -54,20 +54,18 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         {
             InitializeComponent();
 
-            FEContext.MainWin.Closing += MainWin_Closing;
             animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY / 4, true);
             animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY / 4, true);
-
             animExtender = new AnimSuccesFail(this.LabelTargetWord, CN_PRE_INIT_DELAY, false);
+
+            SliderLevel.Value = Properties.Settings.Default.TranslateWordModuleLevel;
         }
+
+        #region Events
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             InitModule();
-        }
-
-        private void MainWin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
         }
 
         private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
@@ -93,13 +91,18 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (this.IsLoaded)
+            {
                 InitModule();
+                Settings.Default.TranslateWordModuleLevel = (int)SliderLevel.Value;
+            }
         }
 
         private void TxbTargetWord_MouseDown(object sender, MouseButtonEventArgs e)
         {
             WPFHelpers.OpenTranslator(targetWord.ToString());
         }
+
+        #endregion
 
         private void InitModule()
         {

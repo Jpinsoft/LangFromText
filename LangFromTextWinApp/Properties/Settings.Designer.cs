@@ -12,7 +12,7 @@ namespace LangFromTextWinApp.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -162,6 +162,54 @@ namespace LangFromTextWinApp.Properties {
             }
             set {
                 this["URLTemplateOpenTranslator"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int TranslateWordModuleLevel {
+            get {
+                return ((int)(this["TranslateWordModuleLevel"]));
+            }
+            set {
+                this["TranslateWordModuleLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int SelectWordModuleLevel {
+            get {
+                return ((int)(this["SelectWordModuleLevel"]));
+            }
+            set {
+                this["SelectWordModuleLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int SelectPhraseModuleLevel {
+            get {
+                return ((int)(this["SelectPhraseModuleLevel"]));
+            }
+            set {
+                this["SelectPhraseModuleLevel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int EnterCharModuleLevel {
+            get {
+                return ((int)(this["EnterCharModuleLevel"]));
+            }
+            set {
+                this["EnterCharModuleLevel"] = value;
             }
         }
     }

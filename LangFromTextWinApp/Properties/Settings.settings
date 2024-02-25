@@ -38,5 +38,17 @@
     <Setting Name="URLTemplateOpenTranslator" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://translate.google.com/?sl=auto&amp;tl=en&amp;text=[WORD]</Value>
     </Setting>
+    <Setting Name="TranslateWordModuleLevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="SelectWordModuleLevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="SelectPhraseModuleLevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="EnterCharModuleLevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

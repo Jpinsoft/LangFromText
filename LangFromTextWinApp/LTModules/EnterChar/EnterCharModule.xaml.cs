@@ -2,6 +2,7 @@
 using Jpinsoft.LangTainer.ContainerStorage.Types;
 using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
+using LangFromTextWinApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace LangFromTextWinApp.LTModules.EnterChar
         {
             InitializeComponent();
             animExtender = new AnimSuccesFail(this.LabelCorrectAnsw, CN_PRE_INIT_DELAY, false);
+
+            SliderLevel.Value = Properties.Settings.Default.EnterCharModuleLevel;
         }
 
         #region Events
@@ -82,7 +85,11 @@ namespace LangFromTextWinApp.LTModules.EnterChar
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (this.IsLoaded)
+            {
                 InitModule();
+
+                Settings.Default.EnterCharModuleLevel = (int)SliderLevel.Value;
+            }
         }
 
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
