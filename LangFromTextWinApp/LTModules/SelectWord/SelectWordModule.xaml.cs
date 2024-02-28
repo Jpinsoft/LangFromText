@@ -201,7 +201,7 @@ namespace LangFromTextWinApp.LTModules.SelectWord
 
             if (totalResult)
             {
-                ScorePanel.SaveResult((int)SliderLevel.Value);
+                ScorePanel.UpdateScore(1);
                 // TODO Success anim
             }
         }

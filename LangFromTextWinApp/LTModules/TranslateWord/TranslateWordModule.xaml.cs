@@ -70,7 +70,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private async void BtnSuccess_Click(object sender, RoutedEventArgs e)
         {
-            SaveScoreWord(targetWord.Value.ToString(), true);
+            UpdateScore(targetWord.Value.ToString(), true);
 
             animExtenderBtnOk.AnimSuccess();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
@@ -80,7 +80,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private async void BtnFail_Click(object sender, RoutedEventArgs e)
         {
-            SaveScoreWord(targetWord.Value.ToString(), false);
+            UpdateScore(targetWord.Value.ToString(), false);
 
             animExtenderBtnFail.AnimFail();
             await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
@@ -154,25 +154,25 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
             return null;
         }
 
-        private void SaveScoreWord(string word, bool success)
+        private void UpdateScore(string word, bool success)
         {
-            SmartData<LangModuleDataItemCBO> todayScore = ScorePanel.GetScoreToday();
+            SmartData<LangModuleDataItemCBO> scoreToday = ScorePanel.GetScoreToday();
 
             if (success)
             {
                 // Increment score today
-                todayScore.DataObject.Score++;
-                ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
+                scoreToday.DataObject.Score++;
+                ScorePanel.ScoreStorage.SetSmartData(scoreToday.DataObject, scoreToday.Key);
 
                 RemoveWordFormScoreData(word);
             }
 
             if (!success)
             {
-                if (!todayScore.DataObject.ScoreData.Contains(word))
+                if (!scoreToday.DataObject.ScoreData.Contains(word))
                 {
-                    todayScore.DataObject.ScoreData.Add(word);
-                    ScorePanel.ScoreStorage.SetSmartData(todayScore.DataObject, todayScore.Key);
+                    scoreToday.DataObject.ScoreData.Add(word);
+                    ScorePanel.ScoreStorage.SetSmartData(scoreToday.DataObject, scoreToday.Key);
                 }
             }
         }

@@ -230,7 +230,7 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
                         if (tBtn.IsChecked == true)
                         {
                             tBtn.ToBackgroundAnim(Colors.Green, 500);
-                            ScorePanel.SaveResult(1);
+                            ScorePanel.UpdateScore(1);
                         }
                         else
                         {

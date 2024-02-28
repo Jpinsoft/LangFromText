@@ -76,7 +76,7 @@ namespace LangFromTextWinApp.Controls
             return sData;
         }
 
-        public void SaveResult(int score)
+        public void UpdateScore(int score)
         {
             SmartData<LangModuleDataItemCBO> scoreSmartData = GetScoreToday();
             scoreSmartData.DataObject.Score += score;

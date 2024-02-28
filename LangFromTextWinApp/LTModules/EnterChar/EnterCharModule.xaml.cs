@@ -202,7 +202,7 @@ namespace LangFromTextWinApp.LTModules.EnterChar
                 FAIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.CheckCircle;
 
 
-                ScorePanel.SaveResult(1);
+                ScorePanel.UpdateScore(1);
             }
             else
             {
