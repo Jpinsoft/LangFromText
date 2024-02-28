@@ -108,10 +108,9 @@
     <Compile Include="LTModules\SelectWord\SelectWordModule.xaml.cs">
       <DependentUpon>SelectWordModule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LTModules\TranslateWord\TranslateWordModule.xaml.cs">
-      <DependentUpon>TranslateWordModule.xaml</DependentUpon>
+    <Compile Include="LTModules\Vocabulary\VocabularyModule.xaml.cs">
+      <DependentUpon>VocabularyModule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LTModules\TranslateWord\TWordModuleResult.cs" />
     <Compile Include="NotifWindow.xaml.cs">
       <DependentUpon>NotifWindow.xaml</DependentUpon>
     </Compile>
@@ -181,7 +180,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LTModules\TranslateWord\TranslateWordModule.xaml">
+    <Page Include="LTModules\Vocabulary\VocabularyModule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

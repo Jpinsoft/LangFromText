@@ -24,12 +24,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LangFromTextWinApp.LTModules.TranslateWord
+namespace LangFromTextWinApp.LTModules.Vocabulary
 {
     /// <summary>
-    /// Interaction logic for TranslateWordModule.xaml
+    /// Interaction logic for VocabularyModule.xaml
     /// </summary>
-    public partial class TranslateWordModule : UserControl, ILTModuleView
+    public partial class VocabularyModule : UserControl, ILTModuleView
     {
         static Random rnd = new Random();
         WordCBO targetWord = null;
@@ -42,7 +42,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         #region ILTModuleView
 
-        public string ModuleName { get { return nameof(TranslateWordModule); } }
+        public string ModuleName { get { return nameof(VocabularyModule); } }
 
         public void ShowModule()
         {
@@ -50,7 +50,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         #endregion
 
-        public TranslateWordModule()
+        public VocabularyModule()
         {
             InitializeComponent();
 
@@ -106,7 +106,7 @@ namespace LangFromTextWinApp.LTModules.TranslateWord
 
         private void InitModule()
         {
-            ScorePanel.InitScorePanel(nameof(TranslateWordModule), (int)SliderLevel.Value);
+            ScorePanel.InitScorePanel(nameof(VocabularyModule), (int)SliderLevel.Value);
             int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
             LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 

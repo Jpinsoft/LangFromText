@@ -176,7 +176,7 @@ namespace LangFromTextWinApp
         {
             FEContext.MNavigator.MarkSelectedMenuItem(MenuItemLangTraining);
 
-            FEContext.MNavigator.ShowControl(FEContext.LTModules.First(j => j is LTModules.TranslateWord.TranslateWordModule));
+            FEContext.MNavigator.ShowControl(FEContext.LTModules.First(j => j is LTModules.Vocabulary.VocabularyModule));
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
