@@ -106,7 +106,7 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
 
         private void InitModule()
         {
-            ScorePanel.InitScorePanel(nameof(VocabularyModule), (int)SliderLevel.Value);
+            ScorePanel.InitScorePanel(nameof(VocabularyModule), Properties.Resources.T203, (int)SliderLevel.Value);
             int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
             LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 

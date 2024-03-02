@@ -43,12 +43,17 @@ namespace LangFromTextWinApp.View.Popup
 
             foreach (SmartData<LangModuleDataItemCBO> dayScore in scorePanelUserControl.LevelData)
             {
-                data.Add(new Tuple<string, DateTime, int>(scorePanelUserControl.ScoreStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
+                if (dayScore.DataObject.Score > 0)
+                    data.Add(new Tuple<string, DateTime, int>(scorePanelUserControl.ScoreStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
             }
 
             TScoreChart.DataSource = data;
             TScoreChart.Series["SeriesScoreTimeLine"].XValueMember = "Item2";
             TScoreChart.Series["SeriesScoreTimeLine"].YValueMembers = "Item3";
+
+            TScoreChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            TScoreChart.ChartAreas[0].AxisY.MajorGrid.Enabled = true;
+
             TScoreChart.DataBind();
 
             LabelScore.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));

@@ -85,7 +85,7 @@ namespace LangFromTextWinApp.LTModules.SelectPhrase
         private async void InitModule()
         {
             storage = FEContext.ModulesRepository[nameof(SelectPhraseModule)];
-            ScorePanel.InitScorePanel(nameof(SelectPhraseModule), (int)SliderLevel.Value);
+            ScorePanel.InitScorePanel(nameof(SelectPhraseModule), Properties.Resources.T201, (int)SliderLevel.Value);
             // Generate GUI
             wPanelMain.Children.Clear();
             tBtns.Clear();

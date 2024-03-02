@@ -118,7 +118,7 @@ namespace LangFromTextWinApp.LTModules.EnterChar
         private async void InitModule()
         {
             storage = FEContext.ModulesRepository[nameof(EnterCharModule)];
-            ScorePanel.InitScorePanel(nameof(EnterCharModule), (int)SliderLevel.Value);
+            ScorePanel.InitScorePanel(nameof(EnterCharModule), Properties.Resources.T200, (int)SliderLevel.Value);
             targetWord = FEContext.LangFromText.GetRandomWords(1, CN_MIN_RATING, 6).FirstOrDefault();
             TxbCorrectAnsw.Text = targetWord.Value;
             IList<int> rndCharsIndex = RandomTools.Shuffle<int>(RandomTools.GeneratePostupnost<int>(0, targetWord.Value.Length - 1), rnd);

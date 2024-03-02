@@ -28,6 +28,7 @@ namespace LangFromTextWinApp.Controls
         public ISmartStorage<LangModuleDataItemCBO> ScoreStorage { get; private set; }
         public List<SmartData<LangModuleDataItemCBO>> LevelData { get; private set; }
         public string KeyPrefix { get { return $"Level{Level}-"; } }
+        public string ModuleTitle { get; private set; }
         public int Level { get; private set; }
 
         public ScorePanelUserControl()
@@ -35,9 +36,10 @@ namespace LangFromTextWinApp.Controls
             InitializeComponent();
         }
 
-        public void InitScorePanel(string moduleName, int level)
+        public void InitScorePanel(string moduleName, string moduleTitle, int level)
         {
             this.Level = level;
+            this.ModuleTitle = moduleTitle;
 
             ScoreStorage = FEContext.ModulesRepository[moduleName];
 
