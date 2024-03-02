@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wf="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
     Title="Score"
-    Width="800"
-    Height="480"
+    MinWidth="800"
+    MinHeight="480"
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontSize="14"
@@ -19,19 +19,21 @@
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition Height="60" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Label
             x:Name="LabelScore"
             Grid.Column="0"
-            HorizontalAlignment="Center"
+            Margin="25,0,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
             Content="SCORE"
             FontSize="16"
             FontWeight="Bold"
@@ -40,7 +42,9 @@
             x:Name="cbGraphtType"
             Grid.Row="0"
             Grid.Column="1"
-            Margin="5"
+            Height="27"
+            Margin="10,0,25,0"
+            VerticalAlignment="Center"
             SelectionChanged="cbGraphtType_SelectionChanged" />
         <WindowsFormsHost
             Grid.Row="1"
@@ -67,7 +71,7 @@
             x:Name="BtnDeleteScoreData"
             Grid.Row="2"
             Grid.Column="0"
-            Margin="10,0,0,12"
+            Margin="10,0,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Click="BtnResetScoreData_Click">
@@ -80,5 +84,17 @@
                 <TextBlock Margin="0,0,7,0" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, ConverterParameter=T091, Converter={StaticResource ResourceConverter}}" /></TextBlock>
             </StackPanel>
         </Button>
+
+        <Label
+            x:Name="LabelScore2"
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,0,25,10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="SCORE"
+            FontSize="16"
+            FontWeight="Bold"
+            Foreground="#FF144257" />
     </Grid>
 </Window>

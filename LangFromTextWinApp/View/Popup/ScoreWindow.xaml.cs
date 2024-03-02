@@ -39,6 +39,8 @@ namespace LangFromTextWinApp.View.Popup
         public void LoadData(ScorePanelUserControl scorePanelUserControl)
         {
             this.scorePanelUserControl = scorePanelUserControl;
+            this.Title = $"Score detail";
+
             List<Tuple<string, DateTime, int>> data = new List<Tuple<string, DateTime, int>>();
 
             foreach (SmartData<LangModuleDataItemCBO> dayScore in scorePanelUserControl.LevelData)
@@ -56,7 +58,8 @@ namespace LangFromTextWinApp.View.Popup
 
             TScoreChart.DataBind();
 
-            LabelScore.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));
+            LabelScore.Content = $"{scorePanelUserControl.ModuleTitle} module";
+            LabelScore2.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));
         }
 
         private void cbGraphtType_SelectionChanged(object sender, SelectionChangedEventArgs e)
