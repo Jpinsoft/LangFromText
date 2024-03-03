@@ -395,7 +395,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check Phrase.
+        ///   Looks up a localized string similar to Phrase checker.
         /// </summary>
         internal static string T043 {
             get {
@@ -404,7 +404,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check phrase (Enter).
+        ///   Looks up a localized string similar to Evaluate (Enter).
         /// </summary>
         internal static string T044 {
             get {

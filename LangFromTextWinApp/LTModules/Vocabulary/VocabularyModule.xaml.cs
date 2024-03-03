@@ -54,9 +54,9 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
         {
             InitializeComponent();
 
-            animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY / 4, true);
-            animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY / 4, true);
-            animExtender = new AnimSuccesFail(this.LabelTargetWord, CN_PRE_INIT_DELAY, false);
+            animExtenderBtnOk = new AnimSuccesFail(this.BtnSuccess, CN_PRE_INIT_DELAY / 6, true);
+            animExtenderBtnFail = new AnimSuccesFail(this.BtnFail, CN_PRE_INIT_DELAY / 6, true);
+            animExtender = new AnimSuccesFail(this.LabelTargetWord, CN_PRE_INIT_DELAY / 4, false);
 
             SliderLevel.Value = Properties.Settings.Default.TranslateWordModuleLevel;
         }
@@ -73,7 +73,7 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
             UpdateScore(targetWord.Value.ToString(), true);
 
             animExtenderBtnOk.AnimSuccess();
-            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
+            await Task.Delay((int)(CN_PRE_INIT_DELAY / 4f));
 
             InitModule();
         }
@@ -83,7 +83,7 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
             UpdateScore(targetWord.Value.ToString(), false);
 
             animExtenderBtnFail.AnimFail();
-            await Task.Delay((int)(CN_PRE_INIT_DELAY * 1.5f));
+            await Task.Delay((int)(CN_PRE_INIT_DELAY / 4f));
 
             InitModule();
         }

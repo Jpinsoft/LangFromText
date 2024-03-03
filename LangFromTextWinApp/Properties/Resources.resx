@@ -230,10 +230,10 @@ You need more data. Please index web or text files and populate your text databa
     <value>Show sentences</value>
   </data>
   <data name="T043" xml:space="preserve">
-    <value>Check Phrase</value>
+    <value>Phrase checker</value>
   </data>
   <data name="T044" xml:space="preserve">
-    <value>Check phrase (Enter)</value>
+    <value>Evaluate (Enter)</value>
   </data>
   <data name="T045" xml:space="preserve">
     <value>Match</value>

@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
@@ -111,6 +112,7 @@ namespace LangFromTextWinApp
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = new MainWindowViewModel();
+            this.Title = $"{FEConstants.PRODUCT_NAME} {Assembly.GetExecutingAssembly().GetName().Version.ToString(2)}";
             FEContext.MainWin = this;
 
             this.Width = Settings.Default.WinSizeWidth;

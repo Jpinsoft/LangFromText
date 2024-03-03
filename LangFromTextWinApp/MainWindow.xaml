@@ -71,7 +71,7 @@
                 Tag="LangPhraseCheckView">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <fontawesome:ImageAwesome Height="30" Icon="Adjust" />
+                        <fontawesome:ImageAwesome Height="30" Icon="CheckCircle" />
                         <Label Content="{Binding ConverterParameter=T043, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
                     </StackPanel>
                 </MenuItem.Header>
