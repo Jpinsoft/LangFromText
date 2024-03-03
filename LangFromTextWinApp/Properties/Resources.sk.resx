@@ -398,6 +398,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T091" xml:space="preserve">
     <value>Resetovať skóre</value>
   </data>
+  <data name="T092" xml:space="preserve">
+    <value>Naozaj chcete resetovať odkaz na prednastavenú hodnotu '{0}'?</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Doplňte slovo</value>
   </data>

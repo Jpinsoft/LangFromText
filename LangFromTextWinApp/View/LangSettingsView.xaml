@@ -207,8 +207,11 @@
             <DockPanel>
                 <Button
                     x:Name="BtnTranslatorLinkReset"
-                    Margin="10"
+                    Height="32"
+                    Margin="5"
+                    Padding="10,0"
                     Click="BtnTranslatorLinkReset_Click"
+                    Cursor="Hand"
                     DockPanel.Dock="Right">
                     Reset
                 </Button>

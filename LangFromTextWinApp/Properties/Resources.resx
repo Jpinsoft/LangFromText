@@ -398,6 +398,9 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T091" xml:space="preserve">
     <value>Reset score</value>
   </data>
+  <data name="T092" xml:space="preserve">
+    <value>Do you really want to reset URL template to the default value '{0}'?</value>
+  </data>
   <data name="T200" xml:space="preserve">
     <value>Complete the word</value>
   </data>

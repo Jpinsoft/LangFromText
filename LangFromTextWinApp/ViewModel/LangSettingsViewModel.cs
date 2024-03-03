@@ -18,6 +18,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace LangFromTextWinApp.ViewModel
@@ -223,7 +224,8 @@ namespace LangFromTextWinApp.ViewModel
 
         public void TranslatorLinkReset()
         {
-            TranslatorLink = "https://translate.google.com/?sl=auto&tl=en&text=" + FEConstants.PLACEHOLDER_WORD;
+            if (MessageBoxWPF.ShowQuestion(System.Windows.Application.Current.MainWindow, MessageBoxButton.OKCancel, string.Format(Resources.T092, FEConstants.DEFAULT_TRANSLATOR_LINK)) == true)
+                TranslatorLink = FEConstants.DEFAULT_TRANSLATOR_LINK;
         }
     }
 }

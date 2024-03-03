@@ -23,5 +23,7 @@ namespace LangFromTextWinApp.Helpers
         public const string RESKEY_Pallete5 = "Pallete5";
 
         public const string PLACEHOLDER_WORD = "[WORD]";
+
+        public const string DEFAULT_TRANSLATOR_LINK = "https://translate.google.com/?sl=auto&tl=en&text=[WORD]";
     }
 }

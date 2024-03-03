@@ -852,6 +852,15 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you really want to reset URL template to the default value &apos;{0}&apos;?.
+        /// </summary>
+        internal static string T092 {
+            get {
+                return ResourceManager.GetString("T092", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Complete the word.
         /// </summary>
         internal static string T200 {
