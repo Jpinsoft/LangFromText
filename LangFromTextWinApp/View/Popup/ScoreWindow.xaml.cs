@@ -58,7 +58,7 @@ namespace LangFromTextWinApp.View.Popup
 
             TScoreChart.DataBind();
 
-            LabelScore.Content = $"{scorePanelUserControl.ModuleTitle} module";
+            LabelScore.Content = $"{scorePanelUserControl.ModuleTitle} module, level {scorePanelUserControl.Level}";
             LabelScore2.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));
         }
 
