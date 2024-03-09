@@ -77,7 +77,8 @@
         <StackPanel
             x:Name="wPanelMain"
             Grid.Row="2"
-            Grid.ColumnSpan="2" />
+            Grid.ColumnSpan="2"
+            Margin="0,50,0,0" />
 
         <Button
             x:Name="BtnOK"
