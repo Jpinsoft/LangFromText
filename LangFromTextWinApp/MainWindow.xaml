@@ -10,7 +10,7 @@
     xmlns:settings="clr-namespace:LangFromTextWinApp.Properties"
     Title="{x:Static localHelpers:FEConstants.PRODUCT_NAME}"
     MinWidth="720"
-    MinHeight="480"
+    MinHeight="600"
     Background="{DynamicResource ContentBackground}"
     Closing="Window_Closing"
     FontSize="14"

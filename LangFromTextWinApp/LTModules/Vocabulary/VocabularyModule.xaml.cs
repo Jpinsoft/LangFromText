@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,6 +40,7 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
         // TranslatDictItem translatDictItem = null;
         AnimSuccesFail animExtenderBtnOk;
         AnimSuccesFail animExtenderBtnFail;
+        private List<WordCBO> wordsToday = new List<WordCBO>();
 
         #region ILTModuleView
 
@@ -110,7 +112,6 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
             int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
             LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 
-            // Last failed word
             List<WordCBO> words = FEContext.LangFromText.GetWordsBank(kp => kp.Value.Rating > minRating).Select(kp => kp.Value).ToList();
 
             if (words.Count < 10)
@@ -121,8 +122,20 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
                 return;
             }
 
+            // Last failed word from history
             if ((targetWord = GetFromHistory()) == null)
-                targetWord = words[rnd.Next(words.Count)];
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    targetWord = words[rnd.Next(words.Count)];
+
+                    // Prevent repetition of words
+                    if (!wordsToday.Contains(targetWord))
+                        break;
+                }
+            }
+
+            wordsToday.Add(targetWord);
 
             LblQuestion.Text = Properties.Resources.T205;
             TxbTargetWord.Text = targetWord.ToString();

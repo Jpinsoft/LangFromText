@@ -897,7 +897,7 @@ namespace LangFromTextWinApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not enough words. Try to get more text sources from web or files..
+        ///   Looks up a localized string similar to Not enough words. Use the Data tab to get more text sources from web or files..
         /// </summary>
         internal static string T204 {
             get {

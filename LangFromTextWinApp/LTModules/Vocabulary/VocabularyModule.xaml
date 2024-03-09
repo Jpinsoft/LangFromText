@@ -23,7 +23,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="2*" MinHeight="100" />
+            <RowDefinition Height="2*" MinHeight="120" />
             <RowDefinition Height="2*" MinHeight="100" />
             <RowDefinition Height="2*" MinHeight="100" />
             <RowDefinition Height="2*" />
@@ -89,7 +89,7 @@
             Margin="5"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            FontSize="40"
+            FontSize="32"
             Text="Label"
             TextWrapping="WrapWithOverflow" />
 
