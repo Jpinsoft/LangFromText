@@ -109,7 +109,7 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
         private void InitModule()
         {
             ScorePanel.InitScorePanel(nameof(VocabularyModule), Properties.Resources.T203, (int)SliderLevel.Value);
-            int minRating = (4 - (int)SliderLevel.Value) * 500; // Rating from 1500 to 500
+            double minRating = Math.Pow((4 - (int)SliderLevel.Value), 1.5f) * 200; // Min rating from 1039 to 200
             LabelTargetWord.Visibility = BtnSuccess.Visibility = BtnFail.Visibility = Visibility.Visible;
 
             List<WordCBO> words = FEContext.LangFromText.GetWordsBank(kp => kp.Value.Rating > minRating).Select(kp => kp.Value).ToList();
