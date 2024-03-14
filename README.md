@@ -27,6 +27,7 @@ You can easily generate and use any lang text-database from web or local text fi
 	- Select the correct word
 	- Complete word
 	- Select the correct phrase
+   	- Vocabulary training module
 - unlimited number of text databases
 - Automatic lang-trainer agent
  
