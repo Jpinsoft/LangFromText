@@ -40,6 +40,11 @@ You can easily generate and use any lang text-database from web or local text fi
 - <img alt="screenshot01" width="480" src="https://user-images.githubusercontent.com/28184960/201521134-4bfb614f-4255-4e02-b11f-ccf30ef65625.jpg">
 </picture>
 
+#### Vocabulary training module 
+<picture>
+<img alt="Vocabulary training" width="480" src="https://github.com/Jpinsoft/LangFromText/assets/28184960/81ec5750-da19-4e20-996e-17a600ee4416">
+</picture>
+
 #### Check phrase module
 <picture>
 <img alt="screenshot01" width="480" src="https://user-images.githubusercontent.com/28184960/201521137-931211aa-ee78-4e44-94e7-c79c64bd9eba.jpg">
