@@ -1,16 +1,11 @@
 ﻿using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
 using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Input;
 
@@ -43,10 +38,10 @@ namespace LangFromTextWinApp.View.Popup
 
             List<Tuple<string, DateTime, int>> data = new List<Tuple<string, DateTime, int>>();
 
-            foreach (SmartData<LangModuleDataItemCBO> dayScore in scorePanelUserControl.LevelData)
+            foreach (LangModuleDataItemCBO dayScore in scorePanelUserControl.LevelData)
             {
-                if (dayScore.DataObject.Score > 0)
-                    data.Add(new Tuple<string, DateTime, int>(scorePanelUserControl.ScoreStorage.KeyName, dayScore.Created, dayScore.DataObject.Score));
+                if (dayScore.Score > 0)
+                    data.Add(new Tuple<string, DateTime, int>(scorePanelUserControl.ScoreStorage.StorageKey, dayScore.Created, dayScore.Score));
             }
 
             TScoreChart.DataSource = data;
@@ -59,7 +54,7 @@ namespace LangFromTextWinApp.View.Popup
             TScoreChart.DataBind();
 
             LabelScore.Content = $"{scorePanelUserControl.ModuleTitle} module, level {scorePanelUserControl.Level}";
-            LabelScore2.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.DataObject.Score));
+            LabelScore2.Content = string.Format(Properties.Resources.T021, scorePanelUserControl.LevelData.Sum(s => s.Score));
         }
 
         private void cbGraphtType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,7 +74,7 @@ namespace LangFromTextWinApp.View.Popup
         {
             if (MessageBoxWPF.ShowWarning(this, MessageBoxButton.OKCancel, Properties.Resources.T090) == true)
             {
-                scorePanelUserControl.ScoreStorage.ResetStorage();
+                scorePanelUserControl.ScoreStorage.Clear();
                 this.Close();
                 FEContext.MNavigator.ShowStartPage();
             }

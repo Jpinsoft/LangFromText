@@ -1,22 +1,12 @@
-﻿using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
+﻿using Jpinsoft.CompactStorage.Types;
+using Jpinsoft.LangTainer.CBO;
 using LangFromTextWinApp.Helpers;
-using LangFromTextWinApp.View;
 using LangFromTextWinApp.View.Popup;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LangFromTextWinApp.Controls
 {
@@ -25,8 +15,8 @@ namespace LangFromTextWinApp.Controls
     /// </summary>
     public partial class ScorePanelUserControl : UserControl
     {
-        public ISmartStorage<LangModuleDataItemCBO> ScoreStorage { get; private set; }
-        public List<SmartData<LangModuleDataItemCBO>> LevelData { get; private set; }
+        public ICompactStorage<LangModuleDataItemCBO> ScoreStorage { get; private set; }
+        public List<LangModuleDataItemCBO> LevelData { get; private set; }
         public string KeyPrefix { get { return $"Level{Level}-"; } }
         public string ModuleTitle { get; private set; }
         public int Level { get; private set; }
@@ -43,10 +33,10 @@ namespace LangFromTextWinApp.Controls
 
             ScoreStorage = FEContext.ModulesRepository[moduleName];
 
-            TxbScoreToDay.Text = $"{GetScoreToday().DataObject.Score}";
+            TxbScoreToDay.Text = $"{GetScoreToday().Score}";
 
-            LevelData = ScoreStorage.SearchSmartData(_ => _.Key.StartsWith(KeyPrefix));
-            TxbScoreTotal.Text = $"{LevelData.Sum(item => item.DataObject.Score)}";
+            LevelData = ScoreStorage.FilterAsList(_ => _.Key.StartsWith(KeyPrefix));
+            TxbScoreTotal.Text = $"{LevelData.Sum(item => item.Score)}";
         }
 
         private void LinkScore_Click(object sender, RoutedEventArgs e)
@@ -61,30 +51,27 @@ namespace LangFromTextWinApp.Controls
             scoreView.ShowDialog();
         }
 
-        public SmartData<LangModuleDataItemCBO> GetScoreToday()
+        public LangModuleDataItemCBO GetScoreToday()
         {
             string dataKey = KeyPrefix + DateTime.Now.ToString("yyyy-MM-dd");
-            SmartData<LangModuleDataItemCBO> sData = ScoreStorage.GetSmartData(dataKey);
+            LangModuleDataItemCBO sData = ScoreStorage[dataKey];
 
             if (sData == null)
             {
-                ScoreStorage.SetSmartData(new LangModuleDataItemCBO(), dataKey);
-                sData = ScoreStorage.GetSmartData(dataKey);
+                ScoreStorage[dataKey] = new LangModuleDataItemCBO();
+                sData = ScoreStorage[dataKey];
             }
-
-            if (sData.DataObject == null)
-                sData.DataObject = new LangModuleDataItemCBO();
 
             return sData;
         }
 
         public void UpdateScore(int score)
         {
-            SmartData<LangModuleDataItemCBO> scoreSmartData = GetScoreToday();
-            scoreSmartData.DataObject.Score += score;
+            LangModuleDataItemCBO scoreSmartData = GetScoreToday();
+            scoreSmartData.Score += score;
 
             // TODo Save score
-            ScoreStorage.SetSmartData(scoreSmartData.DataObject, scoreSmartData.Key);
+            ScoreStorage[scoreSmartData.Key] = scoreSmartData;
         }
     }
 }

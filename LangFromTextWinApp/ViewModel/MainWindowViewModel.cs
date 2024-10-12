@@ -1,9 +1,6 @@
 ﻿using Jpinsoft.LangTainer;
-using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
 using Jpinsoft.LangTainer.Data;
 using Jpinsoft.LangTainer.Types;
-using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.LTModules.EnterChar;
 using LangFromTextWinApp.LTModules.SelectPhrase;
@@ -13,11 +10,8 @@ using LangFromTextWinApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace LangFromTextWinApp.ViewModel
 {
@@ -129,7 +123,7 @@ namespace LangFromTextWinApp.ViewModel
                 Settings.Default.Save();
                 FEContext.LangFromTextTimer?.Stop();
 
-                FEContext.ModulesRepository.Repository.ForEach(mStorage => mStorage.SaveChanges());
+                FEContext.ModulesRepository.Repository.ForEach(mStorage => mStorage.Save());
             } // TODO Event log
             catch { }
         }

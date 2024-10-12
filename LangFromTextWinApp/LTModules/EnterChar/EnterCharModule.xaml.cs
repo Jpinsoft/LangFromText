@@ -1,5 +1,5 @@
-﻿using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
+﻿using Jpinsoft.CompactStorage.Types;
+using Jpinsoft.LangTainer.CBO;
 using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.Properties;
@@ -27,7 +27,7 @@ namespace LangFromTextWinApp.LTModules.EnterChar
         List<TextBox> textBoxesQues = new List<TextBox>();
         AnimSuccesFail animExtender;
         bool answShowed = false;
-        ISmartStorage<LangModuleDataItemCBO> storage;
+        ICompactStorage<LangModuleDataItemCBO> storage;
 
         public EnterCharModule()
         {

@@ -1,29 +1,14 @@
 ﻿using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
-using Jpinsoft.LangTainer.Types;
 using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.Properties;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LangFromTextWinApp.LTModules.Vocabulary
 {
@@ -145,8 +130,8 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
         private WordCBO GetFromHistory()
         {
             List<string> unknownWords = new List<string>();
-            ScorePanel.LevelData.Where(_ => _.Created.Date < DateTime.Now.Date && _.DataObject.ScoreData.Count > 0).ToList()
-                .ForEach(_ => unknownWords.AddRange(_.DataObject.ScoreData));
+            ScorePanel.LevelData.Where(_ => _.Created.Date < DateTime.Now.Date && _.ScoreData.Count > 0).ToList()
+                .ForEach(_ => unknownWords.AddRange(_.ScoreData));
 
             if (rnd.Next(100) < FROM_HISTORY_PERCENT_PROBABILITY && unknownWords.Count > 0)
             {
@@ -169,23 +154,23 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
 
         private void UpdateScore(string word, bool success)
         {
-            SmartData<LangModuleDataItemCBO> scoreToday = ScorePanel.GetScoreToday();
+            LangModuleDataItemCBO scoreToday = ScorePanel.GetScoreToday();
 
             if (success)
             {
                 // Increment score today
-                scoreToday.DataObject.Score++;
-                ScorePanel.ScoreStorage.SetSmartData(scoreToday.DataObject, scoreToday.Key);
+                scoreToday.Score++;
+                ScorePanel.ScoreStorage[scoreToday.Key] = scoreToday;
 
                 RemoveWordFormScoreData(word);
             }
 
             if (!success)
             {
-                if (!scoreToday.DataObject.ScoreData.Contains(word))
+                if (!scoreToday.ScoreData.Contains(word))
                 {
-                    scoreToday.DataObject.ScoreData.Add(word);
-                    ScorePanel.ScoreStorage.SetSmartData(scoreToday.DataObject, scoreToday.Key);
+                    scoreToday.ScoreData.Add(word);
+                    ScorePanel.ScoreStorage[scoreToday.Key] = scoreToday;
                 }
             }
         }
@@ -193,12 +178,12 @@ namespace LangFromTextWinApp.LTModules.Vocabulary
         private void RemoveWordFormScoreData(string word)
         {
             // TODO doriesit reset - co ked sa vymeni DB slov z EN na FR. Potom to nebude davat zmysel
-            SmartData<LangModuleDataItemCBO> wordsScoreData = ScorePanel.LevelData.FirstOrDefault(_ => _.DataObject.ScoreData.Contains(word));
+            LangModuleDataItemCBO wordsScoreData = ScorePanel.LevelData.FirstOrDefault(_ => _.ScoreData.Contains(word));
 
             if (wordsScoreData != null)
             {
-                wordsScoreData.DataObject.ScoreData.Remove(word);
-                ScorePanel.ScoreStorage.SetSmartData(wordsScoreData.DataObject, wordsScoreData.Key);
+                wordsScoreData.ScoreData.Remove(word);
+                ScorePanel.ScoreStorage[wordsScoreData.Key] = wordsScoreData;
             }
         }
     }

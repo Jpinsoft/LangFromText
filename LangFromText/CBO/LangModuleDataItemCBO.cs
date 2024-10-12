@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Jpinsoft.CompactStorage.Types;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Jpinsoft.LangTainer.CBO
 {
-    public class LangModuleDataItemCBO
+    public class LangModuleDataItemCBO : CompactDataBase
     {
         public int Score { get; set; }
 

@@ -16,6 +16,9 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\Files\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Jpinsoft.CompactStorage">
+      <HintPath>..\Files\Jpinsoft.CompactStorage.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Files\Newtonsoft.Json.dll</HintPath>
     </Reference>

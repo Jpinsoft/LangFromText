@@ -17,6 +17,7 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LangFromTextWinApp.Helpers
 {
@@ -123,6 +124,24 @@ namespace LangFromTextWinApp.Helpers
             catch (Exception ex)
             {
                 MessageBoxWPF.ShowError(Application.Current.MainWindow, MessageBoxButton.OK, ExceptionUtils.AddInnerMessages(ex));
+            }
+        }
+
+        public static void PlaceWindowToScreen(System.Windows.Window w)
+        {
+            if (w.WindowState != WindowState.Minimized)
+            {
+                if (w.Top < SystemParameters.VirtualScreenTop)
+                    w.Top = SystemParameters.VirtualScreenTop;
+
+                if (w.Left < SystemParameters.VirtualScreenLeft)
+                    w.Left = SystemParameters.VirtualScreenLeft;
+
+                if (w.Left > SystemParameters.VirtualScreenLeft + SystemParameters.VirtualScreenWidth)
+                    w.Left = SystemParameters.VirtualScreenWidth + SystemParameters.VirtualScreenLeft - w.Width;
+
+                if (w.Top > SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight)
+                    w.Top = SystemParameters.VirtualScreenTop + SystemParameters.VirtualScreenHeight - w.Height;
             }
         }
     }

@@ -7,6 +7,8 @@ using System.Linq;
 using Jpinsoft.LangTainer.ContainerStorage;
 using System.IO;
 using Jpinsoft.LangTainer.Types;
+using Jpinsoft.CompactStorage;
+using Jpinsoft.CompactStorage.Types;
 
 namespace Jpinsoft.LangTainer.Data
 {
@@ -14,33 +16,34 @@ namespace Jpinsoft.LangTainer.Data
     {
         private string repositoryFolder;
 
-        public List<ISmartStorage<LangModuleDataItemCBO>> Repository { get; private set; }
+        public List<ICompactStorage<LangModuleDataItemCBO>> Repository { get; private set; }
 
         public LangModulesDataRepository(string repositoryFolder)
         {
-            Repository = new List<ISmartStorage<LangModuleDataItemCBO>>();
+            Repository = new List<ICompactStorage<LangModuleDataItemCBO>>();
             this.repositoryFolder = repositoryFolder;
         }
 
-        public ISmartStorage<LangModuleDataItemCBO> this[string storageKey]
+        public ICompactStorage<LangModuleDataItemCBO> this[string storageKey]
         {
             get
             {
-                ISmartStorage<LangModuleDataItemCBO> st = Repository.FirstOrDefault(s => s.KeyName == storageKey);
+                ICompactStorage<LangModuleDataItemCBO> st = Repository.FirstOrDefault(s => s.StorageKey == storageKey);
 
                 if (st == null)
                 {
-                    st = new JsonFileSmartStorage<LangModuleDataItemCBO>();
+                    st = new JsonFileCompactStorage<LangModuleDataItemCBO>(storageKey, repositoryFolder);
 
                     try
                     {
-                        st.InitStorage(storageKey, repositoryFolder);
+                        st.Load();
                     }
                     catch (ArgumentException) { throw; }
                     catch (Exception ex)
                     {
-                        st.ResetStorage();
-                        // throw new InfoException($"Unable to load '{storageKey}' module data. Module data file was reset.");
+                        st.Clear();
+                        st.Save();
+                        // throw new InfoException($"Unable to load '{storageKey}' module data. Module data file has been reset.");
                     }
 
                     Repository.Add(st);

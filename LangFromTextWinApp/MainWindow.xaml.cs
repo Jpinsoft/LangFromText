@@ -1,22 +1,13 @@
-﻿using Jpinsoft.LangTainer;
-using Jpinsoft.LangTainer.CBO;
-using Jpinsoft.LangTainer.ContainerStorage.Types;
-using Jpinsoft.LangTainer.Data;
-using Jpinsoft.LangTainer.Types;
-using LangFromTextWinApp.Controls;
+﻿using LangFromTextWinApp.Controls;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.LTModules.EnterChar;
 using LangFromTextWinApp.LTModules.SelectPhrase;
 using LangFromTextWinApp.LTModules.SelectWord;
 using LangFromTextWinApp.Properties;
-using LangFromTextWinApp.View;
 using LangFromTextWinApp.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -146,6 +137,8 @@ namespace LangFromTextWinApp
                 this.Hide();
 
             base.OnStateChanged(e);
+
+            WPFHelpers.PlaceWindowToScreen(this);
         }
 
         private void MenuItemStandard_Click(object sender, RoutedEventArgs e)
