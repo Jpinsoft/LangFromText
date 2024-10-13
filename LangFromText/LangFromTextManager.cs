@@ -353,10 +353,10 @@ namespace Jpinsoft.LangTainer
             return res;
         }
 
-        public List<PhraseCBO> GetRandomSentences(int maxCount = 10, int minLength = 5)
+        public List<PhraseCBO> GetRandomSentences(int maxCount = 10, int minLength = 5, int maxLength = int.MaxValue)
         {
             // TODO ZRYCHLIT CEZ RND INDEX
-            List<PhraseCBO> res = langRepository.Sentences.Where(sen => sen.Words.Count >= minLength).ToList();
+            List<PhraseCBO> res = langRepository.Sentences.Where(sen => sen.Words.Count >= minLength && sen.Words.Count <= maxLength).ToList();
 
             RandomTools.Shuffle<PhraseCBO>(res, rnd);
 

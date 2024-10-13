@@ -134,6 +134,18 @@
                     </MenuItem.Header>
                 </MenuItem>
 
+                <MenuItem x:Name="BuildSentenceModule" Click="BuildSentenceModule_Click">
+                    <MenuItem.Header>
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <fontawesome:ImageAwesome
+                                Height="24"
+                                Margin="10"
+                                Icon="Font" />
+                            <Label Content="{Binding ConverterParameter=T206, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
             </MenuItem>
             <!--  About  -->
             <MenuItem

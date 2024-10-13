@@ -3,6 +3,7 @@ using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.LTModules.EnterChar;
 using LangFromTextWinApp.LTModules.SelectPhrase;
 using LangFromTextWinApp.LTModules.SelectWord;
+using LangFromTextWinApp.LTModules.BuildSentence;
 using LangFromTextWinApp.Properties;
 using LangFromTextWinApp.ViewModel;
 using System;
@@ -188,5 +189,12 @@ namespace LangFromTextWinApp
         }
 
         #endregion
+
+        private void BuildSentenceModule_Click(object sender, RoutedEventArgs e)
+        {
+            FEContext.MNavigator.MarkSelectedMenuItem(MenuItemLangTraining);
+
+            FEContext.MNavigator.ShowControl(FEContext.LTModules.First(j => j is BuildSentenceModule));
+        }
     }
 }

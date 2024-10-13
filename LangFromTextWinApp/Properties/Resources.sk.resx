@@ -419,4 +419,7 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T205" xml:space="preserve">
     <value>Poznáš toto slovo?</value>
   </data>
+  <data name="T206" xml:space="preserve">
+    <value>Skladaj vetu</value>
+  </data>
 </root>

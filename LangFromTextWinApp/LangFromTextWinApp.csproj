@@ -113,6 +113,9 @@
     </Compile>
     <Compile Include="Helpers\NamedPipeTools.cs" />
     <Compile Include="Helpers\WPFHelpers.cs" />
+    <Compile Include="LTModules\BuildSentence\BuildSentenceModule.xaml.cs">
+      <DependentUpon>BuildSentenceModule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LTModules\EnterChar\EnterCharModule.xaml.cs">
       <DependentUpon>EnterCharModule.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Helpers\MessageBoxWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LTModules\BuildSentence\BuildSentenceModule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,7 +312,9 @@
       <Name>LangFromText</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="LTModules\WordArcadeModule\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="MainLT.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

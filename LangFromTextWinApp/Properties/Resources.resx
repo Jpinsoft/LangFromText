@@ -419,4 +419,7 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T205" xml:space="preserve">
     <value>Do you know this word?</value>
   </data>
+  <data name="T206" xml:space="preserve">
+    <value>Build sentence</value>
+  </data>
 </root>
