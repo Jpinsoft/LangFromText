@@ -75,6 +75,8 @@ namespace LangFromTextWinApp.View.Popup
             if (MessageBoxWPF.ShowWarning(this, MessageBoxButton.OKCancel, Properties.Resources.T090) == true)
             {
                 scorePanelUserControl.ScoreStorage.Clear();
+                scorePanelUserControl.ScoreStorage.Save();
+
                 this.Close();
                 FEContext.MNavigator.ShowStartPage();
             }
