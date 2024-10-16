@@ -5,6 +5,7 @@
     xmlns:Controls="clr-namespace:LangFromTextWinApp.Controls"
     xmlns:PopupControls="clr-namespace:LangFromTextWinApp.View.Popup"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fontawesome="http://schemas.fontawesome.io/icons/"
     xmlns:local="clr-namespace:LangFromTextWinApp.LTModules.BuildSentence"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
@@ -20,6 +21,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -81,13 +83,50 @@
             Grid.Row="2"
             Grid.Column="1"
             Margin="0,50,0,0"
-            AllowDrop="True"
-            Background="AliceBlue"
-            Drop="panelAnswer_Drop" />
+            Background="AliceBlue" />
+
+        <Label
+            Name="LabelCorrectAnsw"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Width="Auto"
+            Height="Auto"
+            Background="Transparent"
+            Style="{DynamicResource WordLabelStyle}">
+            <Label.Content>
+                <StackPanel Orientation="Horizontal">
+                    <fontawesome:ImageAwesome
+                        x:Name="FAIcon"
+                        Height="35"
+                        Margin="10,5"
+                        Icon="ArrowUp" />
+                    <TextBlock
+                        Margin="0,0,10,0"
+                        VerticalAlignment="Center"
+                        Cursor="Hand"
+                        TextDecorations="Underline"
+                        ToolTip="{Binding ConverterParameter=T089, Converter={StaticResource ResourceConverter}}">
+                        <Run x:Name="TxbCorrectAnsw" Text="AAA" />
+                    </TextBlock>
+                    <!--<Button
+                               x:Name="BtnOpenTranslator"
+                               Margin="10,5"
+                               Click="BtnOpenTranslator_Click"
+                               Cursor="Hand">
+                               <StackPanel Orientation="Horizontal" ToolTip="Open translator">
+                                   <fontawesome:ImageAwesome
+                                       Height="20"
+                                       Margin="10,5"
+                                       Icon="Language" />
+                               </StackPanel>
+                           </Button>-->
+                </StackPanel>
+            </Label.Content>
+        </Label>
 
         <Button
             x:Name="BtnOK"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.ColumnSpan="2"
             Height="40"
             Margin="10"
