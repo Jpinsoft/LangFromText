@@ -42,7 +42,11 @@
                 </LinearGradientBrush>
             </Label.BorderBrush>
         </Label>
-
+        <Controls:ScorePanelUserControl
+            x:Name="ScorePanel"
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10,0,0,0" />
         <DockPanel
             Grid.Row="1"
             Grid.Column="1"
@@ -89,7 +93,7 @@
             Name="LabelCorrectAnsw"
             Grid.Row="3"
             Grid.ColumnSpan="2"
-            Width="Auto"
+            Width="600"
             Height="Auto"
             Background="Transparent"
             Style="{DynamicResource WordLabelStyle}">
@@ -106,7 +110,10 @@
                         Cursor="Hand"
                         TextDecorations="Underline"
                         ToolTip="{Binding ConverterParameter=T089, Converter={StaticResource ResourceConverter}}">
-                        <Run x:Name="TxbCorrectAnsw" Text="AAA" />
+                        <Run
+                            x:Name="TxbCorrectAnsw"
+                            MouseDown="TxbCorrectAnsw_MouseDown"
+                            Text="AAA" />
                     </TextBlock>
                     <!--<Button
                                x:Name="BtnOpenTranslator"
@@ -123,6 +130,16 @@
                 </StackPanel>
             </Label.Content>
         </Label>
+
+        <Popup
+            x:Name="PopUpPhraseDetail"
+            AllowsTransparency="True"
+            Focusable="True"
+            Placement="Center"
+            PlacementTarget="{Binding ElementName=wPanelMain}"
+            PopupAnimation="Fade">
+            <PopupControls:PhraseWordDetailUserControl x:Name="UserControlPhraseDetail" />
+        </Popup>
 
         <Button
             x:Name="BtnOK"

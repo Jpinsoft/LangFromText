@@ -2,6 +2,7 @@
 using Jpinsoft.LangTainer.Utils;
 using LangFromTextWinApp.Helpers;
 using LangFromTextWinApp.LTModules.SelectWord;
+using LangFromTextWinApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             InitializeComponent();
 
             animExtender = new AnimSuccesFail(this.LabelCorrectAnsw, CN_PRE_INIT_DELAY, false);
+            SliderLevel.Value = Properties.Settings.Default.BuildSentenceModuleLevel;
         }
 
         public string ModuleName { get { return nameof(SelectWordModule); } }
@@ -56,7 +58,8 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void InitModule()
         {
-            // ScorePanel.InitScorePanel(nameof(SelectWordModule), Properties.Resources.T202, (int)SliderLevel.Value);
+            ScorePanel.InitScorePanel(nameof(BuildSentenceModule), Properties.Resources.T202, (int)SliderLevel.Value);
+
             // Generate GUI
             controls.Clear();
             panelWords.Children.Clear();
@@ -64,9 +67,9 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             LabelCorrectAnsw.Visibility = Visibility.Hidden;
 
             answShowed = false;
+            int levelVal = (int)(SliderLevel.Value) + 2; // 3, 4, 5
 
-            targetPhrase = FEContext.LangFromText.GetRandomSentences(1, 4, 8).First();
-            BtnOK.Content = targetPhrase.ToString();
+            targetPhrase = FEContext.LangFromText.GetRandomSentences(1, levelVal, 2 + levelVal).First();
             TxbCorrectAnsw.Text = targetPhrase.ToString();
 
             List<WordCBO> targetWords = targetPhrase.Words.ToList();
@@ -87,8 +90,12 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     Style = Application.Current.FindResource("WordLabelStyle") as Style,
                     Width = 250,
                     AllowDrop = true,
-                    Tag = targetWord
+                    Tag = targetWord,
                 };
+
+                ctrl.MouseDoubleClick += Ctrl_MouseDoubleClick;
+                ctrl.MouseMove += Ctrl_MouseMove;
+                panelWords.Children.Add(ctrl);
 
                 Label targetBorder = new Label
                 {
@@ -101,15 +108,34 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 };
 
                 targetBorder.Drop += Border_Drop;
-
-                ctrl.MouseMove += Ctrl_MouseMove;
-                panelWords.Children.Add(ctrl);
-
                 panelAnswer.Children.Add(targetBorder);
             }
 
             // await Task.Delay((int)moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
             panelWords.Children[0].Focus();
+        }
+
+        private void Ctrl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Label wordLabel = sender as Label;
+
+            if (wordLabel != null && panelWords.Children.Contains(wordLabel))
+            {
+                foreach (object item in panelAnswer.Children)
+                {
+                    Label borderLabel = item as Label;
+
+                    if (borderLabel != null && borderLabel.Content == null)
+                    {
+                        panelWords.Children.Remove(wordLabel);
+                        borderLabel.Content = wordLabel;
+                        controls.Add((Label)sender);
+                        break;
+                    }
+                }
+
+                CheckAnsw();
+            }
         }
 
         private void Border_Drop(object sender, DragEventArgs e)
@@ -120,6 +146,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             {
                 panelWords.Children.Remove(labelWord);
                 ((Label)sender).Content = (Control)labelWord;
+                controls.Add((Label)sender);
             }
         }
 
@@ -132,11 +159,10 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 // Package the data.
                 DataObject data = new DataObject();
                 data.SetData(typeof(Control), sender);
-                Console.WriteLine("VYKONAVAM Ctrl_MouseMove");
+                // Console.WriteLine("VYKONAVAM Ctrl_MouseMove");
 
                 // Initiate the drag-and-drop operation.
                 DragDrop.DoDragDrop((Label)sender, data, DragDropEffects.Move);
-                controls.Add((Label)sender);
 
                 CheckAnsw();
             }
@@ -166,6 +192,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void Success()
         {
+            ScorePanel.UpdateScore(1);
             animExtender.AnimSuccess();
             // await Task.Delay(CN_PRE_INIT_DELAY * 3);
             FAIcon.Foreground = Brushes.Green;
@@ -182,12 +209,31 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (this.IsLoaded)
+            {
+                InitModule();
 
+                Settings.Default.BuildSentenceModuleLevel = (int)SliderLevel.Value;
+            }
         }
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
+            InitModule();
+        }
 
+        private async void TxbCorrectAnsw_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // TODo SEt TAG
+            if ((sender as Run)?.Tag as Tuple<PhraseCBO, PhraseCBO> != null)
+            {
+                PopUpPhraseDetail.StaysOpen = true;
+                PopUpPhraseDetail.IsOpen = true;
+                UserControlPhraseDetail.Init(((sender as Run).Tag as Tuple<PhraseCBO, PhraseCBO>), () => PopUpPhraseDetail.IsOpen = false);
+
+                await Task.Delay(500);
+                PopUpPhraseDetail.StaysOpen = false;
+            }
         }
     }
 }

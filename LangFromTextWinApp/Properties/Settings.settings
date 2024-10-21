@@ -50,5 +50,8 @@
     <Setting Name="EnterCharModuleLevel" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2</Value>
     </Setting>
+    <Setting Name="BuildSentenceModuleLevel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
