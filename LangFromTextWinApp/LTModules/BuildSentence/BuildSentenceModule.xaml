@@ -115,18 +115,6 @@
                             MouseDown="TxbCorrectAnsw_MouseDown"
                             Text="AAA" />
                     </TextBlock>
-                    <!--<Button
-                               x:Name="BtnOpenTranslator"
-                               Margin="10,5"
-                               Click="BtnOpenTranslator_Click"
-                               Cursor="Hand">
-                               <StackPanel Orientation="Horizontal" ToolTip="Open translator">
-                                   <fontawesome:ImageAwesome
-                                       Height="20"
-                                       Margin="10,5"
-                                       Icon="Language" />
-                               </StackPanel>
-                           </Button>-->
                 </StackPanel>
             </Label.Content>
         </Label>

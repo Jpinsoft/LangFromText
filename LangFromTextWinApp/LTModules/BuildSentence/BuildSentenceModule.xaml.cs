@@ -71,6 +71,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
             targetPhrase = FEContext.LangFromText.GetRandomSentences(1, levelVal, 2 + levelVal).First();
             TxbCorrectAnsw.Text = targetPhrase.ToString();
+            TxbCorrectAnsw.Tag = new Tuple<PhraseCBO, PhraseCBO>(targetPhrase, targetPhrase);
 
             List<WordCBO> targetWords = targetPhrase.Words.ToList();
             targetWords.Shuffle<WordCBO>(rnd).ToList();
@@ -108,6 +109,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 };
 
                 targetBorder.Drop += Border_Drop;
+                targetBorder.DragOver += TargetBorder_DragOver;
                 panelAnswer.Children.Add(targetBorder);
             }
 
@@ -138,15 +140,24 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             }
         }
 
+        private void TargetBorder_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = (((Label)sender)?.Content == null) ? DragDropEffects.Move : DragDropEffects.None;
+            e.Handled = true;
+        }
+
         private void Border_Drop(object sender, DragEventArgs e)
         {
             Control labelWord = e.Data.GetData(typeof(Control)) as Control;
 
             if (labelWord != null)
             {
-                panelWords.Children.Remove(labelWord);
-                ((Label)sender).Content = (Control)labelWord;
-                controls.Add((Label)sender);
+                if (((Label)sender).Content == null)
+                {
+                    panelWords.Children.Remove(labelWord);
+                    ((Label)sender).Content = (Control)labelWord;
+                    controls.Add((Label)sender);
+                }
             }
         }
 
@@ -162,7 +173,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 // Console.WriteLine("VYKONAVAM Ctrl_MouseMove");
 
                 // Initiate the drag-and-drop operation.
-                DragDrop.DoDragDrop((Label)sender, data, DragDropEffects.Move);
+                DragDrop.DoDragDrop((Label)sender, data, DragDropEffects.All);
 
                 CheckAnsw();
             }
@@ -224,7 +235,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private async void TxbCorrectAnsw_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            // TODo SEt TAG
+            // TODo SET TAG
             if ((sender as Run)?.Tag as Tuple<PhraseCBO, PhraseCBO> != null)
             {
                 PopUpPhraseDetail.StaysOpen = true;
