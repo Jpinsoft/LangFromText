@@ -86,8 +86,7 @@
             x:Name="panelAnswer"
             Grid.Row="2"
             Grid.Column="1"
-            Margin="0,50,0,0"
-            Background="AliceBlue" />
+            Margin="0,20,0,20" />
 
         <Label
             Name="LabelCorrectAnsw"

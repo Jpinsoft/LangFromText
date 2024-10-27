@@ -30,11 +30,23 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
     {
         bool answShowed = false;
         PhraseCBO targetPhrase = null;
-        List<Label> controls = new List<Label>();
         private const int CN_MIN_RATING = 5;
         static Random rnd = new Random();
         private const int CN_PRE_INIT_DELAY = 700;
         AnimSuccesFail animExtender;
+
+        public List<Label> AnswBorders
+        {
+            get
+            {
+                List<Label> res = new List<Label>();
+
+                foreach (Label label in panelAnswer.Children)
+                    res.Add(label);
+
+                return res;
+            }
+        }
 
         public BuildSentenceModule()
         {
@@ -61,7 +73,6 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             ScorePanel.InitScorePanel(nameof(BuildSentenceModule), Properties.Resources.T202, (int)SliderLevel.Value);
 
             // Generate GUI
-            controls.Clear();
             panelWords.Children.Clear();
             panelAnswer.Children.Clear();
             LabelCorrectAnsw.Visibility = Visibility.Hidden;
@@ -84,7 +95,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             {
                 WordCBO targetWord = targetWords[i];
 
-                Control ctrl = new Label
+                Label ctrl = new Label
                 {
                     Name = "lblChar" + i,
                     Content = targetWord.ToString(),
@@ -101,14 +112,15 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 Label targetBorder = new Label
                 {
                     AllowDrop = true,
-                    BorderThickness = new Thickness(2),
-                    BorderBrush = Brushes.Gray,
+
+                    Background = new SolidColorBrush(Color.FromArgb(64, 128, 128, 128)),
                     Margin = new Thickness(10),
-                    Padding = new Thickness(2),
-                    Height = 80
+                    Padding = new Thickness(0),
+                    Height = 70,
+                    HorizontalContentAlignment = HorizontalAlignment.Center
                 };
 
-                targetBorder.Drop += Border_Drop;
+                targetBorder.Drop += TatgetBorder_Drop;
                 targetBorder.DragOver += TargetBorder_DragOver;
                 panelAnswer.Children.Add(targetBorder);
             }
@@ -131,7 +143,6 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     {
                         panelWords.Children.Remove(wordLabel);
                         borderLabel.Content = wordLabel;
-                        controls.Add((Label)sender);
                         break;
                     }
                 }
@@ -146,7 +157,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             e.Handled = true;
         }
 
-        private void Border_Drop(object sender, DragEventArgs e)
+        private void TatgetBorder_Drop(object sender, DragEventArgs e)
         {
             Control labelWord = e.Data.GetData(typeof(Control)) as Control;
 
@@ -155,8 +166,14 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 if (((Label)sender).Content == null)
                 {
                     panelWords.Children.Remove(labelWord);
-                    ((Label)sender).Content = (Control)labelWord;
-                    controls.Add((Label)sender);
+
+                    foreach (Label lblAnsw in AnswBorders)
+                    {
+                        if (lblAnsw.Content == labelWord)
+                            lblAnsw.Content = null;
+                    }
+
+                    ((Label)sender).Content = labelWord;
                 }
             }
         }
@@ -181,13 +198,15 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void CheckAnsw()
         {
-            if (controls.Count == targetPhrase.Words.Count)
+            if (AnswBorders.Count(_ => _.Content != null) == targetPhrase.Words.Count)
             {
                 bool res = true;
 
-                for (int i = 0; i < controls.Count; i++)
+                for (int i = 0; i < AnswBorders.Count(); i++)
                 {
-                    if ((WordCBO)controls[i].Tag != targetPhrase.Words[i])
+                    WordCBO answWord = ((Label)AnswBorders[i].Content).Tag as WordCBO;
+
+                    if (answWord != targetPhrase.Words[i])
                         res = false;
                 }
 
@@ -199,7 +218,6 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     Fail();
             }
         }
-
 
         private void Success()
         {
