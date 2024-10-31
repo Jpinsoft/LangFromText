@@ -89,6 +89,17 @@
                         <Label Content="{Binding ConverterParameter=T074, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
                     </StackPanel>
                 </MenuItem.Header>
+                <MenuItem x:Name="BuildSentenceModule" Click="BuildSentenceModule_Click">
+                    <MenuItem.Header>
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <fontawesome:ImageAwesome
+                                Height="24"
+                                Margin="10"
+                                Icon="Random" />
+                            <Label Content="{Binding ConverterParameter=T206, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
                 <MenuItem x:Name="SelectWordModule" Click="SelectWordModule_Click">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -130,18 +141,6 @@
                                 Margin="10"
                                 Icon="Font" />
                             <Label Content="{Binding ConverterParameter=T203, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
-                        </StackPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-
-                <MenuItem x:Name="BuildSentenceModule" Click="BuildSentenceModule_Click">
-                    <MenuItem.Header>
-                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                            <fontawesome:ImageAwesome
-                                Height="24"
-                                Margin="10"
-                                Icon="Font" />
-                            <Label Content="{Binding ConverterParameter=T206, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>

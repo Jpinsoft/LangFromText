@@ -11,6 +11,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Loaded="UserControl_Loaded"
+    PreviewKeyDown="UserControl_PreviewKeyDown"
     mc:Ignorable="d">
     <Grid x:Name="MainPanel">
         <Grid.ColumnDefinitions>
@@ -21,7 +22,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="120" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -80,20 +81,25 @@
             x:Name="panelWords"
             Grid.Row="2"
             Grid.Column="0"
-            Margin="0,50,0,0" />
+            VerticalAlignment="Center"
+            Background="#05AAAAAA" />
+
 
         <StackPanel
             x:Name="panelAnswer"
             Grid.Row="2"
             Grid.Column="1"
-            Margin="0,20,0,20" />
+            VerticalAlignment="Center"
+            Background="#05AAAAAA" />
 
         <Label
             Name="LabelCorrectAnsw"
             Grid.Row="3"
             Grid.ColumnSpan="2"
             Width="600"
-            Height="Auto"
+            Height="60"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Top"
             Background="Transparent"
             Style="{DynamicResource WordLabelStyle}">
             <Label.Content>

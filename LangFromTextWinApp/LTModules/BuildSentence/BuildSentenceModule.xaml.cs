@@ -70,9 +70,14 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void InitModule()
         {
+            DoubleAnimation moveDoubleAnimation = Application.Current.FindResource(FEConstants.RESKEY_SelectPhraseModuleAnimation) as DoubleAnimation;
+            SolidColorBrush pallete2 = Application.Current.FindResource(FEConstants.RESKEY_Pallete2) as SolidColorBrush;
+            SolidColorBrush pallete3 = Application.Current.FindResource(FEConstants.RESKEY_Pallete3) as SolidColorBrush;
+
             ScorePanel.InitScorePanel(nameof(BuildSentenceModule), Properties.Resources.T202, (int)SliderLevel.Value);
 
             // Generate GUI
+            answShowed = true;
             panelWords.Children.Clear();
             panelAnswer.Children.Clear();
             LabelCorrectAnsw.Visibility = Visibility.Hidden;
@@ -81,7 +86,8 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             int levelVal = (int)(SliderLevel.Value) + 2; // 3, 4, 5
 
             targetPhrase = FEContext.LangFromText.GetRandomSentences(1, levelVal, 2 + levelVal).First();
-            TxbCorrectAnsw.Text = targetPhrase.ToString();
+
+            TxbCorrectAnsw.Text = (char.ToUpper(targetPhrase.ToString()[0]) + targetPhrase.ToString().Substring(1));
             TxbCorrectAnsw.Tag = new Tuple<PhraseCBO, PhraseCBO>(targetPhrase, targetPhrase);
 
             List<WordCBO> targetWords = targetPhrase.Words.ToList();
@@ -103,7 +109,15 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     Width = 250,
                     AllowDrop = true,
                     Tag = targetWord,
+                    Margin = new Thickness(16)
                 };
+
+                if ((i % 2) != 0)
+                {
+                    ctrl.AnimTranslateX(-moveDoubleAnimation.From.Value * (rnd.Next(0, 30) / 100f), 0, moveDoubleAnimation.EasingFunction, moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
+                }
+                else
+                    ctrl.AnimTranslateX(moveDoubleAnimation.From.Value * (rnd.Next(0, 30) / 100f), 0, moveDoubleAnimation.EasingFunction, moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
 
                 ctrl.MouseDoubleClick += Ctrl_MouseDoubleClick;
                 ctrl.MouseMove += Ctrl_MouseMove;
@@ -114,9 +128,9 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     AllowDrop = true,
 
                     Background = new SolidColorBrush(Color.FromArgb(64, 128, 128, 128)),
-                    Margin = new Thickness(10),
+                    Margin = new Thickness(20, 10, 20, 10),
                     Padding = new Thickness(0),
-                    Height = 70,
+                    Height = 60,
                     HorizontalContentAlignment = HorizontalAlignment.Center
                 };
 
@@ -141,13 +155,12 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
                     if (borderLabel != null && borderLabel.Content == null)
                     {
+                        wordLabel.Margin = new Thickness(5);
                         panelWords.Children.Remove(wordLabel);
                         borderLabel.Content = wordLabel;
                         break;
                     }
                 }
-
-                CheckAnsw();
             }
         }
 
@@ -173,6 +186,8 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                             lblAnsw.Content = null;
                     }
 
+
+                    labelWord.Margin = new Thickness(5);
                     ((Label)sender).Content = labelWord;
                 }
             }
@@ -191,16 +206,23 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
                 // Initiate the drag-and-drop operation.
                 DragDrop.DoDragDrop((Label)sender, data, DragDropEffects.All);
-
-                CheckAnsw();
             }
         }
 
         private void CheckAnsw()
         {
+            if (answShowed)
+            {
+                InitModule();
+                return;
+            }
+
+            answShowed = true;
+            bool res = false;
+
             if (AnswBorders.Count(_ => _.Content != null) == targetPhrase.Words.Count)
             {
-                bool res = true;
+                res = true;
 
                 for (int i = 0; i < AnswBorders.Count(); i++)
                 {
@@ -209,14 +231,12 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     if (answWord != targetPhrase.Words[i])
                         res = false;
                 }
-
-                LabelCorrectAnsw.Visibility = Visibility.Visible;
-
-                if (res)
-                    Success();
-                else
-                    Fail();
             }
+
+            if (res)
+                Success();
+            else
+                Fail();
         }
 
         private void Success()
@@ -226,6 +246,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             // await Task.Delay(CN_PRE_INIT_DELAY * 3);
             FAIcon.Foreground = Brushes.Green;
             FAIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.CheckCircle;
+            LabelCorrectAnsw.Visibility = Visibility.Visible;
         }
 
         private void Fail()
@@ -234,6 +255,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             // await Task.Delay(CN_PRE_INIT_DELAY * 3);
             FAIcon.Foreground = Brushes.Red;
             FAIcon.Icon = FontAwesome.WPF.FontAwesomeIcon.Ban;
+            LabelCorrectAnsw.Visibility = Visibility.Visible;
         }
 
         private void SliderLevel_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -248,7 +270,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void BtnOK_Click(object sender, RoutedEventArgs e)
         {
-            InitModule();
+            CheckAnsw();
         }
 
         private async void TxbCorrectAnsw_MouseDown(object sender, MouseButtonEventArgs e)
@@ -262,6 +284,15 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
                 await Task.Delay(500);
                 PopUpPhraseDetail.StaysOpen = false;
+            }
+        }
+
+        private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                CheckAnsw();
+                e.Handled = true;
             }
         }
     }
