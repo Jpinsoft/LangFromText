@@ -71,9 +71,6 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
         private void InitModule()
         {
             DoubleAnimation moveDoubleAnimation = Application.Current.FindResource(FEConstants.RESKEY_SelectPhraseModuleAnimation) as DoubleAnimation;
-            SolidColorBrush pallete2 = Application.Current.FindResource(FEConstants.RESKEY_Pallete2) as SolidColorBrush;
-            SolidColorBrush pallete3 = Application.Current.FindResource(FEConstants.RESKEY_Pallete3) as SolidColorBrush;
-
             ScorePanel.InitScorePanel(nameof(BuildSentenceModule), Properties.Resources.T202, (int)SliderLevel.Value);
 
             // Generate GUI
@@ -92,10 +89,6 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
             List<WordCBO> targetWords = targetPhrase.Words.ToList();
             targetWords.Shuffle<WordCBO>(rnd).ToList();
-
-            //DoubleAnimation moveDoubleAnimation = Application.Current.FindResource("SelectPhraseModuleAnimation") as DoubleAnimation;
-            //SolidColorBrush pallete2 = Application.Current.FindResource("Pallete2") as SolidColorBrush;
-            //SolidColorBrush pallete3 = Application.Current.FindResource("Pallete3") as SolidColorBrush;
 
             for (int i = 0; i < targetWords.Count; i++)
             {
