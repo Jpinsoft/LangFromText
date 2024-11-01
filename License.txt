@@ -1,6 +1,6 @@
 
 LangFromText
-Copyright ©  2019-2022 Jozef Bátora (Jpinsoft)
+Copyright Â©  2019-2024 Jozef BÃ¡tora (Jpinsoft)
 LangFromText is released under the GPLv3 (GNU GENERAL PUBLIC LICENSE)
 https://github.com/Jpinsoft/LangFromText
 
