@@ -422,4 +422,7 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T206" xml:space="preserve">
     <value>Skladaj vetu</value>
   </data>
+  <data name="T207" xml:space="preserve">
+    <value>Zoraď slová do vety</value>
+  </data>
 </root>

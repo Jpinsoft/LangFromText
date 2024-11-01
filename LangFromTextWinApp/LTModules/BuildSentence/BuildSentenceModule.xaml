@@ -32,7 +32,7 @@
             Margin="10"
             HorizontalContentAlignment="Right"
             BorderThickness="0,0,0,5"
-            Content="{Binding ConverterParameter=T201, Converter={StaticResource ResourceConverter}}"
+            Content="{Binding ConverterParameter=T207, Converter={StaticResource ResourceConverter}}"
             FontSize="20"
             FontWeight="Bold"
             Foreground="#FF072C2C">

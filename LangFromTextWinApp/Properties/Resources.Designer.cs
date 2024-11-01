@@ -922,5 +922,14 @@ namespace LangFromTextWinApp.Properties {
                 return ResourceManager.GetString("T206", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrange the words in a sentence.
+        /// </summary>
+        internal static string T207 {
+            get {
+                return ResourceManager.GetString("T207", resourceCulture);
+            }
+        }
     }
 }

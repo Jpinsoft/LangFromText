@@ -96,7 +96,7 @@
                                 Height="24"
                                 Margin="10"
                                 Icon="Random" />
-                            <Label Content="{Binding ConverterParameter=T206, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
+                            <Label Content="{Binding ConverterParameter=T207, Converter={StaticResource ResourceConverter}, Mode=OneWay}" Style="{StaticResource MenuLabelStyle}" />
                         </StackPanel>
                     </MenuItem.Header>
                 </MenuItem>
