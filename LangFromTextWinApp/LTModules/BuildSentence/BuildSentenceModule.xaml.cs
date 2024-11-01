@@ -28,7 +28,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
     /// </summary>
     public partial class BuildSentenceModule : UserControl, ILTModuleView
     {
-        bool answShowed = false;
+        bool answShown = false;
         PhraseCBO targetPhrase = null;
         private const int CN_MIN_RATING = 5;
         static Random rnd = new Random();
@@ -68,7 +68,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             InitModule();
         }
 
-        private void InitModule()
+        private async void InitModule()
         {
             DoubleAnimation moveDoubleAnimation = Application.Current.FindResource(FEConstants.RESKEY_SelectPhraseModuleAnimation) as DoubleAnimation;
             SolidColorBrush pallete2 = Application.Current.FindResource(FEConstants.RESKEY_Pallete2) as SolidColorBrush;
@@ -77,12 +77,12 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             ScorePanel.InitScorePanel(nameof(BuildSentenceModule), Properties.Resources.T202, (int)SliderLevel.Value);
 
             // Generate GUI
-            answShowed = true;
+            answShown = true;
             panelWords.Children.Clear();
             panelAnswer.Children.Clear();
             LabelCorrectAnsw.Visibility = Visibility.Hidden;
 
-            answShowed = false;
+            answShown = false;
             int levelVal = (int)(SliderLevel.Value) + 2; // 3, 4, 5
 
             targetPhrase = FEContext.LangFromText.GetRandomSentences(1, levelVal, 2 + levelVal).First();
@@ -109,7 +109,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     Width = 250,
                     AllowDrop = true,
                     Tag = targetWord,
-                    Margin = new Thickness(16)
+                    Margin = new Thickness(11)
                 };
 
                 if ((i % 2) != 0)
@@ -119,8 +119,9 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 else
                     ctrl.AnimTranslateX(moveDoubleAnimation.From.Value * (rnd.Next(0, 30) / 100f), 0, moveDoubleAnimation.EasingFunction, moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
 
-                ctrl.MouseDoubleClick += Ctrl_MouseDoubleClick;
                 ctrl.MouseMove += Ctrl_MouseMove;
+                ctrl.Cursor = Cursors.Hand;
+                ctrl.MouseUp += Ctrl_MouseUp;
                 panelWords.Children.Add(ctrl);
 
                 Label targetBorder = new Label
@@ -128,7 +129,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                     AllowDrop = true,
 
                     Background = new SolidColorBrush(Color.FromArgb(64, 128, 128, 128)),
-                    Margin = new Thickness(20, 10, 20, 10),
+                    Margin = new Thickness(20, 5, 20, 5),
                     Padding = new Thickness(0),
                     Height = 60,
                     HorizontalContentAlignment = HorizontalAlignment.Center
@@ -139,26 +140,46 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
                 panelAnswer.Children.Add(targetBorder);
             }
 
-            // await Task.Delay((int)moveDoubleAnimation.Duration.TimeSpan.TotalMilliseconds);
-            panelWords.Children[0].Focus();
+            BtnOK.Focus();
         }
 
-        private void Ctrl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Ctrl_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Label wordLabel = sender as Label;
-
-            if (wordLabel != null && panelWords.Children.Contains(wordLabel))
+            if (!answShown && sender is Label && e.LeftButton == MouseButtonState.Released)
             {
-                foreach (object item in panelAnswer.Children)
-                {
-                    Label borderLabel = item as Label;
+                Label wordLabel = sender as Label;
 
-                    if (borderLabel != null && borderLabel.Content == null)
+                if (wordLabel != null)
+                {
+                    // Move to panelAnser
+                    if (panelWords.Children.Contains(wordLabel))
                     {
-                        wordLabel.Margin = new Thickness(5);
-                        panelWords.Children.Remove(wordLabel);
-                        borderLabel.Content = wordLabel;
-                        break;
+                        foreach (object item in panelAnswer.Children)
+                        {
+                            Label borderLabel = item as Label;
+
+                            if (borderLabel != null && borderLabel.Content == null)
+                            {
+                                wordLabel.Margin = new Thickness(5);
+                                panelWords.Children.Remove(wordLabel);
+                                borderLabel.Content = wordLabel;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {  // Remove from panelAnser
+                        foreach (object item in panelAnswer.Children)
+                        {
+                            Label borderLabel = item as Label;
+
+                            if (borderLabel != null && borderLabel.Content == wordLabel)
+                            {
+                                wordLabel.Margin = new Thickness(11);
+                                borderLabel.Content = null;
+                                panelWords.Children.Add(wordLabel);
+                            }
+                        }
                     }
                 }
             }
@@ -197,7 +218,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
         {
             base.OnMouseMove(e);
 
-            if (sender is Label && e.LeftButton == MouseButtonState.Pressed)
+            if (!answShown && sender is Label && e.LeftButton == MouseButtonState.Pressed)
             {
                 // Package the data.
                 DataObject data = new DataObject();
@@ -211,13 +232,13 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
 
         private void CheckAnsw()
         {
-            if (answShowed)
+            if (answShown)
             {
                 InitModule();
                 return;
             }
 
-            answShowed = true;
+            answShown = true;
             bool res = false;
 
             if (AnswBorders.Count(_ => _.Content != null) == targetPhrase.Words.Count)
