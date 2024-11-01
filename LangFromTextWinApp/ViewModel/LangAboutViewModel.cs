@@ -24,7 +24,7 @@ namespace LangFromTextWinApp.ViewModel
             }
         }
 
-        public string Version { get { return String.Format("Version {0}, March 2024", Assembly.GetExecutingAssembly().GetName().Version); } }
+        public string Version { get { return String.Format("Version {0}, November 2024", Assembly.GetExecutingAssembly().GetName().Version); } }
 
         public string Copyright
         {

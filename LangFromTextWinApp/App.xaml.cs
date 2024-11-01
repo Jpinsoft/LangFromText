@@ -47,6 +47,8 @@ namespace LangFromTextWinApp
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            WPFHelpers.CheckForSettingsUpgrade();
+
             // Napr. pri autorun nie je CurrentDirectory nasetovane..
             string appDir = Path.GetDirectoryName((System.Reflection.Assembly.GetExecutingAssembly().Location));
             Directory.SetCurrentDirectory(appDir);
