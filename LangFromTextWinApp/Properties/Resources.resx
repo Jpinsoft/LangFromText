@@ -425,4 +425,10 @@ https://github.com/zzzprojects/html-agility-pack</value>
   <data name="T207" xml:space="preserve">
     <value>Arrange the words in a sentence</value>
   </data>
+  <data name="T208" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="T209" xml:space="preserve">
+    <value>No</value>
+  </data>
 </root>

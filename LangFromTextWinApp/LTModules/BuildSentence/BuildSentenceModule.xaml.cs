@@ -68,7 +68,7 @@ namespace LangFromTextWinApp.LTModules.BuildSentence
             InitModule();
         }
 
-        private async void InitModule()
+        private void InitModule()
         {
             DoubleAnimation moveDoubleAnimation = Application.Current.FindResource(FEConstants.RESKEY_SelectPhraseModuleAnimation) as DoubleAnimation;
             SolidColorBrush pallete2 = Application.Current.FindResource(FEConstants.RESKEY_Pallete2) as SolidColorBrush;

@@ -142,7 +142,7 @@
                                 Margin="0,0,10,0"
                                 Foreground="#FF30A04A"
                                 Icon="ThumbsUp" />
-                            <Label VerticalAlignment="Center" Content="Rozumiem" />
+                            <Label VerticalAlignment="Center" Content="{Binding ConverterParameter=T208, Converter={StaticResource ResourceConverter}}" />
                         </StackPanel>
                     </Button.Content>
                 </Button>
@@ -159,7 +159,7 @@
                                 Margin="0,0,10,0"
                                 Foreground="#FFDE603B"
                                 Icon="ThumbsDown" />
-                            <Label VerticalAlignment="Center" Content="Nerozumiem" />
+                            <Label VerticalAlignment="Center" Content="{Binding ConverterParameter=T209, Converter={StaticResource ResourceConverter}}" />
                         </StackPanel>
                     </Button.Content>
                 </Button>

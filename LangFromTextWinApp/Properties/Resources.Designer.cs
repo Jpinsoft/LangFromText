@@ -931,5 +931,23 @@ namespace LangFromTextWinApp.Properties {
                 return ResourceManager.GetString("T207", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string T208 {
+            get {
+                return ResourceManager.GetString("T208", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string T209 {
+            get {
+                return ResourceManager.GetString("T209", resourceCulture);
+            }
+        }
     }
 }
