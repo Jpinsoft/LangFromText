@@ -17,8 +17,8 @@ You can easily generate and use any lang text-database from web or local text fi
 </p>
 
 #### What's new in LangFromText 1.4
-- Arrange the words in a sentence training module 
-- Fix window location after multi-monitors mode
+- arrange the words in a sentence training module 
+- fix window location after multi-monitors mode
 
 ## Features/Purpose
 
@@ -26,14 +26,14 @@ You can easily generate and use any lang text-database from web or local text fi
 - translate word (via web translator / custom URL template)
 - web(.html) and file(.txt) indexer
 - Check&Rate phrase module
-- Lang-game modules:
+- lang-game modules:
  	- Arrange the words in a sentence
 	- Select the correct word
 	- Complete word
 	- Select the correct phrase
    	- Vocabulary training module
 - unlimited number of text databases
-- Automatic lang-trainer agent
+- automatic lang-trainer agent
  
 
 ## Screenshots
