@@ -6,7 +6,7 @@ You can easily generate and use any lang text-database from web or local text fi
 
  ## How to get started with LangFromText:
 
-1. <a href="https://github.com/Jpinsoft/LangFromText/releases/download/v1.4.2411.01/LangFromTextSetup-1-4-2411-01.msi">Download</a> and install LangFromText app 	
+1. <a href="https://github.com/Jpinsoft/LangFromText/releases/download/v1.43.0/LangFromTextSetup-1-4-3.msi">Download LangFromText 1.4 release (November 2024)</a> and install app	
 2. Create and index text-database in your foreign language using web or file indexer
 3. Feel free to use Check-phrase module or any Lang-game module for lang training
 
@@ -16,6 +16,9 @@ You can easily generate and use any lang text-database from web or local text fi
   </a>
 </p>
 
+#### What's new in LangFromText 1.4
+- arrange the words in a sentence training module 
+- fix window location after multi-monitors mode
 
 ## Features/Purpose
 
@@ -23,13 +26,14 @@ You can easily generate and use any lang text-database from web or local text fi
 - translate word (via web translator / custom URL template)
 - web(.html) and file(.txt) indexer
 - Check&Rate phrase module
-- Lang-game modules:
+- lang-game modules:
+ 	- Arrange the words in a sentence
 	- Select the correct word
 	- Complete word
 	- Select the correct phrase
    	- Vocabulary training module
 - unlimited number of text databases
-- Automatic lang-trainer agent
+- automatic lang-trainer agent
  
 
 ## Screenshots
