@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5F91AA1D3AFD424B93BAA6C9B9F4C8E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6FB808DEAA51160B076D6EC41020E3E4"
         "OwnerKey" = "8:_1DCBA9413F2146398312022815320975"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,6 +95,12 @@
         {
         "MsmKey" = "8:_70CDD7C4575E33D252F4B6B3013D86CB"
         "OwnerKey" = "8:_1DCBA9413F2146398312022815320975"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_766ECCA2757A4E4689BB7B4744ACBDD2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,6 +189,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C190AF4CFF3E45D4A002128A31C2D975"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CF1DA6DF398A7D5C68757B4CE46ABEE9"
         "OwnerKey" = "8:_6FB808DEAA51160B076D6EC41020E3E4"
         "MsmSig" = "8:_UNDEFINED"
@@ -207,20 +225,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_23709DF47033CC2030C880EE44B75A2E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_968970405B4A41AE885B20FE1273F24E"
+        "MsmKey" = "8:_F3EE8CF6C32944FAA026D3477E5EF3E8"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1DCBA9413F2146398312022815320975"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_968970405B4A41AE885B20FE1273F24E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -293,6 +311,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_B2AA0CE860798C14156CB016BC46A323"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_23709DF47033CC2030C880EE44B75A2E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -565,6 +589,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F91AA1D3AFD424B93BAA6C9B9F4C8E3"
+            {
+            "SourcePath" = "8:..\\License.txt"
+            "TargetName" = "8:License.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_0DFB473E99CE43E2AFFC59455BA57652"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6FB808DEAA51160B076D6EC41020E3E4"
             {
             "AssemblyRegister" = "3:1"
@@ -627,11 +671,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_766ECCA2757A4E4689BB7B4744ACBDD2"
+            {
+            "SourcePath" = "8:..\\Files\\FontAwesome.WPF.lic"
+            "TargetName" = "8:FontAwesome.WPF.lic"
+            "Tag" = "8:"
+            "Folder" = "8:_0DFB473E99CE43E2AFFC59455BA57652"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9612DD3A2148EFF8363EAFD91457AD8D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LangFromText, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LangFromText, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_9612DD3A2148EFF8363EAFD91457AD8D"
@@ -662,7 +726,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LangFromTextWinApp.resources, Version=1.4.2411.1, Culture=sk, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LangFromTextWinApp.resources, Version=1.4.3.0, Culture=sk, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_968970405B4A41AE885B20FE1273F24E"
@@ -844,6 +908,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C190AF4CFF3E45D4A002128A31C2D975"
+            {
+            "SourcePath" = "8:..\\Files\\Newtonsoft.Json.lic"
+            "TargetName" = "8:Newtonsoft.Json.lic"
+            "Tag" = "8:"
+            "Folder" = "8:_0DFB473E99CE43E2AFFC59455BA57652"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CF1DA6DF398A7D5C68757B4CE46ABEE9"
             {
             "AssemblyRegister" = "3:1"
@@ -957,6 +1041,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F3EE8CF6C32944FAA026D3477E5EF3E8"
+            {
+            "SourcePath" = "8:..\\Files\\HtmlAgilityPack.lic"
+            "TargetName" = "8:HtmlAgilityPack.lic"
+            "Tag" = "8:"
+            "Folder" = "8:_0DFB473E99CE43E2AFFC59455BA57652"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -1024,15 +1128,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:LangFromText"
-        "ProductCode" = "8:{BBAA05FA-02EB-4AE7-80C7-903561400977}"
-        "PackageCode" = "8:{6CBC74AB-C8A0-4130-8538-C963D5EC9EA1}"
+        "ProductCode" = "8:{35EADC80-E0FB-40E5-8665-B9DC58651791}"
+        "PackageCode" = "8:{6B8277C5-8FF2-4BB4-9206-C916B670E2CA}"
         "UpgradeCode" = "8:{35D5817E-E6F7-4525-A108-6247A9C5C291}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.4.2411"
+        "ProductVersion" = "8:1.4.3"
         "Manufacturer" = "8:Jpinsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
